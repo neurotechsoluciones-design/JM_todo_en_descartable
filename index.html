@@ -1,499 +1,804 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Propuesta Comercial | JM Todo en Descartables x NeuroTech</title>
-  <meta name="description" content="Propuesta comercial para JM Todo en Descartables: página web con WooCommerce, catálogo, carrito, WhatsApp, carga inicial de productos y automatización escalable." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta Comercial | JM Todo en Descartables × NeuroTech</title>
+  <meta name="description" content="Propuesta comercial para JM Todo en Descartables: página web propia con WooCommerce, WhatsApp, catálogo y crecimiento por etapas.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            neuro: {
+              black: '#020202',
+              dark: '#0a0a0a',
+              green: '#9AFF5F',
+              blue: '#2100E5',
+              'blue-light': '#6344FF',
+              navy: '#07111F',
+            }
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'border-beam': 'border-beam 4s linear infinite',
+            'pulse-glow': 'pulse-glow 2s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            'border-beam': { '100%': { transform: 'rotate(1turn)' } },
+            'pulse-glow': {
+              '0%,100%': { opacity: '1' },
+              '50%': { opacity: '0.7' }
+            },
+            float: {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    :root{
-      --nt-blue:#2100E5;
-      --nt-lime:#9AFF5F;
-      --jm-yellow:#FFD600;
-      --ink:#111827;
-      --deep:#07111F;
-      --muted:#667085;
-      --soft:#F7F8FB;
-      --paper:#ffffff;
-      --line:rgba(17,24,39,.09);
-      --glass:rgba(255,255,255,.76);
-      --shadow:0 28px 80px rgba(17,24,39,.12);
-      --shadow-soft:0 16px 42px rgba(17,24,39,.08);
-      --radius:28px;
-      --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
-      --serif:Georgia,"Times New Roman",serif;
+    body { background:#020202; color:#fff; font-family:'Inter',sans-serif; overflow-x:hidden; }
+    .bg-grid { background-size:50px 50px; background-image:linear-gradient(to right,rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.03) 1px,transparent 1px); }
+    ::-webkit-scrollbar{width:5px} ::-webkit-scrollbar-track{background:#020202} ::-webkit-scrollbar-thumb{background:rgba(154,255,95,.3);border-radius:10px}
+
+    /* Glass cards */
+    .glass-dark { background:linear-gradient(145deg,rgba(15,15,15,.7),rgba(5,5,5,.85)); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.06); box-shadow:inset 0 1px 1px rgba(255,255,255,.04),0 8px 32px rgba(0,0,0,.35); transition:all .35s ease; }
+    .glass-dark:hover { border-color:rgba(154,255,95,.2); box-shadow:0 14px 40px rgba(154,255,95,.07); transform:translateY(-3px); }
+    .glass-light { background:rgba(255,255,255,.96); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 32px rgba(0,0,0,.08); }
+    .glass-light-card { background:rgba(255,255,255,.9); backdrop-filter:blur(12px); border:1px solid rgba(0,0,0,.06); box-shadow:0 6px 24px rgba(0,0,0,.07); transition:all .3s ease; }
+    .glass-light-card:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(33,0,229,.1); border-color:rgba(33,0,229,.15); }
+
+    /* Animated border button */
+    .btn-border { position:relative; border-radius:9999px; padding:2px; overflow:hidden; display:inline-flex; z-index:1; }
+    .btn-border::before { content:''; position:absolute; top:50%; left:50%; width:300%; height:300%; background:conic-gradient(from 0deg,transparent 30%,#9AFF5F 50%,transparent 70%); transform:translate(-50%,-50%); animation:border-beam 3s linear infinite; z-index:-2; }
+    .btn-border-blue::before { background:conic-gradient(from 0deg,transparent 30%,#2100E5 50%,transparent 70%); }
+    .btn-inner { background:#020202; border-radius:9999px; width:100%; height:100%; transition:background .3s; }
+    .btn-border:hover .btn-inner { background:rgba(154,255,95,.1); }
+
+    /* Section alternating backgrounds */
+    .sec-dark { background:#020202; }
+    .sec-mid { background:#080d14; }
+    .sec-light { background:#F5F7FB; color:#101828; }
+    .sec-white { background:#ffffff; color:#101828; }
+    .sec-navy { background:#07111F; }
+
+    /* Tab system */
+    .ref-tab { border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); border-radius:9999px; padding:8px 16px; font-size:13px; font-weight:700; color:rgba(255,255,255,.5); cursor:pointer; transition:.2s; font-family:'Orbitron',sans-serif; white-space:nowrap; }
+    .ref-tab.active,.ref-tab:hover { background:#9AFF5F; color:#020202; border-color:#9AFF5F; }
+
+    /* Preview hero areas */
+    .preview-butlers { background:linear-gradient(135deg,#F7F0E7,#FFFFFF 50%,#EDE6DB); }
+    .preview-cibo { background:linear-gradient(135deg,#F0F6FF,#FFFFFF 50%,#DDE8FF); }
+    .preview-restaurantware { background:linear-gradient(135deg,#FFF6E0,#FFFFFF 48%,#F7E0A2); }
+    .preview-supply { background:linear-gradient(135deg,#F0F9EE,#FFFFFF 50%,#D4F8BC); }
+    .preview-packnwood { background:linear-gradient(135deg,#F9F4EA,#FFFFFF 50%,#EEE0B7); }
+    .preview-arbora { background:linear-gradient(135deg,#F0FAF5,#FFFFFF 50%,#C8F0DC); }
+
+    /* Site cards */
+    .site-card { background:#fff; border-radius:20px; overflow:hidden; border:1px solid rgba(0,0,0,.07); box-shadow:0 12px 32px rgba(0,0,0,.08); transition:all .3s; }
+    .site-card:hover { transform:translateY(-4px); box-shadow:0 20px 48px rgba(33,0,229,.12); }
+    .site-shot { aspect-ratio:16/10; overflow:hidden; position:relative; background:#F5F7FB; }
+    .site-shot img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .site-card:hover .site-shot img { transform:scale(1.04); }
+
+    /* Guru preview card */
+    .guru-preview-card { background:linear-gradient(135deg,rgba(154,255,95,.06),rgba(33,0,229,.06)); border:1px solid rgba(154,255,95,.2); border-radius:24px; overflow:hidden; }
+
+    /* Responsive table */
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .prop-table { width:100%; min-width:640px; border-collapse:separate; border-spacing:0; }
+    .prop-table th { font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:rgba(255,255,255,.4); padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.06); font-family:'Orbitron',sans-serif; }
+    .prop-table td { padding:16px; border-bottom:1px solid rgba(255,255,255,.05); vertical-align:top; font-size:14px; line-height:1.55; color:rgba(255,255,255,.8); }
+    .prop-table tr:last-child td { border-bottom:0; }
+    .prop-table tr.row-rec { background:rgba(154,255,95,.04); }
+    .prop-table tr.row-alt { background:rgba(33,0,229,.04); }
+
+    /* Nav */
+    .nav-blur { background:rgba(2,2,2,.82); backdrop-filter:blur(18px); border-bottom:1px solid rgba(255,255,255,.06); }
+
+    /* Animate on scroll */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* Pill badge */
+    .badge-green { display:inline-flex; padding:6px 12px; border-radius:999px; background:rgba(154,255,95,.12); border:1px solid rgba(154,255,95,.3); color:#9AFF5F; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-family:'Orbitron',sans-serif; }
+    .badge-blue { display:inline-flex; padding:6px 12px; border-radius:999px; background:rgba(99,68,255,.15); border:1px solid rgba(99,68,255,.35); color:#9AB4FF; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-family:'Orbitron',sans-serif; }
+    .badge-muted { display:inline-flex; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.6); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-family:'Orbitron',sans-serif; }
+
+    /* Light section badges */
+    .lbadge-blue { display:inline-flex; padding:6px 12px; border-radius:999px; background:rgba(33,0,229,.09); border:1px solid rgba(33,0,229,.18); color:#2100E5; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-family:'Orbitron',sans-serif; }
+    .lbadge-green { display:inline-flex; padding:6px 12px; border-radius:999px; background:rgba(18,183,106,.1); border:1px solid rgba(18,183,106,.25); color:#0D7A47; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-family:'Orbitron',sans-serif; }
+
+    /* Divider line */
+    .divider { height:1px; background:linear-gradient(to right,transparent,rgba(154,255,95,.25),transparent); }
+
+    @media (max-width:640px) {
+      .hero-title { font-size:clamp(32px,9vw,52px); }
+      .section-title { font-size:clamp(26px,7vw,40px); }
+      .hide-mobile { display:none; }
     }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:var(--sans);
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 8% 0%, rgba(255,214,0,.18), transparent 30%),
-        radial-gradient(circle at 88% 12%, rgba(33,0,229,.12), transparent 28%),
-        radial-gradient(circle at 50% 92%, rgba(154,255,95,.12), transparent 32%),
-        linear-gradient(180deg,#FEFEFF 0%,#F5F7FB 48%,#FFFFFF 100%);
-      overflow-x:hidden;
-    }
-    a{color:inherit}
-    .grain{position:fixed;inset:0;pointer-events:none;opacity:.16;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");mix-blend-mode:multiply}
-
-    .nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.76);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid rgba(17,24,39,.06)}
-    .nav-inner{max-width:1240px;margin:auto;padding:13px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.035em}
-    .brand-mark{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--nt-blue),#654BFF 45%,var(--nt-lime));box-shadow:0 14px 28px rgba(33,0,229,.18)}
-    .nav-links{display:flex;gap:18px;font-size:14px;color:var(--muted);font-weight:700}
-    .nav-links a{text-decoration:none}.nav-links a:hover{color:var(--nt-blue)}
-    .pill{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(255,214,0,.30);color:#6B5800;border:1px solid rgba(255,214,0,.42);font-size:13px;font-weight:900}
-
-    .hero{position:relative;z-index:2;max-width:1500px;margin:0 auto;padding:28px 22px 0}
-    .hero-shell{position:relative;overflow:hidden;border-radius:38px;min-height:720px;background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFF 55%,#FFF7C7 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.72)}
-    .hero-shell:before{content:"";position:absolute;inset:-20% auto auto -10%;width:520px;height:520px;border-radius:50%;background:rgba(255,214,0,.34);filter:blur(36px);animation:floatGlow 9s ease-in-out infinite alternate}
-    .hero-shell:after{content:"";position:absolute;right:-180px;bottom:-220px;width:620px;height:620px;border-radius:50%;background:rgba(33,0,229,.13);filter:blur(40px);animation:floatGlow 11s ease-in-out infinite alternate-reverse}
-    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;min-height:720px;align-items:center;gap:20px;padding:clamp(28px,5vw,78px)}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.70);border:1px solid rgba(17,24,39,.08);box-shadow:var(--shadow-soft);font-size:13px;font-weight:950;color:var(--nt-blue);text-transform:uppercase;letter-spacing:.08em}
-    h1{margin:24px 0 18px;font-size:clamp(42px,6.8vw,88px);line-height:.88;letter-spacing:-.075em;max-width:860px}
-    .accent{background:linear-gradient(135deg,var(--nt-blue),#6A57FF 50%,#79D34E);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero-lead{font-size:clamp(18px,1.7vw,24px);line-height:1.48;color:#344054;max-width:720px;margin:0 0 30px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:15px 21px;border-radius:999px;text-decoration:none;font-weight:950;border:1px solid rgba(17,24,39,.08);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;cursor:pointer}
-    .btn-primary{background:var(--deep);color:#fff;box-shadow:0 18px 44px rgba(17,24,39,.18)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 24px 62px rgba(17,24,39,.24)}
-    .btn-light{background:rgba(255,255,255,.72);color:var(--deep);backdrop-filter:blur(20px)}.btn-light:hover{transform:translateY(-3px);background:#fff}
-    .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;color:var(--muted);font-size:14px;font-weight:700}.hero-meta span{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.68);border:1px solid rgba(17,24,39,.06)}
-    .device-wrap{position:relative;min-height:540px;display:grid;place-items:center;perspective:1200px}
-    .device{width:min(500px,90%);border-radius:38px;background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.86);box-shadow:0 40px 100px rgba(17,24,39,.16);padding:18px;transform:rotateY(-10deg) rotateX(5deg);animation:deviceFloat 6s ease-in-out infinite alternate}
-    .device-top{height:42px;display:flex;align-items:center;gap:8px;padding:0 12px}.dotmini{width:10px;height:10px;border-radius:50%;background:#D0D5DD}.dotmini:nth-child(2){background:var(--jm-yellow)}.dotmini:nth-child(3){background:var(--nt-lime)}
-    .mock-hero{border-radius:26px;overflow:hidden;background:#fff;border:1px solid rgba(17,24,39,.08)}
-    .mock-banner{height:180px;background:linear-gradient(135deg,#FFF8D6,#F4F7FB 48%,#E7E4FF);position:relative;display:flex;align-items:end;padding:22px;overflow:hidden}
-    .mock-banner:after{content:"";position:absolute;right:-40px;top:20px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#FFD600,transparent 68%);opacity:.55}
-    .mock-banner strong{position:relative;z-index:2;font-size:28px;letter-spacing:-.06em;line-height:1}.mock-products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px}.mock-product{height:96px;border-radius:18px;background:linear-gradient(180deg,#fff,#F6F7FA);border:1px solid rgba(17,24,39,.07);padding:10px;display:flex;flex-direction:column;justify-content:end}.mock-product span{height:38px;border-radius:10px;background:linear-gradient(135deg,#F2F4F7,#FFF4B8)}.mock-product small{margin-top:8px;color:var(--muted);font-weight:800}.mock-cart{margin:0 14px 16px;padding:14px;border-radius:18px;background:var(--deep);color:#fff;display:flex;justify-content:space-between;font-weight:900}
-    .float-card{position:absolute;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.76);backdrop-filter:blur(18px);border:1px solid rgba(17,24,39,.06);box-shadow:var(--shadow-soft);font-weight:900;color:var(--deep);animation:floatCard 5s ease-in-out infinite alternate}.fc1{top:52px;left:0}.fc2{bottom:72px;right:0;animation-delay:.8s}.fc3{top:245px;right:-4px;animation-delay:1.4s}
-
-    .main{position:relative;z-index:3;max-width:1180px;margin:auto;padding:54px 22px 100px}.section{margin-top:68px}.section-title{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:24px}.section-title h2{margin:0;font-size:clamp(34px,4.5vw,62px);line-height:.95;letter-spacing:-.065em}.section-title p{max-width:570px;margin:0;color:var(--muted);line-height:1.58;font-size:17px}
-    .glass{background:var(--glass);border:1px solid rgba(255,255,255,.70);box-shadow:var(--shadow-soft);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:var(--radius)}
-    .intro-card{display:grid;grid-template-columns:1.12fr .88fr;gap:18px;padding:34px}.intro-card h2{font-size:40px;line-height:1;letter-spacing:-.055em;margin:0 0 14px}.intro-card p{color:var(--muted);line-height:1.65;margin:0;font-size:17px}.note{padding:24px;border-radius:22px;background:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,255,255,.54));border:1px solid rgba(255,214,0,.24)}.note strong{display:block;font-size:18px;letter-spacing:-.02em;margin-bottom:8px;color:var(--deep)}
-
-    .comparison{overflow-x:auto}.table{width:100%;min-width:800px;border-collapse:separate;border-spacing:0;border-radius:24px;overflow:hidden;background:rgba(255,255,255,.72);border:1px solid rgba(17,24,39,.06)}.table th,.table td{padding:18px;text-align:left;border-bottom:1px solid rgba(17,24,39,.06);vertical-align:top}.table th{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);background:rgba(17,24,39,.025)}.table tr:last-child td{border-bottom:0}.row-good{background:rgba(154,255,95,.12)}.row-warn{background:rgba(255,214,0,.13)}.table strong{color:var(--deep)}
-
-    .proposal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:30px;position:relative;overflow:hidden}.card h3{font-size:28px;letter-spacing:-.045em;margin:0 0 10px}.card p{color:var(--muted);line-height:1.6;margin:0 0 16px}.badge{display:inline-flex;width:max-content;padding:8px 12px;border-radius:999px;background:rgba(33,0,229,.09);border:1px solid rgba(33,0,229,.12);color:var(--nt-blue);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}.list{display:grid;gap:10px;list-style:none;padding:0;margin:18px 0 0}.list li{display:flex;gap:10px;line-height:1.45;color:#344054}.check{font-weight:950;color:var(--nt-blue)}.x{font-weight:950;color:#B42318}.price-box{padding:20px;border-radius:22px;background:var(--deep);color:#fff;margin-top:20px}.price-box .big{font-size:38px;font-weight:950;letter-spacing:-.06em}.price-box small{color:rgba(255,255,255,.68)}
-
-    .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.scope-grid .glass{padding:30px}.scope-grid h3{font-size:24px;margin:0 0 14px;letter-spacing:-.04em}.dot{width:9px;height:9px;border-radius:50%;margin-top:8px;flex:0 0 auto;background:linear-gradient(135deg,var(--nt-blue),var(--jm-yellow))}
-
-    .refs{display:grid;gap:18px}.ref-stage{padding:28px;position:relative;overflow:hidden}.style-tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}.tab{border:1px solid rgba(17,24,39,.08);background:rgba(255,255,255,.72);border-radius:999px;padding:10px 14px;font-weight:900;color:var(--muted);cursor:pointer;transition:.2s ease}.tab.active{background:var(--deep);color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px rgba(17,24,39,.16)}
-    .hero-preview{min-height:430px;border-radius:30px;overflow:hidden;position:relative;border:1px solid rgba(17,24,39,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.85)}.preview-content{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:clamp(26px,5vw,58px);gap:30px;transition:opacity .35s ease,transform .35s ease}.preview-copy h3{font-size:clamp(34px,5vw,60px);line-height:.95;letter-spacing:-.07em;margin:0 0 14px}.preview-copy p{color:#475467;font-size:17px;line-height:1.55;max-width:520px}.preview-copy a{display:inline-flex;margin-top:16px;padding:12px 16px;border-radius:999px;background:#fff;text-decoration:none;font-weight:950;color:var(--deep);box-shadow:0 12px 28px rgba(17,24,39,.10)}.preview-art{height:300px;position:relative}.product-stack{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end}.prod-tile{border-radius:24px;background:rgba(255,255,255,.76);box-shadow:0 20px 44px rgba(17,24,39,.12);border:1px solid rgba(255,255,255,.70);min-height:170px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;transform:translateY(var(--y));animation:tileFloat 5s ease-in-out infinite alternate}.prod-tile:nth-child(2){min-height:250px;animation-delay:.5s}.prod-tile:nth-child(3){min-height:205px;animation-delay:1s}.prod-img{height:80px;border-radius:16px;background:linear-gradient(135deg,#F2F4F7,#FFF2AD);margin-bottom:12px}.prod-line{height:10px;border-radius:999px;background:rgba(17,24,39,.12);margin-top:7px}.ref-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.ref-meta a,.ref-meta div{padding:16px;border-radius:18px;background:rgba(255,255,255,.70);border:1px solid rgba(17,24,39,.06);font-size:14px;line-height:1.45;text-decoration:none;color:#344054}.ref-meta strong{display:block;color:var(--deep);margin-bottom:4px}
-    .style-butlers{background:linear-gradient(135deg,#F7F0E7,#FFFFFF 48%,#EDE6DB)}.style-cibo{background:linear-gradient(135deg,#F7FAFC,#E8F0FF 55%,#DDE8FF)}.style-restaurant{background:linear-gradient(135deg,#FFF8E6,#FFFFFF 46%,#F7E0A2)}.style-supply{background:linear-gradient(135deg,#F4F8F2,#FFFFFF 48%,#DAF8C8)}.style-pack{background:linear-gradient(135deg,#F9F5EA,#FFFFFF 50%,#EFE0B7)}.style-arbora{background:linear-gradient(135deg,#F3FAF6,#FFFFFF 48%,#D2F1DE)}
-
-    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:24px;position:relative}.step:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--nt-blue),var(--jm-yellow));border-radius:99px}.step strong{display:block;color:var(--nt-blue);font-size:12px;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}.step h3{margin:0 0 10px;font-size:20px;letter-spacing:-.035em}.step p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
-    .final{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:stretch}.final-card{padding:34px;color:#fff;background:radial-gradient(circle at 88% 10%, rgba(255,214,0,.34), transparent 28%),linear-gradient(135deg,#07111F,#2100E5 105%);border-radius:var(--radius);box-shadow:0 24px 64px rgba(33,0,229,.18)}.final-card h2{font-size:44px;line-height:.98;letter-spacing:-.065em;margin:0 0 18px}.final-card p{color:rgba(255,255,255,.84);line-height:1.6;margin:0 0 22px}.quote{padding:34px;display:flex;flex-direction:column;justify-content:center}.quote blockquote{margin:0;font-size:28px;line-height:1.18;letter-spacing:-.045em;font-weight:900}.quote p{color:var(--muted);line-height:1.6;font-size:16px;margin:20px 0 0}
-    .footer{max-width:1180px;margin:0 auto 38px;padding:0 22px;color:var(--muted);font-size:14px}.footer-inner{display:flex;justify-content:space-between;gap:18px;border-top:1px solid rgba(17,24,39,.07);padding-top:22px}
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-    @keyframes floatGlow{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(34px,24px,0) scale(1.08)}}@keyframes deviceFloat{from{transform:rotateY(-10deg) rotateX(5deg) translateY(0)}to{transform:rotateY(-6deg) rotateX(3deg) translateY(-18px)}}@keyframes floatCard{from{transform:translateY(0)}to{transform:translateY(-16px)}}@keyframes tileFloat{from{transform:translateY(var(--y))}to{transform:translateY(calc(var(--y) - 15px))}}
-
-
-
-    /* Referencias visibles: no dependen de iframes bloqueados */
-    .live-reference-wrap{margin-top:22px;padding:26px;border-radius:28px;background:rgba(255,255,255,.74);border:1px solid rgba(17,24,39,.07);box-shadow:var(--shadow-soft)}
-    .embed-warning{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,214,0,.20),rgba(255,255,255,.72));border:1px solid rgba(255,214,0,.25);color:#344054;line-height:1.5;margin-bottom:18px}
-    .embed-warning strong{display:block;color:var(--deep);margin-bottom:3px}
-    .site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .site-card{position:relative;overflow:hidden;border-radius:24px;background:#fff;border:1px solid rgba(17,24,39,.08);box-shadow:0 18px 44px rgba(17,24,39,.08);transition:transform .25s ease,box-shadow .25s ease}
-    .site-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(17,24,39,.14)}
-    .site-shot{aspect-ratio:16/10;background:linear-gradient(135deg,#F5F7FB,#FFF7C7);overflow:hidden;position:relative;border-bottom:1px solid rgba(17,24,39,.06)}
-    .site-shot img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);transition:transform .35s ease}
-    .site-card:hover .site-shot img{transform:scale(1.045)}
-    .site-shot:after{content:"";position:absolute;inset:auto 0 0 0;height:48%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.18));pointer-events:none}
-    .site-body{padding:18px}.site-body h3{margin:0 0 8px;font-size:21px;letter-spacing:-.04em;color:var(--deep)}.site-body p{margin:0;color:var(--muted);line-height:1.48;font-size:14px;min-height:62px}
-    .site-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.site-actions a,.site-actions button{appearance:none;border:0;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:10px 12px;font-weight:950;font-size:13px;cursor:pointer}.open-site{background:var(--deep);color:#fff}.try-frame{background:rgba(33,0,229,.08);color:var(--nt-blue)}
-    .frame-modal{position:fixed;inset:0;z-index:200;display:none;background:rgba(7,17,31,.72);backdrop-filter:blur(10px);padding:18px}.frame-modal.open{display:grid;place-items:center}.frame-box{width:min(1180px,96vw);height:min(760px,88vh);background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.36);display:grid;grid-template-rows:auto 1fr}.frame-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(17,24,39,.08)}.frame-head strong{font-size:14px}.frame-head a{font-size:13px;font-weight:900;color:var(--nt-blue)}.close-frame{border:0;background:var(--deep);color:#fff;border-radius:999px;padding:9px 12px;font-weight:950;cursor:pointer}.frame-box iframe{width:100%;height:100%;border:0;background:#fff}.frame-note{font-size:12px;color:var(--muted);padding:8px 14px;border-top:1px solid rgba(17,24,39,.06);background:#F8FAFC}
-
-    @media (max-width:1040px){.site-grid{grid-template-columns:1fr 1fr}.nav-links{display:none}.hero-grid,.intro-card,.proposal-grid,.scope-grid,.final{grid-template-columns:1fr}.hero-shell{min-height:auto}.device-wrap{min-height:480px}.section-title{display:block}.section-title p{margin-top:14px}.timeline{grid-template-columns:1fr 1fr}.preview-content{grid-template-columns:1fr}.hero-preview{min-height:720px}.ref-meta{grid-template-columns:1fr}.preview-art{height:260px}}
-    @media (max-width:680px){.site-grid{grid-template-columns:1fr}.hero{padding:12px 0 0}.hero-shell{border-radius:0}.hero-grid{padding:30px 18px}.hero-actions{display:grid}.main{padding:28px 14px 80px}.intro-card,.card,.scope-grid .glass,.ref-stage,.final-card,.quote{padding:24px}.timeline{grid-template-columns:1fr}.device{transform:none;width:100%}.device-wrap{min-height:420px}.float-card{display:none}.hero-preview{min-height:760px}.product-stack{gap:8px}.prod-tile{border-radius:18px}.footer-inner{display:block}.proposal-grid{grid-template-columns:1fr}}
   </style>
 </head>
-<body>
-  <div class="grain"></div>
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>NeuroTech Soluciones</span></div>
-      <div class="nav-links" aria-label="Navegación principal">
-        <a href="#objetivo">Objetivo</a>
-        <a href="#propuesta">Propuesta</a>
-        <a href="#referencias">Referencias</a>
-        <a href="#inversion">Inversión</a>
-        <a href="#cierre">Recomendación</a>
-      </div>
-      <span class="pill">JM Todo en Descartables</span>
-    </div>
-  </nav>
+<body class="antialiased selection:bg-neuro-green selection:text-black">
 
-  <header class="hero">
-    <section class="hero-shell" aria-label="Propuesta comercial para JM Todo en Descartables">
-      <div class="hero-grid">
-        <div>
-          <span class="eyebrow">Propuesta comercial 2026</span>
-          <h1>Página web propia con <span class="accent">WooCommerce + WhatsApp</span></h1>
-          <p class="hero-lead">Una solución clara para vender online sin quedar atados a plataformas cerradas ni a comisiones propias de tienda. Primero catálogo, carrito y pedido por WhatsApp. Después, Mercado Pago, stock y automatización.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#inversion">Ver inversión</a>
-            <a class="btn btn-light" href="#referencias">Elegir estilo visual</a>
-          </div>
-          <div class="hero-meta">
-            <span>Emitido: <strong id="fechaHoy"></strong></span>
-            <span>Validez sugerida: <strong id="fechaVigencia"></strong></span>
-            <span>Contacto: +54 9 2604 08-7086</span>
-          </div>
+<!-- Fixed grid bg -->
+<div class="fixed inset-0 bg-grid pointer-events-none z-0 opacity-60"></div>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav class="nav-blur sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+    <a href="#" class="flex items-center gap-3 flex-shrink-0">
+      <img src="https://github.com/neurotechsoluciones-design/neurotech-assets/blob/main/logo_neurotech.gif?raw=true"
+           alt="NeuroTech" class="h-9 w-auto" onerror="this.onerror=null;this.src='';this.parentElement.querySelector('.fallback-brand').style.display='flex'">
+      <span class="fallback-brand hidden items-center gap-2 font-orbitron font-black text-white text-sm">
+        <span class="w-8 h-8 rounded-xl bg-gradient-to-br from-neuro-blue to-neuro-green flex-shrink-0"></span>
+        NeuroTech
+      </span>
+    </a>
+    <div class="hidden md:flex gap-5 text-xs font-semibold text-gray-400">
+      <a href="#guru" class="hover:text-neuro-green transition-colors">Guru</a>
+      <a href="#propuesta" class="hover:text-neuro-green transition-colors">Propuesta</a>
+      <a href="#referencias" class="hover:text-neuro-green transition-colors">Referencias</a>
+      <a href="#inversion" class="hover:text-neuro-green transition-colors">Inversión</a>
+      <a href="#contacto" class="hover:text-neuro-green transition-colors">Contacto</a>
+    </div>
+    <span class="flex-shrink-0 px-3 py-1.5 rounded-full bg-neuro-green/10 border border-neuro-green/25 text-neuro-green text-[11px] font-bold font-orbitron tracking-wide">JM Descartables</span>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="sec-dark relative z-10 pt-16 pb-20 px-4 sm:px-6 overflow-hidden">
+  <!-- Orb glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] max-w-[500px] max-h-[500px] bg-gradient-radial pointer-events-none" style="background:radial-gradient(circle,rgba(154,255,95,.1) 0%,rgba(33,0,229,.06) 45%,transparent 70%);filter:blur(50px)"></div>
+
+  <div class="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neuro-green/30 bg-neuro-green/5 text-neuro-green text-[10px] sm:text-xs font-orbitron tracking-widest uppercase">
+      <span class="w-2 h-2 rounded-full bg-neuro-green animate-pulse-glow"></span>
+      Propuesta Comercial · JM Todo en Descartables
+    </div>
+
+    <h1 class="hero-title font-orbitron font-black leading-[1.05] tracking-tight text-transparent bg-clip-text" style="background-image:linear-gradient(135deg,#ffffff 0%,#c8d8ff 40%,#9AFF5F 100%);-webkit-background-clip:text;font-size:clamp(34px,7vw,72px)">
+      Tu tienda online.<br>Sin comisiones.<br><span style="color:#9AFF5F">Sin depender de nadie.</span>
+    </h1>
+
+    <p class="text-gray-400 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+      Una web propia en WordPress con WooCommerce, carrito de compras y pedido directo por WhatsApp. Vos controlás tu catálogo, tus precios y tu negocio.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+      <a href="#inversion" class="btn-border w-full sm:w-auto shadow-[0_0_30px_rgba(154,255,95,.15)] hover:scale-[1.02] transition-all">
+        <div class="btn-inner flex items-center justify-center gap-2 py-4 px-8 font-orbitron font-bold text-sm text-neuro-green uppercase tracking-wide">
+          <i class="ph-duotone ph-currency-circle-dollar text-xl"></i>Ver inversión
         </div>
-        <div class="device-wrap" aria-hidden="true">
-          <div class="float-card fc1">50 productos iniciales</div>
-          <div class="float-card fc2">Pedido directo por WhatsApp</div>
-          <div class="float-card fc3">Preparado para crecer</div>
-          <div class="device">
-            <div class="device-top"><span class="dotmini"></span><span class="dotmini"></span><span class="dotmini"></span></div>
-            <div class="mock-hero">
-              <div class="mock-banner"><strong>Catálogo JM<br>Descartables</strong></div>
-              <div class="mock-products">
-                <div class="mock-product"><span></span><small>Vasos</small></div>
-                <div class="mock-product"><span></span><small>Bandejas</small></div>
-                <div class="mock-product"><span></span><small>Bolsas</small></div>
-              </div>
-              <div class="mock-cart"><span>Carrito</span><span>Enviar por WhatsApp</span></div>
+      </a>
+      <a href="#referencias" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-4 px-8 rounded-full border border-white/10 text-white/70 font-semibold text-sm hover:border-white/30 hover:text-white transition-all">
+        <i class="ph-duotone ph-palette text-lg"></i>Elegir estilo visual
+      </a>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 pt-2 text-xs text-gray-500">
+      <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/07">Emitido: <strong class="text-gray-300" id="fechaHoy"></strong></span>
+      <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/07">Válida hasta: <strong class="text-gray-300" id="fechaVig"></strong></span>
+      <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/07">WhatsApp: <strong class="text-gray-300">+54 9 2604 08-7086</strong></span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════ GURU PREVIEW ═══════════════════════ -->
+<section id="guru" class="sec-mid relative z-10 py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-5xl mx-auto space-y-8">
+    <div class="text-center space-y-3">
+      <span class="badge-muted">Opción 0 · Ya está lista</span>
+      <h2 class="section-title font-orbitron font-bold text-white" style="font-size:clamp(26px,5vw,48px)">Tu página en Guru — ya actualizada</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        Actualizamos tu página actual en Guru. Está lista para publicar <strong class="text-white">sin costo adicional</strong>. Si te gusta tal como quedó, la publicamos y listo. Esta opción no te cobramos — solo la mostramos para que decidas con toda la información.
+      </p>
+    </div>
+
+    <div class="guru-preview-card p-6 sm:p-8">
+      <div class="flex flex-col lg:flex-row gap-8 items-start">
+        <!-- Preview embed -->
+        <div class="w-full lg:w-3/5 space-y-4">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-300"></span>
+            <span class="w-3 h-3 rounded-full bg-neuro-green"></span>
+            <span class="text-xs text-gray-500 ml-2 font-mono truncate">argentina.publicar.guru/preview/2c21b9e3</span>
+          </div>
+          <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5" style="padding-top:62.5%">
+            <iframe
+              src="https://argentina.publicar.guru/preview/2c21b9e3?t=1780441080254&device=all"
+              class="absolute inset-0 w-full h-full border-0 rounded-2xl"
+              title="Vista previa página Guru de JM"
+              loading="lazy">
+            </iframe>
+            <!-- Fallback if blocked -->
+            <div class="iframe-fallback absolute inset-0 hidden flex-col items-center justify-center gap-4 text-center p-6 bg-[#0a0a0a]">
+              <i class="ph-duotone ph-browser text-5xl text-gray-600"></i>
+              <p class="text-gray-500 text-sm">Esta vista previa no se puede mostrar embebida.<br>Abrila directamente para verla completa.</p>
             </div>
           </div>
+          <a href="https://argentina.publicar.guru/preview/2c21b9e3?t=1780441080254&device=all" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm font-semibold hover:bg-neuro-green hover:text-black hover:border-neuro-green transition-all">
+            <i class="ph-duotone ph-arrow-square-out"></i> Abrir página completa en nueva pestaña
+          </a>
         </div>
-      </div>
-    </section>
-  </header>
 
-  <main class="main">
-    <section class="section reveal" id="objetivo">
-      <div class="intro-card glass">
-        <div>
-          <h2>Objetivo</h2>
-          <p>Implementar una página web comercial para que JM Todo en Descartables pueda mostrar productos, precios y descripciones, permitir que el cliente arme un carrito con varios artículos y enviar el pedido por WhatsApp. El pago se coordina por transferencia en esta primera etapa, previa confirmación de disponibilidad.</p>
-        </div>
-        <div class="note">
-          <strong>Aclaración importante</strong>
-          <p>La actualización de la página actual en Guru ya está implementada en el panel, pero todavía no está publicada. Si JM desea verla, puede revisarse antes de decidir. De todos modos, para vender con catálogo, carrito y escalabilidad, recomendamos avanzar con WordPress + WooCommerce + WhatsApp.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="section-title">
-        <h2>Diagnóstico comercial</h2>
-        <p>El problema no es solo tener una página. JM necesita ordenar productos, facilitar pedidos, evitar consultas repetidas y preparar una base digital que pueda crecer.</p>
-      </div>
-      <div class="comparison glass">
-        <table class="table" aria-label="Diagnóstico comercial">
-          <thead><tr><th>Situación</th><th>Riesgo si no se resuelve</th><th>Solución propuesta</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Muchos productos</strong></td><td>El cliente no encuentra rápido lo que necesita.</td><td>Categorías claras y carga inicial de 50 productos.</td></tr>
-            <tr><td><strong>Stock no ordenado</strong></td><td>Puede venderse algo sin disponibilidad real.</td><td>Estado simple: disponible, consultar o pausado.</td></tr>
-            <tr><td><strong>Ventas por conversación</strong></td><td>Se pierden consultas si WhatsApp/Instagram no están ordenados.</td><td>Carrito + mensaje automático a WhatsApp.</td></tr>
-            <tr><td><strong>Necesidad de escalar</strong></td><td>Una solución básica queda corta rápido.</td><td>WooCommerce preparado para planilla, Mercado Pago y automatización.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section reveal" id="propuesta">
-      <div class="section-title">
-        <h2>Solución recomendada</h2>
-        <p>Desarrollar una web propia en WordPress con WooCommerce, configurada como catálogo con carrito y cierre por WhatsApp.</p>
-      </div>
-      <div class="proposal-grid">
-        <article class="card glass">
-          <span class="badge">Incluye</span>
-          <h3>Web propia + catálogo + carrito</h3>
-          <p>Una página pensada para que el cliente vea productos, agregue varios artículos y envíe el pedido listo por WhatsApp.</p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Diseño y desarrollo en WordPress.</span></li>
-            <li><span class="check">✓</span><span>Instalación y configuración de WooCommerce.</span></li>
-            <li><span class="check">✓</span><span>Catálogo organizado por categorías.</span></li>
-            <li><span class="check">✓</span><span>Carrito con varios productos.</span></li>
-            <li><span class="check">✓</span><span>Pedido enviado por WhatsApp.</span></li>
-            <li><span class="check">✓</span><span>Pago por transferencia fuera de la web.</span></li>
-          </ul>
-        </article>
-        <article class="card glass">
-          <span class="badge">Producto inicial</span>
-          <h3>50 productos cargados</h3>
-          <p>NeuroTech realiza la carga inicial para que JM no arranque desde cero y pueda ver el catálogo funcionando.</p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Carga de hasta 50 productos iniciales.</span></li>
-            <li><span class="check">✓</span><span>Mejora visual básica de fotos estilo catálogo premium.</span></li>
-            <li><span class="check">✓</span><span>Nombre, precio y descripción breve.</span></li>
-            <li><span class="check">✓</span><span>Categoría por producto.</span></li>
-            <li><span class="check">✓</span><span>Planilla base para futuras cargas.</span></li>
-            <li><span class="check">✓</span><span>Capacitación breve para que JM continúe cargando.</span></li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="section-title">
-        <h2>Por qué no Tiendanube como opción principal</h2>
-        <p>Tiendanube puede servir para empezar rápido, pero no es la opción que recomendamos si JM quiere una solución más propia y conveniente a largo plazo.</p>
-      </div>
-      <div class="comparison glass">
-        <table class="table" aria-label="Comparación de opciones">
-          <thead><tr><th>Opción</th><th>Ventaja</th><th>Limitación</th><th>Recomendación</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Guru actual</strong></td><td>Ya existe y puede mejorarse visualmente.</td><td>Puede quedar limitada para catálogo amplio, carrito, carga futura y automatizaciones.</td><td>Útil como mejora inicial, no como solución principal.</td></tr>
-            <tr class="row-warn"><td><strong>Tiendanube</strong></td><td>Rápida y simple de administrar.</td><td>Depende de plataforma externa, abonos, reglas y posibles comisiones por operación/pago.</td><td>No recomendada como solución final a largo plazo.</td></tr>
-            <tr class="row-good"><td><strong>WordPress + WooCommerce</strong></td><td>Mayor control, flexibilidad, propiedad del catálogo y escalabilidad.</td><td>Requiere hosting y mantenimiento básico.</td><td>Opción recomendada.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section reveal" id="referencias">
-      <div class="section-title">
-        <h2>Referencias visuales para elegir estilo</h2>
-        <p>Estas referencias no se copian. Sirven para decidir qué dirección visual le gusta más a JM antes de avanzar con el diseño del hero y la estética general.</p>
-      </div>
-      <div class="refs">
-        <div class="ref-stage glass">
-          <div class="style-tabs" role="tablist" aria-label="Estilos de hero">
-            <button class="tab active" data-style="butlers">Butlers</button>
-            <button class="tab" data-style="cibo">Cibowares</button>
-            <button class="tab" data-style="restaurant">Restaurantware</button>
-            <button class="tab" data-style="supply">My Supply Club</button>
-            <button class="tab" data-style="pack">PacknWood</button>
-            <button class="tab" data-style="arbora">Arbora</button>
+        <!-- Pros/Cons -->
+        <div class="w-full lg:w-2/5 space-y-4">
+          <div class="glass-dark rounded-2xl p-5">
+            <h3 class="font-orbitron font-bold text-neuro-green text-sm mb-3">✓ Lo que tiene</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex gap-2"><i class="ph-duotone ph-check-circle text-neuro-green mt-0.5 flex-shrink-0"></i>Página visual actualizada y lista</li>
+              <li class="flex gap-2"><i class="ph-duotone ph-check-circle text-neuro-green mt-0.5 flex-shrink-0"></i>Sin costo de desarrollo — ya está hecha</li>
+              <li class="flex gap-2"><i class="ph-duotone ph-check-circle text-neuro-green mt-0.5 flex-shrink-0"></i>Puede publicarse hoy mismo</li>
+            </ul>
           </div>
-          <div id="heroPreview" class="hero-preview style-butlers">
-            <div class="preview-content">
-              <div class="preview-copy">
-                <h3 id="previewTitle">Estilo cálido, hogar y bazar premium</h3>
-                <p id="previewText">Ideal si JM quiere verse cercano, claro y comercial, con una estética luminosa para mostrar variedad sin parecer mayorista desordenado.</p>
-                <a id="previewLink" href="https://www.butlers.com/" target="_blank" rel="noopener">Ver referencia original</a>
-              </div>
-              <div class="preview-art">
-                <div class="product-stack">
-                  <div class="prod-tile" style="--y:18px"><div class="prod-img"></div><div class="prod-line"></div><div class="prod-line" style="width:70%"></div></div>
-                  <div class="prod-tile" style="--y:-6px"><div class="prod-img"></div><div class="prod-line"></div><div class="prod-line" style="width:55%"></div></div>
-                  <div class="prod-tile" style="--y:28px"><div class="prod-img"></div><div class="prod-line"></div><div class="prod-line" style="width:65%"></div></div>
+          <div class="glass-dark rounded-2xl p-5">
+            <h3 class="font-orbitron font-bold text-yellow-400 text-sm mb-3">⚠ Sus limitaciones</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex gap-2"><i class="ph-duotone ph-warning text-yellow-400 mt-0.5 flex-shrink-0"></i>Sin carrito de compras propio</li>
+              <li class="flex gap-2"><i class="ph-duotone ph-warning text-yellow-400 mt-0.5 flex-shrink-0"></i>Limitada para cientos o miles de productos</li>
+              <li class="flex gap-2"><i class="ph-duotone ph-warning text-yellow-400 mt-0.5 flex-shrink-0"></i>No escala a ecommerce real</li>
+              <li class="flex gap-2"><i class="ph-duotone ph-warning text-yellow-400 mt-0.5 flex-shrink-0"></i>Dependés de la plataforma Guru</li>
+            </ul>
+          </div>
+
+          <!-- Add-on Instagram -->
+          <div class="rounded-2xl p-5 border border-neuro-blue/30 bg-neuro-blue/05">
+            <span class="badge-blue mb-3">Add-on disponible</span>
+            <h3 class="font-orbitron font-bold text-white text-sm mt-2 mb-2">Automatización de Instagram</h3>
+            <p class="text-gray-400 text-xs leading-relaxed mb-3">Respuestas automáticas a mensajes directos y comentarios de Instagram para que nunca pierdas una consulta.</p>
+            <div class="flex items-baseline gap-1">
+              <span class="text-2xl font-orbitron font-black text-neuro-blue-light">$20.000</span>
+              <span class="text-gray-500 text-xs">/mes opcional</span>
+            </div>
+            <p class="text-gray-500 text-xs mt-1">Se puede combinar con cualquier opción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════ POR QUÉ WORDPRESS ═══════════════════════ -->
+<section id="propuesta" class="sec-light relative z-10 py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-5xl mx-auto space-y-10">
+    <div class="text-center space-y-3">
+      <span class="lbadge-blue">Opción recomendada</span>
+      <h2 class="font-orbitron font-bold text-gray-900" style="font-size:clamp(26px,5vw,48px)">WordPress + WooCommerce:<br>tu tienda, tus reglas</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        La única opción que no te cobra comisión por cada venta, no te ata a una plataforma y crece con vos de forma ilimitada.
+      </p>
+    </div>
+
+    <!-- Comparison cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="glass-light-card rounded-2xl p-6 text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center">
+          <i class="ph-duotone ph-x-circle text-2xl text-red-400"></i>
+        </div>
+        <h3 class="font-orbitron font-bold text-gray-800 text-sm">Tiendanube</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">$24.999/mes de abono + comisiones por venta. Dependés de ellos para todo.</p>
+      </div>
+      <div class="glass-light-card rounded-2xl p-6 text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-yellow-50 border border-yellow-100 flex items-center justify-center">
+          <i class="ph-duotone ph-question text-2xl text-yellow-500"></i>
+        </div>
+        <h3 class="font-orbitron font-bold text-gray-800 text-sm">Guru tienda</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Sin precio publicado. Sin límites claros. Sin escalabilidad para miles de productos.</p>
+      </div>
+      <div class="rounded-2xl p-6 text-center space-y-3 border-2 border-neuro-blue/30" style="background:linear-gradient(135deg,rgba(33,0,229,.05),rgba(154,255,95,.04))">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-neuro-blue/10 border border-neuro-blue/20 flex items-center justify-center">
+          <i class="ph-duotone ph-check-circle text-2xl text-neuro-blue"></i>
+        </div>
+        <h3 class="font-orbitron font-bold text-gray-900 text-sm">WordPress + WooCommerce</h3>
+        <p class="text-gray-600 text-xs leading-relaxed"><strong>Sin comisión por venta.</strong> Sin abono de plataforma. Productos ilimitados. Siempre tuyo.</p>
+      </div>
+    </div>
+
+    <!-- Included features -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="glass-light-card rounded-2xl p-6">
+        <span class="lbadge-green mb-4 block w-fit">Incluido en el desarrollo</span>
+        <ul class="space-y-3 text-sm text-gray-700">
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>Diseño y desarrollo completo en WordPress</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>WooCommerce configurado: categorías, carrito, checkout</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>Carga inicial de 50 productos con fotos y descripción</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>Pedido directo por WhatsApp desde el carrito</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>Botón de pago por transferencia</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>2 clases de capacitación: cómo cargar productos y cómo funciona la tienda</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-check-circle text-green-600 text-lg flex-shrink-0 mt-0.5"></i>Planilla base para carga masiva futura</li>
+        </ul>
+      </div>
+      <div class="glass-light-card rounded-2xl p-6">
+        <span class="lbadge-blue mb-4 block w-fit">No incluido en esta etapa</span>
+        <ul class="space-y-3 text-sm text-gray-600">
+          <li class="flex gap-3"><i class="ph-duotone ph-x-circle text-red-400 text-lg flex-shrink-0 mt-0.5"></i>Hosting y dominio (los contratás vos, te ayudamos a elegir)</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-x-circle text-red-400 text-lg flex-shrink-0 mt-0.5"></i>Stock automático completo</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-x-circle text-red-400 text-lg flex-shrink-0 mt-0.5"></i>Carga ilimitada de productos</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-x-circle text-red-400 text-lg flex-shrink-0 mt-0.5"></i>Campañas de publicidad</li>
+          <li class="flex gap-3"><i class="ph-duotone ph-x-circle text-red-400 text-lg flex-shrink-0 mt-0.5"></i>Atención diaria de redes</li>
+        </ul>
+        <div class="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-100">
+          <p class="text-xs text-blue-700 font-semibold">💡 Hosting recomendado</p>
+          <p class="text-xs text-blue-600 mt-1 leading-relaxed">Webempresa (~$6.000 ARS/mes) o DonWeb (~$2.800 ARS/mes). Lo pagás vos directamente — queda a tu nombre.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════ REFERENCIAS VISUALES ═══════════════════════ -->
+<section id="referencias" class="sec-navy relative z-10 py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-5xl mx-auto space-y-8">
+    <div class="text-center space-y-3">
+      <span class="badge-green">Paso importante</span>
+      <h2 class="font-orbitron font-bold text-white" style="font-size:clamp(26px,5vw,48px)">Elegí el estilo visual</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        No copiamos estas páginas — las usamos como referencia de estética. Todas son tiendas con miles de productos, similar a lo que JM necesita. Elegí la dirección que más te representa.
+      </p>
+    </div>
+
+    <!-- Interactive preview -->
+    <div class="glass-dark rounded-3xl p-5 sm:p-7">
+      <!-- Tabs -->
+      <div class="flex gap-2 flex-wrap mb-6" id="refTabs" role="tablist">
+        <button class="ref-tab active" data-style="butlers">Butlers</button>
+        <button class="ref-tab" data-style="cibo">Cibowares</button>
+        <button class="ref-tab" data-style="restaurantware">Restaurantware</button>
+        <button class="ref-tab" data-style="supply">My Supply Club</button>
+        <button class="ref-tab" data-style="packnwood">PacknWood</button>
+        <button class="ref-tab" data-style="arbora">Arbora</button>
+      </div>
+
+      <!-- Preview area -->
+      <div id="previewArea" class="preview-butlers rounded-2xl p-6 sm:p-10 min-h-[200px] transition-all duration-400">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 id="pvTitle" class="font-orbitron font-bold text-gray-900 text-xl sm:text-2xl mb-3 leading-tight">Estilo cálido, hogar y bazar premium</h3>
+            <p id="pvDesc" class="text-gray-600 text-sm leading-relaxed mb-4">Ideal si JM quiere verse cercano, claro y comercial, con una estética luminosa para mostrar variedad sin parecer mayorista desordenado.</p>
+            <a id="pvLink" href="https://www.butlers.com/" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">
+              <i class="ph-duotone ph-arrow-square-out"></i> Ver referencia original
+            </a>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="rounded-2xl bg-white/70 border border-black/05 p-3 h-24 flex flex-col justify-end"><div class="h-6 rounded-lg bg-gray-200/80 mb-2"></div><div class="text-[10px] font-bold text-gray-500">Cat. A</div></div>
+            <div class="rounded-2xl bg-white/70 border border-black/05 p-3 h-32 flex flex-col justify-end"><div class="h-6 rounded-lg bg-gray-200/80 mb-2"></div><div class="text-[10px] font-bold text-gray-500">Cat. B</div></div>
+            <div class="rounded-2xl bg-white/70 border border-black/05 p-3 h-28 flex flex-col justify-end"><div class="h-6 rounded-lg bg-gray-200/80 mb-2"></div><div class="text-[10px] font-bold text-gray-500">Cat. C</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meta row -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+        <a id="pvRefLink" href="https://www.butlers.com/" target="_blank" rel="noopener" class="p-4 rounded-xl bg-white/05 border border-white/08 hover:border-neuro-green/30 transition-all">
+          <strong class="block text-white text-xs font-orbitron mb-1">Referencia</strong>
+          <span id="pvRefName" class="text-gray-400 text-sm">Butlers</span>
+        </a>
+        <div class="p-4 rounded-xl bg-white/05 border border-white/08">
+          <strong class="block text-white text-xs font-orbitron mb-1">Idea para JM</strong>
+          <span id="pvIdea" class="text-gray-400 text-sm">Hero con sensación de tienda ordenada, clara y premium.</span>
+        </div>
+        <div class="p-4 rounded-xl bg-white/05 border border-white/08">
+          <strong class="block text-white text-xs font-orbitron mb-1">Conviene si buscan</strong>
+          <span id="pvBest" class="text-gray-400 text-sm">Cercanía, diseño limpio y producto protagonista.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site cards grid -->
+    <div>
+      <h3 class="font-orbitron font-bold text-white text-base mb-4">Vista previa de cada referencia</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="site-card">
+          <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://www.butlers.com/" alt="Butlers"></div>
+          <div class="p-4">
+            <h4 class="font-bold text-gray-900 text-sm mb-1">Butlers</h4>
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">Bazar premium cálido, claro y ordenado.</p>
+            <div class="flex gap-2">
+              <a href="https://www.butlers.com/" target="_blank" class="flex-1 text-center py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">Abrir sitio</a>
+            </div>
+          </div>
+        </article>
+        <article class="site-card">
+          <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://cibowares.com/" alt="Cibowares"></div>
+          <div class="p-4">
+            <h4 class="font-bold text-gray-900 text-sm mb-1">Cibowares</h4>
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">Proveedor gastronómico funcional y directo.</p>
+            <div class="flex gap-2">
+              <a href="https://cibowares.com/" target="_blank" class="flex-1 text-center py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">Abrir sitio</a>
+            </div>
+          </div>
+        </article>
+        <article class="site-card">
+          <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://www.restaurantware.com/" alt="Restaurantware"></div>
+          <div class="p-4">
+            <h4 class="font-bold text-gray-900 text-sm mb-1">Restaurantware</h4>
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">Ecommerce fuerte para restaurantes y negocios B2B.</p>
+            <div class="flex gap-2">
+              <a href="https://www.restaurantware.com/" target="_blank" class="flex-1 text-center py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">Abrir sitio</a>
+            </div>
+          </div>
+        </article>
+        <article class="site-card">
+          <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://mysupplyclub.com/" alt="My Supply Club"></div>
+          <div class="p-4">
+            <h4 class="font-bold text-gray-900 text-sm mb-1">My Supply Club</h4>
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">Club de compra moderno, simple y mobile-first.</p>
+            <div class="flex gap-2">
+              <a href="https://mysupplyclub.com/" target="_blank" class="flex-1 text-center py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">Abrir sitio</a>
+            </div>
+          </div>
+        </article>
+        <article class="site-card">
+          <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://www.packnwood.com/" alt="PacknWood"></div>
+          <div class="p-4">
+            <h4 class="font-bold text-gray-900 text-sm mb-1">PacknWood</h4>
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">Packaging natural y premium, imagen aspiracional.</p>
+            <div class="flex gap-2">
+              <a href="https://www.packnwood.com/" target="_blank" class="flex-1 text-center py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">Abrir sitio</a>
+            </div>
+          </div>
+        </article>
+        <article class="site-card">
+          <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://arboraproducts.com/product-category/disposable-restaurant-supplies/" alt="Arbora Products"></div>
+          <div class="p-4">
+            <h4 class="font-bold text-gray-900 text-sm mb-1">Arbora Products</h4>
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">Descartables, estética limpia y tono ecológico ordenado.</p>
+            <div class="flex gap-2">
+              <a href="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" target="_blank" class="flex-1 text-center py-2 rounded-full bg-gray-900 text-white text-xs font-bold hover:bg-neuro-blue transition-colors">Abrir sitio</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════ INVERSIÓN ═══════════════════════ -->
+<section id="inversion" class="sec-dark relative z-10 py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-5xl mx-auto space-y-8">
+    <div class="text-center space-y-3">
+      <span class="badge-green">Propuesta económica</span>
+      <h2 class="font-orbitron font-bold text-white" style="font-size:clamp(26px,5vw,48px)">Inversión clara, sin sorpresas</h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+        Todo lo que vas a pagar, cuándo lo pagás y qué obtenés. Sin letra chica.
+      </p>
+    </div>
+
+    <!-- Main price card -->
+    <div class="relative rounded-3xl p-[1px] overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-neuro-blue via-neuro-green to-neuro-blue opacity-40 rounded-3xl"></div>
+      <div class="bg-[#050510] rounded-[23px] p-7 sm:p-10 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center">
+          <div class="flex-1 space-y-4">
+            <span class="badge-green">Desarrollo web completo</span>
+            <h3 class="font-orbitron font-black text-white text-xl sm:text-2xl leading-tight">WordPress + WooCommerce + WhatsApp</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex gap-2 items-start"><i class="ph-duotone ph-check-circle text-neuro-green text-base flex-shrink-0 mt-0.5"></i>Diseño, desarrollo y configuración completa</li>
+              <li class="flex gap-2 items-start"><i class="ph-duotone ph-check-circle text-neuro-green text-base flex-shrink-0 mt-0.5"></i>50 productos cargados con fotos y descripción</li>
+              <li class="flex gap-2 items-start"><i class="ph-duotone ph-check-circle text-neuro-green text-base flex-shrink-0 mt-0.5"></i>Carrito + pedido directo a WhatsApp</li>
+              <li class="flex gap-2 items-start"><i class="ph-duotone ph-check-circle text-neuro-green text-base flex-shrink-0 mt-0.5"></i>2 clases de capacitación incluidas</li>
+              <li class="flex gap-2 items-start"><i class="ph-duotone ph-check-circle text-neuro-green text-base flex-shrink-0 mt-0.5"></i>Planilla para carga masiva futura</li>
+            </ul>
+            <div class="p-4 rounded-2xl bg-white/04 border border-white/08 text-xs text-gray-400 leading-relaxed">
+              <strong class="text-yellow-300 block mb-1">⚡ Hosting y dominio</strong>
+              Lo pagás vos directamente al proveedor, queda a tu nombre. Estimado: ~$2.800–6.000 ARS/mes. Te ayudamos a contratarlo.
+            </div>
+          </div>
+          <div class="text-center lg:text-right flex-shrink-0">
+            <div class="inline-flex flex-col items-center bg-gradient-to-b from-neuro-black to-[#0a0a0a] border border-white/10 px-8 py-6 rounded-3xl shadow-[0_20px_50px_rgba(154,255,95,.12)]">
+              <span class="text-4xl sm:text-5xl font-orbitron font-black text-transparent bg-clip-text" style="background-image:linear-gradient(to bottom,#ffffff,#9AFF5F)">$670.000</span>
+              <span class="text-gray-500 text-xs uppercase tracking-widest mt-2 font-orbitron">ARS · Total</span>
+            </div>
+            <div class="mt-4 space-y-2">
+              <p class="text-gray-400 text-xs font-semibold text-neuro-green">Pagás en 3 cuotas:</p>
+              <div class="grid grid-cols-3 gap-2 text-xs">
+                <div class="rounded-xl bg-white/05 border border-white/08 p-3 text-center">
+                  <strong class="block text-white text-sm font-orbitron">$223.333</strong>
+                  <span class="text-gray-500">Al iniciar</span>
+                </div>
+                <div class="rounded-xl bg-white/05 border border-white/08 p-3 text-center">
+                  <strong class="block text-white text-sm font-orbitron">$223.333</strong>
+                  <span class="text-gray-500">A mitad</span>
+                </div>
+                <div class="rounded-xl bg-white/05 border border-white/08 p-3 text-center">
+                  <strong class="block text-white text-sm font-orbitron">$223.334</strong>
+                  <span class="text-gray-500">Al entrar</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="ref-meta">
-            <a id="refOne" href="https://www.butlers.com/" target="_blank" rel="noopener"><strong>Referencia</strong><span>Butlers</span></a>
-            <div><strong>Idea para JM</strong><span id="refIdea">Hero con sensación de tienda ordenada, clara y premium.</span></div>
-            <div><strong>Conviene si buscan</strong><span id="refBest">Cercanía, diseño limpio y producto protagonista.</span></div>
-          </div>
-        </div>
-
-        <div class="live-reference-wrap">
-          <div class="embed-warning">
-            <span>⚠️</span>
-            <div><strong>Por qué ahora sí se ven las referencias</strong> Muchos sitios bloquean la vista embebida por seguridad. Por eso esta versión muestra una previsualización visual con captura externa y deja un botón directo para abrir cada web. También incluye “probar vista embebida”, pero si el sitio la bloquea, se abre el enlace original.</div>
-          </div>
-          <div class="site-grid" aria-label="Páginas web de referencia visibles">
-            <article class="site-card">
-              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://www.butlers.com/" alt="Vista previa de Butlers"></div>
-              <div class="site-body"><h3>Butlers</h3><p>Referencia cálida y premium para ordenar productos de bazar, hogar o insumos con una estética clara.</p><div class="site-actions"><a class="open-site" href="https://www.butlers.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://www.butlers.com/" data-name="Butlers">Probar embebida</button></div></div>
-            </article>
-            <article class="site-card">
-              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://cibowares.com/" alt="Vista previa de Cibowares"></div>
-              <div class="site-body"><h3>Cibowares</h3><p>Referencia funcional para proveedores gastronómicos, con categorías visibles y experiencia de compra directa.</p><div class="site-actions"><a class="open-site" href="https://cibowares.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://cibowares.com/" data-name="Cibowares">Probar embebida</button></div></div>
-            </article>
-            <article class="site-card">
-              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://www.restaurantware.com/" alt="Vista previa de Restaurantware"></div>
-              <div class="site-body"><h3>Restaurantware</h3><p>Referencia comercial fuerte para restaurantes, descartables, packaging y compras por volumen.</p><div class="site-actions"><a class="open-site" href="https://www.restaurantware.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://www.restaurantware.com/" data-name="Restaurantware">Probar embebida</button></div></div>
-            </article>
-            <article class="site-card">
-              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://mysupplyclub.com/" alt="Vista previa de My Supply Club"></div>
-              <div class="site-body"><h3>My Supply Club</h3><p>Referencia moderna y simple para vender insumos de manera rápida desde celular.</p><div class="site-actions"><a class="open-site" href="https://mysupplyclub.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://mysupplyclub.com/" data-name="My Supply Club">Probar embebida</button></div></div>
-            </article>
-            <article class="site-card">
-              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://www.packnwood.com/" alt="Vista previa de PacknWood"></div>
-              <div class="site-body"><h3>PacknWood</h3><p>Referencia premium para packaging, descartables y productos con presentación más cuidada.</p><div class="site-actions"><a class="open-site" href="https://www.packnwood.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://www.packnwood.com/" data-name="PacknWood">Probar embebida</button></div></div>
-            </article>
-            <article class="site-card">
-              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://arboraproducts.com/product-category/disposable-restaurant-supplies/" alt="Vista previa de Arbora Products"></div>
-              <div class="site-body"><h3>Arbora Products</h3><p>Referencia limpia y orientada a descartables, con estética natural y categorías ordenadas.</p><div class="site-actions"><a class="open-site" href="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" data-name="Arbora Products">Probar embebida</button></div></div>
-            </article>
-          </div>
         </div>
       </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="section-title">
-        <h2>Hosting recomendado</h2>
-        <p>El hosting y dominio no están incluidos en la implementación. Se contratan a nombre de JM para que el negocio conserve el control.</p>
-      </div>
-      <div class="scope-grid">
-        <div class="glass">
-          <h3>Webempresa</h3>
-          <p style="color:var(--muted);line-height:1.65;margin:0 0 16px">Proveedor especializado en WordPress y WooCommerce, con soporte en español y buen enfoque en rendimiento, seguridad y copias de respaldo.</p>
-          <ul class="list">
-            <li><span class="dot"></span><span>Recomendado si se prioriza estabilidad.</span></li>
-            <li><span class="dot"></span><span>Mejor opción si la tienda va a crecer con muchas imágenes y productos.</span></li>
-            <li><span class="dot"></span><span>Costo en moneda extranjera según plan y promoción vigente.</span></li>
-          </ul>
-        </div>
-        <div class="glass">
-          <h3>DonWeb Argentina</h3>
-          <p style="color:var(--muted);line-height:1.65;margin:0 0 16px">Proveedor local compatible con WordPress/WooCommerce. Puede ser conveniente si JM prefiere contratación nacional, pago local y facturación en Argentina.</p>
-          <ul class="list">
-            <li><span class="dot"></span><span>Recomendado si se prioriza proveedor argentino.</span></li>
-            <li><span class="dot"></span><span>Puede ser más simple de contratar localmente.</span></li>
-            <li><span class="dot"></span><span>Se debe elegir un plan adecuado para WooCommerce, no el más básico.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="inversion">
-      <div class="section-title">
-        <h2>Inversión</h2>
-        <p>Valores para completar antes de enviar. Recomiendo mantener el presupuesto simple: implementación inicial, hosting externo y mantenimiento opcional.</p>
-      </div>
-      <div class="proposal-grid">
-        <article class="card glass">
-          <span class="badge">Implementación inicial</span>
-          <h3>Web WooCommerce + WhatsApp</h3>
-          <p>Incluye desarrollo, configuración, carrito, pedido por WhatsApp, carga inicial de 50 productos, fotos mejoradas, categorías, textos principales y capacitación breve.</p>
-          <div class="price-box"><div class="big">$__________</div><small>Pago sugerido: 50% al iniciar y 50% contra entrega funcional.</small></div>
-        </article>
-        <article class="card glass">
-          <span class="badge">Opcional mensual</span>
-          <h3>Mantenimiento básico</h3>
-          <p>Actualizaciones de WordPress, plugins, seguridad, copias de respaldo, control de carrito/WhatsApp y asistencia menor.</p>
-          <div class="price-box"><div class="big">$__________ <small>/ mes</small></div><small>No incluye carga ilimitada de productos, campañas, rediseños ni atención diaria de WhatsApp.</small></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="section-title">
-        <h2>Etapas de crecimiento</h2>
-        <p>La primera entrega resuelve la venta digital inicial. Luego se puede avanzar sin rehacer todo.</p>
-      </div>
-      <div class="timeline">
-        <article class="step glass"><strong>Etapa 1</strong><h3>Catálogo + WhatsApp</h3><p>Web, carrito, 50 productos y pedido por WhatsApp.</p></article>
-        <article class="step glass"><strong>Etapa 2</strong><h3>Carga masiva</h3><p>Planilla, actualización de precios y productos nuevos.</p></article>
-        <article class="step glass"><strong>Etapa 3</strong><h3>Automatización</h3><p>Bot, respuestas frecuentes, Instagram y seguimiento.</p></article>
-        <article class="step glass"><strong>Etapa 4</strong><h3>Ecommerce completo</h3><p>Mercado Pago, stock, reportes y pedidos online.</p></article>
-      </div>
-    </section>
-
-    <section class="section final reveal" id="cierre">
-      <div class="final-card">
-        <span class="badge" style="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.18);color:#fff">Recomendación final</span>
-        <h2>Avanzar con WordPress + WooCommerce + WhatsApp.</h2>
-        <p>Es la opción que mejor equilibra control, escalabilidad y costo a largo plazo. Primero se ordena la venta por catálogo y WhatsApp. Después se integran pagos, stock y automatización.</p>
-        <a class="btn btn-light" href="https://wa.me/5492604087086?text=Hola%20NeuroTech,%20queremos%20avanzar%20con%20la%20propuesta%20de%20JM%20Todo%20en%20Descartables." target="_blank" rel="noopener">Confirmar avance por WhatsApp</a>
-      </div>
-      <div class="quote glass">
-        <blockquote>No proponemos una tienda compleja desde el inicio. Proponemos una solución propia, clara y escalable para vender por WhatsApp hoy y crecer hacia ecommerce completo mañana.</blockquote>
-        <p>Próximos pasos: confirmar inversión, elegir hosting, entregar productos iniciales, definir estilo visual del hero, cargar catálogo, probar carrito y publicar.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div><strong>NeuroTech Soluciones</strong> · Estrategia, IA y transformación digital aplicada a negocios.</div>
-      <div>San Rafael, Mendoza · @neurotech.soluciones</div>
     </div>
-  </footer>
 
-
-  <div class="frame-modal" id="frameModal" aria-hidden="true">
-    <div class="frame-box" role="dialog" aria-modal="true" aria-label="Vista embebida de referencia">
-      <div class="frame-head">
-        <strong id="frameTitle">Vista embebida</strong>
-        <div style="display:flex;align-items:center;gap:10px">
-          <a id="frameDirect" href="#" target="_blank" rel="noopener">Abrir sitio original</a>
-          <button class="close-frame" type="button" id="closeFrame">Cerrar</button>
+    <!-- Mantenimiento + Instagram -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="glass-dark rounded-2xl p-6 space-y-3">
+        <span class="badge-muted">Opcional mensual</span>
+        <h3 class="font-orbitron font-bold text-white text-lg">Mantenimiento web</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Copias de seguridad periódicas, actualizaciones de WordPress y plugins, modificaciones menores en la página y monitoreo básico de seguridad.</p>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-orbitron font-black text-neuro-green">A cotizar</span>
+          <span class="text-gray-500 text-xs">/mes · según necesidad</span>
         </div>
+        <ul class="space-y-1.5 text-xs text-gray-400">
+          <li class="flex gap-2"><i class="ph-duotone ph-check text-neuro-green"></i>Copias de seguridad automáticas</li>
+          <li class="flex gap-2"><i class="ph-duotone ph-check text-neuro-green"></i>Actualizaciones de WordPress y plugins</li>
+          <li class="flex gap-2"><i class="ph-duotone ph-check text-neuro-green"></i>Cambios menores en la página</li>
+          <li class="flex gap-2"><i class="ph-duotone ph-x text-red-400"></i>No incluye carga masiva de productos ni campañas</li>
+        </ul>
       </div>
-      <iframe id="siteFrame" title="Vista embebida de referencia" loading="lazy"></iframe>
-      <div class="frame-note">Si la página queda en blanco, no es error del código: ese sitio bloquea iframes. Usá “Abrir sitio original”.</div>
+      <div class="glass-dark rounded-2xl p-6 space-y-3 border border-neuro-blue/20">
+        <span class="badge-blue">Add-on disponible</span>
+        <h3 class="font-orbitron font-bold text-white text-lg">Automatización Instagram</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Respuestas automáticas a mensajes directos y comentarios de Instagram. Atendés consultas las 24 horas sin esfuerzo manual.</p>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-orbitron font-black text-neuro-blue-light">$20.000</span>
+          <span class="text-gray-500 text-xs">/mes opcional</span>
+        </div>
+        <ul class="space-y-1.5 text-xs text-gray-400">
+          <li class="flex gap-2"><i class="ph-duotone ph-check text-neuro-blue-light"></i>Respuestas automáticas a DMs</li>
+          <li class="flex gap-2"><i class="ph-duotone ph-check text-neuro-blue-light"></i>Respuestas a comentarios</li>
+          <li class="flex gap-2"><i class="ph-duotone ph-check text-neuro-blue-light"></i>Compatible con cualquier opción elegida</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Full options table -->
+    <div class="glass-dark rounded-2xl overflow-hidden">
+      <div class="p-5 border-b border-white/06">
+        <h3 class="font-orbitron font-bold text-white text-sm">Comparativa de opciones</h3>
+      </div>
+      <div class="table-wrap">
+        <table class="prop-table">
+          <thead>
+            <tr>
+              <th>Opción</th>
+              <th>Desarrollo NeuroTech</th>
+              <th>Costo mensual externo</th>
+              <th>Comisión por venta</th>
+              <th>Mantenimiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-alt">
+              <td><strong class="text-white">Opción 0 · Guru actualizado</strong><br><span class="text-xs text-gray-500">Ya está lista — sin cargo</span></td>
+              <td><span class="text-neuro-green font-bold">$0</span><br><span class="text-xs text-gray-500">Ya incluido</span></td>
+              <td><span class="text-xs text-gray-400">Según plan Guru</span></td>
+              <td><span class="text-xs text-yellow-400">Sin información pública</span></td>
+              <td><span class="text-xs text-gray-400">No aplica</span></td>
+            </tr>
+            <tr>
+              <td><strong class="text-white">Opción 0+ · Guru + Instagram</strong><br><span class="text-xs text-gray-500">Guru publicado + automatización</span></td>
+              <td><span class="text-neuro-green font-bold">$0</span><br><span class="text-xs text-gray-500">Desarrollo ya hecho</span></td>
+              <td><span class="text-xs text-gray-300">Según plan Guru</span></td>
+              <td><span class="text-xs text-yellow-400">Sin información pública</span></td>
+              <td><span class="text-neuro-blue-light font-bold text-sm">$20.000/mes</span><br><span class="text-xs text-gray-500">Automatización Instagram</span></td>
+            </tr>
+            <tr class="row-rec">
+              <td>
+                <div class="flex items-center gap-2 flex-wrap"><strong class="text-white">Opción recomendada</strong><span class="badge-green text-[10px] py-0.5 px-2">★ Recomendada</span></div>
+                <span class="text-xs text-gray-400">WordPress + WooCommerce + WhatsApp</span>
+              </td>
+              <td>
+                <span class="text-neuro-green font-bold text-lg font-orbitron">$670.000</span><br>
+                <span class="text-xs text-gray-400">En 3 cuotas iguales</span>
+              </td>
+              <td><span class="text-xs text-gray-300">Hosting ~$2.800–6.000/mes<br>(a tu nombre)</span></td>
+              <td><span class="text-neuro-green font-bold text-sm">$0</span><br><span class="text-xs text-gray-500">WooCommerce no cobra comisión</span></td>
+              <td><span class="text-xs text-gray-300">Opcional · a cotizar<br>Incluye copias de seguridad,<br>actualizaciones y cambios</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+</section>
 
-  <script>
-    const hoy = new Date();
-    const vigencia = new Date();
-    vigencia.setDate(hoy.getDate() + 7);
-    const formato = { day:'2-digit', month:'2-digit', year:'numeric' };
-    document.getElementById('fechaHoy').textContent = hoy.toLocaleDateString('es-AR', formato);
-    document.getElementById('fechaVigencia').textContent = vigencia.toLocaleDateString('es-AR', formato);
+<div class="divider"></div>
 
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+<!-- ═══════════════════════ ETAPAS ═══════════════════════ -->
+<section class="sec-light relative z-10 py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-5xl mx-auto space-y-8">
+    <div class="text-center space-y-3">
+      <span class="lbadge-blue">Crecimiento progresivo</span>
+      <h2 class="font-orbitron font-bold text-gray-900" style="font-size:clamp(24px,4.5vw,44px)">La solución crece con vos</h2>
+      <p class="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">Empezamos ordenado. Después agregamos lo que tenga sentido, sin rehacer todo.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-light-card rounded-2xl p-5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-neuro-blue rounded-l-2xl"></div>
+        <span class="font-orbitron font-black text-neuro-blue text-xs uppercase tracking-wider block mb-3">Etapa 1 · Ahora</span>
+        <h3 class="font-bold text-gray-900 text-base mb-2">Catálogo + WhatsApp</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Web, carrito, 50 productos y pedido directo a WhatsApp.</p>
+      </div>
+      <div class="glass-light-card rounded-2xl p-5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-purple-400 rounded-l-2xl"></div>
+        <span class="font-orbitron font-black text-purple-500 text-xs uppercase tracking-wider block mb-3">Etapa 2 · Cuando quieras</span>
+        <h3 class="font-bold text-gray-900 text-base mb-2">Carga masiva</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Planilla de importación, actualización de precios y productos nuevos.</p>
+      </div>
+      <div class="glass-light-card rounded-2xl p-5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-green-500 rounded-l-2xl"></div>
+        <span class="font-orbitron font-black text-green-600 text-xs uppercase tracking-wider block mb-3">Etapa 3 · Con demanda</span>
+        <h3 class="font-bold text-gray-900 text-base mb-2">Automatización</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Bot de respuestas, Instagram automatizado y seguimiento de pedidos.</p>
+      </div>
+      <div class="glass-light-card rounded-2xl p-5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-neuro-green rounded-l-2xl"></div>
+        <span class="font-orbitron font-black text-green-700 text-xs uppercase tracking-wider block mb-3">Etapa 4 · Ecommerce real</span>
+        <h3 class="font-bold text-gray-900 text-base mb-2">Pago online + stock</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Mercado Pago integrado, control de stock y reportes de ventas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════ CIERRE ═══════════════════════ -->
+<section class="sec-dark relative z-10 py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-4xl mx-auto">
+    <div class="relative rounded-3xl p-[1px] overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-neuro-blue via-neuro-green to-neuro-blue opacity-50 rounded-3xl"></div>
+      <div class="bg-[#030810] rounded-[23px] p-8 sm:p-12 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="space-y-5">
+            <span class="badge-green">Próximo paso</span>
+            <h2 class="font-orbitron font-black text-white text-2xl sm:text-3xl leading-tight">¿Avanzamos con tu tienda?</h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">No proponemos una tienda compleja desde el inicio. Proponemos una solución propia, clara y escalable: vendés por WhatsApp hoy, y cuando estés listo activás pagos, stock y automatización.</p>
+            <a href="https://wa.me/5492604087086?text=Hola%20NeuroTech%2C%20quiero%20avanzar%20con%20la%20propuesta%20para%20JM%20Todo%20en%20Descartables." target="_blank" rel="noopener"
+               class="btn-border inline-flex shadow-[0_0_30px_rgba(154,255,95,.2)] hover:scale-[1.02] transition-all">
+              <div class="btn-inner flex items-center gap-2 py-4 px-8 font-orbitron font-bold text-sm text-neuro-green uppercase tracking-wide">
+                <i class="ph-duotone ph-whatsapp-logo text-xl"></i>Confirmar por WhatsApp
+              </div>
+            </a>
+          </div>
+          <div class="glass-dark rounded-2xl p-6 space-y-4">
+            <h3 class="font-orbitron font-bold text-neuro-green text-sm">Próximos pasos</h3>
+            <ol class="space-y-3 text-sm text-gray-300">
+              <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-neuro-green/15 border border-neuro-green/30 text-neuro-green text-xs font-orbitron font-black flex items-center justify-center flex-shrink-0 mt-0.5">1</span>Confirmamos la propuesta y firmamos inicio</li>
+              <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-neuro-green/15 border border-neuro-green/30 text-neuro-green text-xs font-orbitron font-black flex items-center justify-center flex-shrink-0 mt-0.5">2</span>Elegís hosting y dominio (te ayudamos)</li>
+              <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-neuro-green/15 border border-neuro-green/30 text-neuro-green text-xs font-orbitron font-black flex items-center justify-center flex-shrink-0 mt-0.5">3</span>Entregás los 50 productos iniciales</li>
+              <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-neuro-green/15 border border-neuro-green/30 text-neuro-green text-xs font-orbitron font-black flex items-center justify-center flex-shrink-0 mt-0.5">4</span>Probamos carrito y pedidos — publicamos</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer id="contacto" class="relative mt-0 border-t border-white/10 bg-[#020202]">
+  <div class="absolute inset-0 bg-gradient-to-t from-neuro-blue/5 to-transparent pointer-events-none"></div>
+  <div class="max-w-4xl mx-auto px-6 py-12 text-center relative z-10">
+
+    <div class="flex justify-center gap-8 md:gap-12 mb-10">
+      <a href="https://wa.me/5492604087086?text=Hola%20NeuroTech%20Soluciones!" target="_blank" class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-2">
+        <img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="36" class="md:w-12" alt="WhatsApp">
+        <span class="text-[10px] md:text-xs font-orbitron text-gray-500 group-hover:text-neuro-green transition-colors uppercase tracking-wider">WhatsApp</span>
+      </a>
+      <a href="https://www.instagram.com/neurotech.soluciones/" target="_blank" class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-2">
+        <img src="https://img.icons8.com/color/96/instagram-new--v1.png" width="36" class="md:w-12" alt="Instagram">
+        <span class="text-[10px] md:text-xs font-orbitron text-gray-500 group-hover:text-[#E1306C] transition-colors uppercase tracking-wider">Instagram</span>
+      </a>
+      <a href="https://www.youtube.com/@neurotech-soluciones" target="_blank" class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-2">
+        <img src="https://img.icons8.com/color/96/youtube-play.png" width="36" class="md:w-12" alt="YouTube">
+        <span class="text-[10px] md:text-xs font-orbitron text-gray-500 group-hover:text-[#FF0000] transition-colors uppercase tracking-wider">YouTube</span>
+      </a>
+    </div>
+
+    <div class="text-gray-500 text-[11px] md:text-sm font-inter border-t border-white/5 pt-10 space-y-3">
+      <p class="hover:text-gray-300 transition-colors">📧 info@neurotechsoluciones.com</p>
+      <p class="text-gray-400"><strong>NeuroTech Soluciones | San Rafael, Mendoza</strong></p>
+      <p class="text-gray-600 text-[10px]">© 2026 NeuroTech Soluciones · Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  class="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-neuro-blue text-white shadow-[0_0_20px_rgba(33,0,229,.4)] border border-white/20 opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:bg-white hover:text-neuro-blue">
+  <i class="ph-bold ph-arrow-up text-lg"></i>
+</button>
+
+<script>
+  // Dates
+  const hoy = new Date();
+  const vig = new Date(); vig.setDate(hoy.getDate() + 10);
+  const fmt = {day:'2-digit',month:'2-digit',year:'numeric'};
+  document.getElementById('fechaHoy').textContent = hoy.toLocaleDateString('es-AR',fmt);
+  document.getElementById('fechaVig').textContent = vig.toLocaleDateString('es-AR',fmt);
+
+  // Scroll top button
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 400) { btn.classList.remove('opacity-0','translate-y-10','pointer-events-none'); }
+    else { btn.classList.add('opacity-0','translate-y-10','pointer-events-none'); }
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, {threshold: 0.08});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Reference tabs
+  const refData = {
+    butlers:        { title:'Estilo cálido, hogar y bazar premium', desc:'Ideal si JM quiere verse cercano, claro y comercial, con una estética luminosa para mostrar variedad sin parecer mayorista desordenado.', url:'https://www.butlers.com/', name:'Butlers', idea:'Hero con sensación de tienda ordenada, clara y premium.', best:'Cercanía, diseño limpio y producto protagonista.' },
+    cibo:           { title:'Estilo proveedor gastronómico funcional', desc:'Una línea visual directa para comercios, con foco en búsqueda rápida, categorías visibles y compra práctica.', url:'https://cibowares.com/', name:'Cibowares', idea:'Hero orientado a insumos gastronómicos y compras recurrentes.', best:'Claridad, catálogo amplio y navegación comercial.' },
+    restaurantware: { title:'Estilo ecommerce fuerte para restaurantes', desc:'Más comercial y transaccional. Sirve si JM quiere transmitir variedad, stock y soluciones para negocios gastronómicos.', url:'https://www.restaurantware.com/', name:'Restaurantware', idea:'Hero con productos por categoría y foco en comprar rápido.', best:'Venta directa, promociones y mirada B2B.' },
+    supply:         { title:'Estilo club de compra moderno', desc:'Visual fresco, simple y digital. Bueno para transmitir ahorro, compra fácil y sistema ordenado.', url:'https://mysupplyclub.com/', name:'My Supply Club', idea:'Hero limpio con mensaje comercial y categorías accesibles.', best:'Modernidad, simpleza y experiencia mobile.' },
+    packnwood:      { title:'Estilo packaging natural y premium', desc:'Una estética cuidada y aspiracional, útil si quieren elevar la percepción de marca y diferenciarse.', url:'https://www.packnwood.com/', name:'PacknWood', idea:'Hero más premium, con producto cuidado y tono internacional.', best:'Imagen de calidad, packaging y presentación superior.' },
+    arbora:         { title:'Estilo descartables sustentables y ordenados', desc:'Ideal si JM quiere destacar descartables, líneas eco o soluciones para restaurantes con una imagen limpia.', url:'https://arboraproducts.com/product-category/disposable-restaurant-supplies/', name:'Arbora Products', idea:'Hero con estética limpia, natural y orientada a descartables.', best:'Descartables, categorías claras y tono ecológico.' }
+  };
+
+  document.querySelectorAll('.ref-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ref-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const d = refData[btn.dataset.style];
+      document.getElementById('previewArea').className = 'preview-' + btn.dataset.style + ' rounded-2xl p-6 sm:p-10 min-h-[200px] transition-all duration-400';
+      document.getElementById('pvTitle').textContent = d.title;
+      document.getElementById('pvDesc').textContent = d.desc;
+      document.getElementById('pvLink').href = d.url;
+      document.getElementById('pvRefLink').href = d.url;
+      document.getElementById('pvRefName').textContent = d.name;
+      document.getElementById('pvIdea').textContent = d.idea;
+      document.getElementById('pvBest').textContent = d.best;
+    });
+  });
+
+  // iframe fallback check
+  document.querySelectorAll('iframe').forEach(iframe => {
+    iframe.addEventListener('load', function() {
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || !doc.body || doc.body.innerHTML === '') {
+          iframe.closest('.relative').querySelector('.iframe-fallback')?.classList.remove('hidden');
+          iframe.closest('.relative').querySelector('.iframe-fallback')?.classList.add('flex');
         }
-      });
-    }, {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-    const data = {
-      butlers:{cls:'style-butlers',title:'Estilo cálido, hogar y bazar premium',text:'Ideal si JM quiere verse cercano, claro y comercial, con una estética luminosa para mostrar variedad sin parecer mayorista desordenado.',url:'https://www.butlers.com/',name:'Butlers',idea:'Hero con sensación de tienda ordenada, clara y premium.',best:'Cercanía, diseño limpio y producto protagonista.'},
-      cibo:{cls:'style-cibo',title:'Estilo proveedor gastronómico claro y funcional',text:'Una línea visual más directa para comercios, con foco en búsqueda rápida, categorías visibles y compra práctica.',url:'https://cibowares.com/',name:'Cibowares',idea:'Hero orientado a insumos para gastronomía y compras recurrentes.',best:'Claridad, catálogo amplio y navegación comercial.'},
-      restaurant:{cls:'style-restaurant',title:'Estilo ecommerce fuerte para restaurantes',text:'Más comercial y transaccional. Sirve si JM quiere transmitir variedad, stock y soluciones para negocios gastronómicos.',url:'https://www.restaurantware.com/',name:'Restaurantware',idea:'Hero con productos por categoría y foco en comprar rápido.',best:'Venta directa, promociones y mirada B2B.'},
-      supply:{cls:'style-supply',title:'Estilo club de compra moderno',text:'Visual más fresco, simple y digital. Bueno para transmitir ahorro, compra fácil y sistema ordenado.',url:'https://mysupplyclub.com/',name:'My Supply Club',idea:'Hero limpio con mensaje comercial y categorías accesibles.',best:'Modernidad, simpleza y experiencia mobile.'},
-      pack:{cls:'style-pack',title:'Estilo packaging natural y premium',text:'Una estética más cuidada y aspiracional, útil si quieren elevar la percepción de marca y diferenciarse.',url:'https://www.packnwood.com/',name:'PacknWood',idea:'Hero más premium, con producto cuidado y tono internacional.',best:'Imagen de calidad, packaging y presentación superior.'},
-      arbora:{cls:'style-arbora',title:'Estilo descartables sustentables y ordenados',text:'Ideal si JM quiere destacar productos descartables, líneas eco o soluciones para restaurantes con una imagen limpia.',url:'https://arboraproducts.com/product-category/disposable-restaurant-supplies/',name:'Arbora Products',idea:'Hero con estética limpia, natural y orientada a descartables.',best:'Descartables, categorías claras y tono ecológico.'}
-    };
-    const preview = document.getElementById('heroPreview');
-    const title = document.getElementById('previewTitle');
-    const text = document.getElementById('previewText');
-    const link = document.getElementById('previewLink');
-    const refOne = document.getElementById('refOne');
-    const refIdea = document.getElementById('refIdea');
-    const refBest = document.getElementById('refBest');
-    document.querySelectorAll('.tab').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const item = data[btn.dataset.style];
-        preview.className = 'hero-preview ' + item.cls;
-        title.textContent = item.title;
-        text.textContent = item.text;
-        link.href = item.url;
-        refOne.href = item.url;
-        refOne.querySelector('span').textContent = item.name;
-        refIdea.textContent = item.idea;
-        refBest.textContent = item.best;
-      });
+      } catch(e) {
+        // Cross-origin — mostrar fallback
+        const fb = iframe.closest('.relative')?.querySelector('.iframe-fallback');
+        if(fb){ fb.classList.remove('hidden'); fb.classList.add('flex'); iframe.style.display='none'; }
+      }
     });
-
-
-    const frameModal = document.getElementById('frameModal');
-    const siteFrame = document.getElementById('siteFrame');
-    const frameTitle = document.getElementById('frameTitle');
-    const frameDirect = document.getElementById('frameDirect');
-    const closeFrame = document.getElementById('closeFrame');
-    document.querySelectorAll('.try-frame').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const url = btn.dataset.url;
-        frameTitle.textContent = 'Vista embebida: ' + btn.dataset.name;
-        frameDirect.href = url;
-        siteFrame.src = url;
-        frameModal.classList.add('open');
-        frameModal.setAttribute('aria-hidden','false');
-      });
-    });
-    function cerrarFrame(){
-      frameModal.classList.remove('open');
-      frameModal.setAttribute('aria-hidden','true');
-      siteFrame.src = 'about:blank';
-    }
-    closeFrame.addEventListener('click', cerrarFrame);
-    frameModal.addEventListener('click',(e)=>{ if(e.target === frameModal) cerrarFrame(); });
-    document.addEventListener('keydown',(e)=>{ if(e.key === 'Escape' && frameModal.classList.contains('open')) cerrarFrame(); });
-
-  </script>
+  });
+</script>
 </body>
 </html>
