@@ -58,6 +58,403 @@
     @media(max-width:980px){.nav-links{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:54px 20px 62px}.mock-device{min-height:360px}.g2,.g3,.g4,.flow,.timeline,.site-grid{grid-template-columns:1fr}.price-grid{grid-template-columns:1fr}.price-grid>div:last-child{text-align:left;min-width:unset}.mini-kpis{grid-template-columns:1fr 1fr}.fb1,.fb2,.fb3{display:none}.mock{width:min(370px,94%)}}
     @media(max-width:620px){.sec-white,.sec-soft,.sec-navy,.sec-navy2{padding:54px 16px}.hero{padding:42px 16px 52px}h1{font-size:38px}.card,.card-soft,.card-rec,.card-dark,.card-dark-rec,.price-inner{padding:20px}.mini-kpis{grid-template-columns:1fr}.cuota-grid{grid-template-columns:1fr}.table-wrap::after{content:'deslizá la tabla';display:block;text-align:center;font-size:11px;color:rgba(255,255,255,.35);padding:8px 0 4px;font-family:var(--orb);letter-spacing:.05em}.price-big{font-size:36px}}
   </style>
+
+  <style id="mobile-first-cro-overrides">
+    :root{
+      --muted:#5E6472;
+    }
+
+    body{
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    .sec-hero{
+      position:relative;
+      color:#fff;
+      background:
+        linear-gradient(90deg, rgba(7,17,31,.96) 0%, rgba(7,17,31,.92) 38%, rgba(7,17,31,.72) 62%, rgba(7,17,31,.48) 100%),
+        radial-gradient(circle at 12% 12%, rgba(33,0,229,.30), transparent 26%),
+        radial-gradient(circle at 78% 14%, rgba(154,255,95,.12), transparent 22%),
+        url('https://raw.githubusercontent.com/neurotechsoluciones-design/JM_todo_en_descartable/main/hero.png') !important;
+      background-position:center center, center center, center center, center right !important;
+      background-size:cover, cover, cover, cover !important;
+      background-repeat:no-repeat !important;
+      overflow:hidden;
+    }
+
+    .hero{
+      display:flex !important;
+      grid-template-columns:unset !important;
+      align-items:center !important;
+      min-height:660px;
+      padding:92px 20px 90px;
+    }
+
+    .hero-copy{
+      width:100%;
+      max-width:660px;
+      position:relative;
+      z-index:2;
+    }
+
+    .mock-device,
+    .float-badge,
+    .mock{
+      display:none !important;
+    }
+
+    .lead-dark,
+    .sub-dark,
+    .list-dark li,
+    .faq p,
+    .callout-dark p{
+      color:rgba(255,255,255,.86);
+    }
+
+    .mini-kpi{
+      background:rgba(255,255,255,.085);
+      border:1px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(8px);
+    }
+
+    .mini-kpi span{
+      color:rgba(255,255,255,.88);
+      font-size:13px;
+    }
+
+    .card-dark,
+    .faq{
+      background:rgba(255,255,255,.055);
+      border-color:rgba(255,255,255,.11);
+    }
+
+    .table-dark th{
+      color:rgba(255,255,255,.76);
+    }
+
+    .table-dark td{
+      color:rgba(255,255,255,.86);
+    }
+
+    .cuota span,
+    .price-card span{
+      color:rgba(255,255,255,.78);
+    }
+
+    .mobile-actionbar{
+      display:none;
+    }
+
+    @media(max-width:980px){
+      .hero{
+        min-height:620px;
+        padding:70px 20px 76px;
+      }
+
+      .hero-copy{
+        max-width:720px;
+      }
+
+      .price-grid{
+        grid-template-columns:1fr !important;
+      }
+
+      .price-grid>div:last-child{
+        text-align:left !important;
+        min-width:unset !important;
+      }
+    }
+
+    @media(max-width:720px){
+      html{
+        scroll-padding-top:82px;
+      }
+
+      body{
+        padding-bottom:86px;
+      }
+
+      .nav-in{
+        padding:10px 14px;
+      }
+
+      .brand span:last-child{
+        font-size:14px;
+      }
+
+      .nav-pill{
+        font-size:11px;
+        padding:7px 10px;
+      }
+
+      .sec-hero{
+        min-height:calc(100svh - 58px);
+        background:
+          linear-gradient(180deg, rgba(7,17,31,.94) 0%, rgba(7,17,31,.82) 46%, rgba(7,17,31,.92) 100%),
+          url('https://raw.githubusercontent.com/neurotechsoluciones-design/JM_todo_en_descartable/main/hero.png') !important;
+        background-position:center center, 68% center !important;
+        background-size:cover, cover !important;
+        background-repeat:no-repeat !important;
+      }
+
+      .hero{
+        min-height:calc(100svh - 58px);
+        padding:38px 16px 44px;
+      }
+
+      h1{
+        font-size:clamp(42px,14vw,58px) !important;
+        line-height:.94 !important;
+        letter-spacing:-.075em !important;
+      }
+
+      h2{
+        font-size:30px !important;
+        line-height:1.03 !important;
+        letter-spacing:-.055em !important;
+      }
+
+      h3{
+        font-size:22px;
+      }
+
+      .lead,
+      .lead-dark{
+        font-size:17px !important;
+        line-height:1.58 !important;
+      }
+
+      .sub,
+      .sub-dark,
+      .list li,
+      .flow-card p,
+      .table td,
+      .callout p,
+      .callout-green p,
+      .callout-dark p,
+      .faq p,
+      .site-body p{
+        font-size:15px !important;
+        line-height:1.65 !important;
+      }
+
+      .badge{
+        font-size:10px !important;
+        padding:7px 11px !important;
+        white-space:normal;
+        line-height:1.25;
+      }
+
+      .hero-actions{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+        margin-top:24px !important;
+      }
+
+      .hero .btn{
+        width:100%;
+        min-height:54px;
+        font-size:15px;
+      }
+
+      .mini-kpis{
+        grid-template-columns:1fr !important;
+        gap:10px !important;
+        margin-top:18px !important;
+      }
+
+      .mini-kpi{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:13px 14px;
+      }
+
+      .mini-kpi strong{
+        font-size:20px;
+        min-width:28px;
+      }
+
+      .mini-kpi span{
+        font-size:13px !important;
+        line-height:1.35;
+      }
+
+      .hero-meta{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:10px !important;
+      }
+
+      .hero-meta span{
+        font-size:13px !important;
+        padding:10px 12px !important;
+        line-height:1.35;
+      }
+
+      .sec-white,
+      .sec-soft,
+      .sec-navy,
+      .sec-navy2{
+        padding:52px 16px !important;
+      }
+
+      .sh{
+        margin-bottom:26px;
+      }
+
+      .card,
+      .card-soft,
+      .card-rec,
+      .card-dark,
+      .card-dark-rec,
+      .price-inner,
+      .callout,
+      .callout-green,
+      .callout-dark{
+        padding:20px !important;
+        border-radius:22px !important;
+      }
+
+      .g2,
+      .g3,
+      .g4,
+      .flow,
+      .timeline,
+      .site-grid{
+        grid-template-columns:1fr !important;
+        gap:14px !important;
+      }
+
+      .flow-card{
+        padding:20px;
+      }
+
+      .price-big{
+        font-size:38px !important;
+      }
+
+      .cuota-grid{
+        grid-template-columns:1fr !important;
+      }
+
+      .cuota span{
+        font-size:12px !important;
+      }
+
+      .table{
+        min-width:760px;
+      }
+
+      .table-wrap::after{
+        content:'Deslizá la tabla';
+        display:block;
+        text-align:center;
+        font-size:11px;
+        color:rgba(13,17,23,.56);
+        padding:8px 0 4px;
+        font-family:var(--orb);
+        letter-spacing:.05em;
+      }
+
+      .sec-navy .table-wrap::after,
+      .sec-navy2 .table-wrap::after{
+        color:rgba(255,255,255,.68);
+      }
+
+      .mobile-actionbar{
+        position:fixed;
+        left:12px;
+        right:12px;
+        bottom:12px;
+        z-index:120;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        padding:10px;
+        border-radius:22px;
+        background:rgba(7,17,31,.90);
+        border:1px solid rgba(255,255,255,.14);
+        box-shadow:0 18px 54px rgba(0,0,0,.38);
+        backdrop-filter:blur(18px);
+      }
+
+      .mobile-actionbar a{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:7px;
+        min-height:48px;
+        border-radius:999px;
+        font-size:14px;
+        font-weight:900;
+        text-align:center;
+      }
+
+      .mobile-actionbar-primary{
+        background:rgba(255,255,255,.08);
+        color:#fff;
+        border:1px solid rgba(255,255,255,.18);
+      }
+
+      .mobile-actionbar-secondary{
+        background:var(--green);
+        color:var(--navy);
+      }
+
+      #scrollTop{
+        bottom:92px;
+        right:16px;
+      }
+    }
+
+    @media(max-width:390px){
+      h1{
+        font-size:clamp(38px,13.2vw,48px) !important;
+      }
+
+      .lead-dark{
+        font-size:16px !important;
+      }
+
+      .mobile-actionbar{
+        grid-template-columns:1fr;
+      }
+
+      body{
+        padding-bottom:142px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{
+        scroll-behavior:auto;
+      }
+
+      .reveal{
+        opacity:1 !important;
+        transform:none !important;
+        transition:none !important;
+      }
+
+      .btn,
+      .site-card,
+      .footer-icon,
+      #scrollTop{
+        transition:none !important;
+      }
+
+      .btn:hover,
+      .site-card:hover,
+      .footer-icon:hover{
+        transform:none !important;
+      }
+    }
+  </style>
+
 </head>
 <body>
 <nav class="nav">
@@ -78,41 +475,29 @@
   </div>
 </nav>
 
+<div class="mobile-actionbar" aria-label="Acciones principales en móvil">
+  <a href="#inversion" class="mobile-actionbar-primary"><i class="ph-duotone ph-currency-circle-dollar"></i> Inversión</a>
+  <a href="https://wa.me/5492604087086?text=Hola%20NeuroTech%2C%20quiero%20avanzar%20con%20la%20propuesta%20para%20JM%20Todo%20en%20Descartables." target="_blank" rel="noopener" class="mobile-actionbar-secondary"><i class="ph-duotone ph-whatsapp-logo"></i> Aprobar</a>
+</div>
+
 <section class="sec-hero">
   <div class="hero">
-    <div>
+    <div class="hero-copy">
       <span class="badge badge-green-inv">Propuesta comercial · <span id="fechaHoy"></span></span>
-      <h1 class="grad-light">Que cada consulta tenga un camino de venta.</h1>
-      <p class="lead-dark" style="max-width:600px;margin-top:22px">JM no necesita solamente una web más atractiva. Necesita un sistema simple para mostrar productos, recibir pedidos ordenados, responder más rápido y preparar el crecimiento hacia WhatsApp, Instagram, IA, pagos y stock.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+      <h1 class="grad-light">Tu tienda<br>sin pagar<br>comisiones.</h1>
+      <p class="lead-dark" style="max-width:620px;margin-top:22px">Una tienda online que es 100% tuya: catálogo propio, carrito de compras y pedido directo por WhatsApp. Sin pagar comisiones a terceros por cada venta que cerrás.</p>
+      <div class="hero-actions" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
         <a class="btn btn-green" href="#inversion"><i class="ph-duotone ph-currency-circle-dollar"></i>Ver inversión</a>
-        <a class="btn btn-ghost" href="#funciona"><i class="ph-duotone ph-flow-arrow"></i>Ver cómo funciona</a>
+        <a class="btn btn-ghost" href="#propuesta"><i class="ph-duotone ph-arrow-right"></i>Ver propuesta</a>
       </div>
       <div class="mini-kpis">
         <div class="mini-kpi"><strong>1</strong><span>Catálogo con productos organizados</span></div>
         <div class="mini-kpi"><strong>2</strong><span>Pedido armado por WhatsApp</span></div>
         <div class="mini-kpi"><strong>3</strong><span>Bot y presupuesto por email</span></div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+      <div class="hero-meta" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
         <span style="padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.55)">Cliente: <strong style="color:rgba(255,255,255,.86)">JM Todo en Descartables</strong></span>
         <span style="padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.55)">Vigencia: <strong style="color:rgba(255,255,255,.86)" id="fechaVig"></strong></span>
-      </div>
-    </div>
-    <div class="mock-device" aria-hidden="true">
-      <div class="float-badge fb1"><i class="ph-duotone ph-package" style="color:var(--blue)"></i> Producto encontrado</div>
-      <div class="float-badge fb2"><i class="ph-duotone ph-whatsapp-logo" style="color:#25D366"></i> Pedido enviado</div>
-      <div class="float-badge fb3"><i class="ph-duotone ph-robot" style="color:var(--green2)"></i> Bot responde</div>
-      <div class="mock">
-        <div class="mock-screen">
-          <div class="mock-banner"><strong>JM Descartables<br>Catálogo online</strong></div>
-          <div class="mock-prods">
-            <div class="mock-prod"><span></span><small>Vasos</small></div>
-            <div class="mock-prod"><span></span><small>Bandejas</small></div>
-            <div class="mock-prod"><span></span><small>Bolsas</small></div>
-          </div>
-          <div class="mock-cart"><span>Pedido armado</span><span>WhatsApp</span></div>
-          <div class="mock-bot"><strong>Bot de catálogo:</strong> responde consultas frecuentes y envía la solicitud de presupuesto al email de JM.</div>
-        </div>
       </div>
     </div>
   </div>
@@ -364,7 +749,7 @@
     </div>
     <div class="g2" style="margin-top:18px">
       <div class="card-dark">
-        <span class="badge badge-white">Mantenimiento mensual · opcional</span>
+        <span class="badge badge-white">Mantenimiento mensual</span>
         <h3 style="color:#fff;margin-top:12px">Mantenimiento web</h3>
         <p class="sub-dark">Para que la tienda siga segura, actualizada y acompañada después de la entrega.</p>
         <ul class="list list-dark">
@@ -380,7 +765,7 @@
         </div>
       </div>
       <div class="card-dark" style="border-color:rgba(139,92,246,.32)">
-        <span class="badge badge-white" style="background:rgba(139,92,246,.2);border-color:rgba(139,92,246,.42);color:#C4B5FD">Add-on disponible</span>
+        <span class="badge badge-white" style="background:rgba(139,92,246,.2);border-color:rgba(139,92,246,.42);color:#C4B5FD">Mejora inmediata opcional</span>
         <h3 style="color:#fff;margin-top:12px">Automatización de Instagram</h3>
         <p class="sub-dark">Para captar consultas que llegan por mensajes directos o comentarios y derivarlas al catálogo o WhatsApp.</p>
         <ul class="list list-dark">
@@ -389,7 +774,7 @@
           <li><i class="ph-duotone ph-check-circle" style="color:#C4B5FD;font-size:18px;flex-shrink:0;margin-top:1px"></i>Puede activarse después de la Etapa 1.</li>
         </ul>
         <div style="margin-top:16px;padding:16px;border-radius:16px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.28);text-align:center">
-          <span style="font-family:var(--orb);font-size:24px;font-weight:900;color:#C4B5FD">$20.000</span>
+          <span style="font-family:var(--orb);font-size:24px;font-weight:900;color:#E1D5FF">$40.000</span>
           <span style="display:block;font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">ARS por mes · opcional</span>
         </div>
       </div>
