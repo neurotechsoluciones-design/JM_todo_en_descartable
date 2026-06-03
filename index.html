@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Comercial | JM Todo en Descartables x NeuroTech</title>
+  <meta name="description" content="Propuesta comercial para JM Todo en Descartables: página web con WooCommerce, catálogo, carrito, WhatsApp, carga inicial de productos y automatización escalable." />
+  <style>
+    :root{
+      --nt-blue:#2100E5;
+      --nt-lime:#9AFF5F;
+      --jm-yellow:#FFD600;
+      --ink:#111827;
+      --deep:#07111F;
+      --muted:#667085;
+      --soft:#F7F8FB;
+      --paper:#ffffff;
+      --line:rgba(17,24,39,.09);
+      --glass:rgba(255,255,255,.76);
+      --shadow:0 28px 80px rgba(17,24,39,.12);
+      --shadow-soft:0 16px 42px rgba(17,24,39,.08);
+      --radius:28px;
+      --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
+      --serif:Georgia,"Times New Roman",serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,214,0,.18), transparent 30%),
+        radial-gradient(circle at 88% 12%, rgba(33,0,229,.12), transparent 28%),
+        radial-gradient(circle at 50% 92%, rgba(154,255,95,.12), transparent 32%),
+        linear-gradient(180deg,#FEFEFF 0%,#F5F7FB 48%,#FFFFFF 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .grain{position:fixed;inset:0;pointer-events:none;opacity:.16;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+
+    .nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.76);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid rgba(17,24,39,.06)}
+    .nav-inner{max-width:1240px;margin:auto;padding:13px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.035em}
+    .brand-mark{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--nt-blue),#654BFF 45%,var(--nt-lime));box-shadow:0 14px 28px rgba(33,0,229,.18)}
+    .nav-links{display:flex;gap:18px;font-size:14px;color:var(--muted);font-weight:700}
+    .nav-links a{text-decoration:none}.nav-links a:hover{color:var(--nt-blue)}
+    .pill{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(255,214,0,.30);color:#6B5800;border:1px solid rgba(255,214,0,.42);font-size:13px;font-weight:900}
+
+    .hero{position:relative;z-index:2;max-width:1500px;margin:0 auto;padding:28px 22px 0}
+    .hero-shell{position:relative;overflow:hidden;border-radius:38px;min-height:720px;background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFF 55%,#FFF7C7 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.72)}
+    .hero-shell:before{content:"";position:absolute;inset:-20% auto auto -10%;width:520px;height:520px;border-radius:50%;background:rgba(255,214,0,.34);filter:blur(36px);animation:floatGlow 9s ease-in-out infinite alternate}
+    .hero-shell:after{content:"";position:absolute;right:-180px;bottom:-220px;width:620px;height:620px;border-radius:50%;background:rgba(33,0,229,.13);filter:blur(40px);animation:floatGlow 11s ease-in-out infinite alternate-reverse}
+    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;min-height:720px;align-items:center;gap:20px;padding:clamp(28px,5vw,78px)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.70);border:1px solid rgba(17,24,39,.08);box-shadow:var(--shadow-soft);font-size:13px;font-weight:950;color:var(--nt-blue);text-transform:uppercase;letter-spacing:.08em}
+    h1{margin:24px 0 18px;font-size:clamp(42px,6.8vw,88px);line-height:.88;letter-spacing:-.075em;max-width:860px}
+    .accent{background:linear-gradient(135deg,var(--nt-blue),#6A57FF 50%,#79D34E);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-lead{font-size:clamp(18px,1.7vw,24px);line-height:1.48;color:#344054;max-width:720px;margin:0 0 30px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:15px 21px;border-radius:999px;text-decoration:none;font-weight:950;border:1px solid rgba(17,24,39,.08);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;cursor:pointer}
+    .btn-primary{background:var(--deep);color:#fff;box-shadow:0 18px 44px rgba(17,24,39,.18)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 24px 62px rgba(17,24,39,.24)}
+    .btn-light{background:rgba(255,255,255,.72);color:var(--deep);backdrop-filter:blur(20px)}.btn-light:hover{transform:translateY(-3px);background:#fff}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;color:var(--muted);font-size:14px;font-weight:700}.hero-meta span{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.68);border:1px solid rgba(17,24,39,.06)}
+    .device-wrap{position:relative;min-height:540px;display:grid;place-items:center;perspective:1200px}
+    .device{width:min(500px,90%);border-radius:38px;background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.86);box-shadow:0 40px 100px rgba(17,24,39,.16);padding:18px;transform:rotateY(-10deg) rotateX(5deg);animation:deviceFloat 6s ease-in-out infinite alternate}
+    .device-top{height:42px;display:flex;align-items:center;gap:8px;padding:0 12px}.dotmini{width:10px;height:10px;border-radius:50%;background:#D0D5DD}.dotmini:nth-child(2){background:var(--jm-yellow)}.dotmini:nth-child(3){background:var(--nt-lime)}
+    .mock-hero{border-radius:26px;overflow:hidden;background:#fff;border:1px solid rgba(17,24,39,.08)}
+    .mock-banner{height:180px;background:linear-gradient(135deg,#FFF8D6,#F4F7FB 48%,#E7E4FF);position:relative;display:flex;align-items:end;padding:22px;overflow:hidden}
+    .mock-banner:after{content:"";position:absolute;right:-40px;top:20px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#FFD600,transparent 68%);opacity:.55}
+    .mock-banner strong{position:relative;z-index:2;font-size:28px;letter-spacing:-.06em;line-height:1}.mock-products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px}.mock-product{height:96px;border-radius:18px;background:linear-gradient(180deg,#fff,#F6F7FA);border:1px solid rgba(17,24,39,.07);padding:10px;display:flex;flex-direction:column;justify-content:end}.mock-product span{height:38px;border-radius:10px;background:linear-gradient(135deg,#F2F4F7,#FFF4B8)}.mock-product small{margin-top:8px;color:var(--muted);font-weight:800}.mock-cart{margin:0 14px 16px;padding:14px;border-radius:18px;background:var(--deep);color:#fff;display:flex;justify-content:space-between;font-weight:900}
+    .float-card{position:absolute;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.76);backdrop-filter:blur(18px);border:1px solid rgba(17,24,39,.06);box-shadow:var(--shadow-soft);font-weight:900;color:var(--deep);animation:floatCard 5s ease-in-out infinite alternate}.fc1{top:52px;left:0}.fc2{bottom:72px;right:0;animation-delay:.8s}.fc3{top:245px;right:-4px;animation-delay:1.4s}
+
+    .main{position:relative;z-index:3;max-width:1180px;margin:auto;padding:54px 22px 100px}.section{margin-top:68px}.section-title{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:24px}.section-title h2{margin:0;font-size:clamp(34px,4.5vw,62px);line-height:.95;letter-spacing:-.065em}.section-title p{max-width:570px;margin:0;color:var(--muted);line-height:1.58;font-size:17px}
+    .glass{background:var(--glass);border:1px solid rgba(255,255,255,.70);box-shadow:var(--shadow-soft);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:var(--radius)}
+    .intro-card{display:grid;grid-template-columns:1.12fr .88fr;gap:18px;padding:34px}.intro-card h2{font-size:40px;line-height:1;letter-spacing:-.055em;margin:0 0 14px}.intro-card p{color:var(--muted);line-height:1.65;margin:0;font-size:17px}.note{padding:24px;border-radius:22px;background:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,255,255,.54));border:1px solid rgba(255,214,0,.24)}.note strong{display:block;font-size:18px;letter-spacing:-.02em;margin-bottom:8px;color:var(--deep)}
+
+    .comparison{overflow-x:auto}.table{width:100%;min-width:800px;border-collapse:separate;border-spacing:0;border-radius:24px;overflow:hidden;background:rgba(255,255,255,.72);border:1px solid rgba(17,24,39,.06)}.table th,.table td{padding:18px;text-align:left;border-bottom:1px solid rgba(17,24,39,.06);vertical-align:top}.table th{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);background:rgba(17,24,39,.025)}.table tr:last-child td{border-bottom:0}.row-good{background:rgba(154,255,95,.12)}.row-warn{background:rgba(255,214,0,.13)}.table strong{color:var(--deep)}
+
+    .proposal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:30px;position:relative;overflow:hidden}.card h3{font-size:28px;letter-spacing:-.045em;margin:0 0 10px}.card p{color:var(--muted);line-height:1.6;margin:0 0 16px}.badge{display:inline-flex;width:max-content;padding:8px 12px;border-radius:999px;background:rgba(33,0,229,.09);border:1px solid rgba(33,0,229,.12);color:var(--nt-blue);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}.list{display:grid;gap:10px;list-style:none;padding:0;margin:18px 0 0}.list li{display:flex;gap:10px;line-height:1.45;color:#344054}.check{font-weight:950;color:var(--nt-blue)}.x{font-weight:950;color:#B42318}.price-box{padding:20px;border-radius:22px;background:var(--deep);color:#fff;margin-top:20px}.price-box .big{font-size:38px;font-weight:950;letter-spacing:-.06em}.price-box small{color:rgba(255,255,255,.68)}
+
+    .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.scope-grid .glass{padding:30px}.scope-grid h3{font-size:24px;margin:0 0 14px;letter-spacing:-.04em}.dot{width:9px;height:9px;border-radius:50%;margin-top:8px;flex:0 0 auto;background:linear-gradient(135deg,var(--nt-blue),var(--jm-yellow))}
+
+    .refs{display:grid;gap:18px}.ref-stage{padding:28px;position:relative;overflow:hidden}.style-tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}.tab{border:1px solid rgba(17,24,39,.08);background:rgba(255,255,255,.72);border-radius:999px;padding:10px 14px;font-weight:900;color:var(--muted);cursor:pointer;transition:.2s ease}.tab.active{background:var(--deep);color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px rgba(17,24,39,.16)}
+    .hero-preview{min-height:430px;border-radius:30px;overflow:hidden;position:relative;border:1px solid rgba(17,24,39,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.85)}.preview-content{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:clamp(26px,5vw,58px);gap:30px;transition:opacity .35s ease,transform .35s ease}.preview-copy h3{font-size:clamp(34px,5vw,60px);line-height:.95;letter-spacing:-.07em;margin:0 0 14px}.preview-copy p{color:#475467;font-size:17px;line-height:1.55;max-width:520px}.preview-copy a{display:inline-flex;margin-top:16px;padding:12px 16px;border-radius:999px;background:#fff;text-decoration:none;font-weight:950;color:var(--deep);box-shadow:0 12px 28px rgba(17,24,39,.10)}.preview-art{height:300px;position:relative}.product-stack{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end}.prod-tile{border-radius:24px;background:rgba(255,255,255,.76);box-shadow:0 20px 44px rgba(17,24,39,.12);border:1px solid rgba(255,255,255,.70);min-height:170px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;transform:translateY(var(--y));animation:tileFloat 5s ease-in-out infinite alternate}.prod-tile:nth-child(2){min-height:250px;animation-delay:.5s}.prod-tile:nth-child(3){min-height:205px;animation-delay:1s}.prod-img{height:80px;border-radius:16px;background:linear-gradient(135deg,#F2F4F7,#FFF2AD);margin-bottom:12px}.prod-line{height:10px;border-radius:999px;background:rgba(17,24,39,.12);margin-top:7px}.ref-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.ref-meta a,.ref-meta div{padding:16px;border-radius:18px;background:rgba(255,255,255,.70);border:1px solid rgba(17,24,39,.06);font-size:14px;line-height:1.45;text-decoration:none;color:#344054}.ref-meta strong{display:block;color:var(--deep);margin-bottom:4px}
+    .style-butlers{background:linear-gradient(135deg,#F7F0E7,#FFFFFF 48%,#EDE6DB)}.style-cibo{background:linear-gradient(135deg,#F7FAFC,#E8F0FF 55%,#DDE8FF)}.style-restaurant{background:linear-gradient(135deg,#FFF8E6,#FFFFFF 46%,#F7E0A2)}.style-supply{background:linear-gradient(135deg,#F4F8F2,#FFFFFF 48%,#DAF8C8)}.style-pack{background:linear-gradient(135deg,#F9F5EA,#FFFFFF 50%,#EFE0B7)}.style-arbora{background:linear-gradient(135deg,#F3FAF6,#FFFFFF 48%,#D2F1DE)}
+
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:24px;position:relative}.step:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--nt-blue),var(--jm-yellow));border-radius:99px}.step strong{display:block;color:var(--nt-blue);font-size:12px;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}.step h3{margin:0 0 10px;font-size:20px;letter-spacing:-.035em}.step p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
+    .final{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:stretch}.final-card{padding:34px;color:#fff;background:radial-gradient(circle at 88% 10%, rgba(255,214,0,.34), transparent 28%),linear-gradient(135deg,#07111F,#2100E5 105%);border-radius:var(--radius);box-shadow:0 24px 64px rgba(33,0,229,.18)}.final-card h2{font-size:44px;line-height:.98;letter-spacing:-.065em;margin:0 0 18px}.final-card p{color:rgba(255,255,255,.84);line-height:1.6;margin:0 0 22px}.quote{padding:34px;display:flex;flex-direction:column;justify-content:center}.quote blockquote{margin:0;font-size:28px;line-height:1.18;letter-spacing:-.045em;font-weight:900}.quote p{color:var(--muted);line-height:1.6;font-size:16px;margin:20px 0 0}
+    .footer{max-width:1180px;margin:0 auto 38px;padding:0 22px;color:var(--muted);font-size:14px}.footer-inner{display:flex;justify-content:space-between;gap:18px;border-top:1px solid rgba(17,24,39,.07);padding-top:22px}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes floatGlow{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(34px,24px,0) scale(1.08)}}@keyframes deviceFloat{from{transform:rotateY(-10deg) rotateX(5deg) translateY(0)}to{transform:rotateY(-6deg) rotateX(3deg) translateY(-18px)}}@keyframes floatCard{from{transform:translateY(0)}to{transform:translateY(-16px)}}@keyframes tileFloat{from{transform:translateY(var(--y))}to{transform:translateY(calc(var(--y) - 15px))}}
+
+    @media (max-width:1040px){.nav-links{display:none}.hero-grid,.intro-card,.proposal-grid,.scope-grid,.final{grid-template-columns:1fr}.hero-shell{min-height:auto}.device-wrap{min-height:480px}.section-title{display:block}.section-title p{margin-top:14px}.timeline{grid-template-columns:1fr 1fr}.preview-content{grid-template-columns:1fr}.hero-preview{min-height:720px}.ref-meta{grid-template-columns:1fr}.preview-art{height:260px}}
+    @media (max-width:680px){.hero{padding:12px 0 0}.hero-shell{border-radius:0}.hero-grid{padding:30px 18px}.hero-actions{display:grid}.main{padding:28px 14px 80px}.intro-card,.card,.scope-grid .glass,.ref-stage,.final-card,.quote{padding:24px}.timeline{grid-template-columns:1fr}.device{transform:none;width:100%}.device-wrap{min-height:420px}.float-card{display:none}.hero-preview{min-height:760px}.product-stack{gap:8px}.prod-tile{border-radius:18px}.footer-inner{display:block}.proposal-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>NeuroTech Soluciones</span></div>
+      <div class="nav-links" aria-label="Navegación principal">
+        <a href="#objetivo">Objetivo</a>
+        <a href="#propuesta">Propuesta</a>
+        <a href="#referencias">Referencias</a>
+        <a href="#inversion">Inversión</a>
+        <a href="#cierre">Recomendación</a>
+      </div>
+      <span class="pill">JM Todo en Descartables</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <section class="hero-shell" aria-label="Propuesta comercial para JM Todo en Descartables">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Propuesta comercial 2026</span>
+          <h1>Página web propia con <span class="accent">WooCommerce + WhatsApp</span></h1>
+          <p class="hero-lead">Una solución clara para vender online sin quedar atados a plataformas cerradas ni a comisiones propias de tienda. Primero catálogo, carrito y pedido por WhatsApp. Después, Mercado Pago, stock y automatización.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#inversion">Ver inversión</a>
+            <a class="btn btn-light" href="#referencias">Elegir estilo visual</a>
+          </div>
+          <div class="hero-meta">
+            <span>Emitido: <strong id="fechaHoy"></strong></span>
+            <span>Validez sugerida: <strong id="fechaVigencia"></strong></span>
+            <span>Contacto: +54 9 2604 08-7086</span>
+          </div>
+        </div>
+        <div class="device-wrap" aria-hidden="true">
+          <div class="float-card fc1">50 productos iniciales</div>
+          <div class="float-card fc2">Pedido directo por WhatsApp</div>
+          <div class="float-card fc3">Preparado para crecer</div>
+          <div class="device">
+            <div class="device-top"><span class="dotmini"></span><span class="dotmini"></span><span class="dotmini"></span></div>
+            <div class="mock-hero">
+              <div class="mock-banner"><strong>Catálogo JM<br>Descartables</strong></div>
+              <div class="mock-products">
+                <div class="mock-product"><span></span><small>Vasos</small></div>
+                <div class="mock-product"><span></span><small>Bandejas</small></div>
+                <div class="mock-product"><span></span><small>Bolsas</small></div>
+              </div>
+              <div class="mock-cart"><span>Carrito</span><span>Enviar por WhatsApp</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="main">
+    <section class="section reveal" id="objetivo">
+      <div class="intro-card glass">
+        <div>
+          <h2>Objetivo</h2>
+          <p>Implementar una página web comercial para que JM Todo en Descartables pueda mostrar productos, precios y descripciones, permitir que el cliente arme un carrito con varios artículos y enviar el pedido por WhatsApp. El pago se coordina por transferencia en esta primera etapa, previa confirmación de disponibilidad.</p>
+        </div>
+        <div class="note">
+          <strong>Aclaración importante</strong>
+          <p>La actualización de la página actual en Guru ya está implementada en el panel, pero todavía no está publicada. Si JM desea verla, puede revisarse antes de decidir. De todos modos, para vender con catálogo, carrito y escalabilidad, recomendamos avanzar con WordPress + WooCommerce + WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title">
+        <h2>Diagnóstico comercial</h2>
+        <p>El problema no es solo tener una página. JM necesita ordenar productos, facilitar pedidos, evitar consultas repetidas y preparar una base digital que pueda crecer.</p>
+      </div>
+      <div class="comparison glass">
+        <table class="table" aria-label="Diagnóstico comercial">
+          <thead><tr><th>Situación</th><th>Riesgo si no se resuelve</th><th>Solución propuesta</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Muchos productos</strong></td><td>El cliente no encuentra rápido lo que necesita.</td><td>Categorías claras y carga inicial de 50 productos.</td></tr>
+            <tr><td><strong>Stock no ordenado</strong></td><td>Puede venderse algo sin disponibilidad real.</td><td>Estado simple: disponible, consultar o pausado.</td></tr>
+            <tr><td><strong>Ventas por conversación</strong></td><td>Se pierden consultas si WhatsApp/Instagram no están ordenados.</td><td>Carrito + mensaje automático a WhatsApp.</td></tr>
+            <tr><td><strong>Necesidad de escalar</strong></td><td>Una solución básica queda corta rápido.</td><td>WooCommerce preparado para planilla, Mercado Pago y automatización.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section reveal" id="propuesta">
+      <div class="section-title">
+        <h2>Solución recomendada</h2>
+        <p>Desarrollar una web propia en WordPress con WooCommerce, configurada como catálogo con carrito y cierre por WhatsApp.</p>
+      </div>
+      <div class="proposal-grid">
+        <article class="card glass">
+          <span class="badge">Incluye</span>
+          <h3>Web propia + catálogo + carrito</h3>
+          <p>Una página pensada para que el cliente vea productos, agregue varios artículos y envíe el pedido listo por WhatsApp.</p>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Diseño y desarrollo en WordPress.</span></li>
+            <li><span class="check">✓</span><span>Instalación y configuración de WooCommerce.</span></li>
+            <li><span class="check">✓</span><span>Catálogo organizado por categorías.</span></li>
+            <li><span class="check">✓</span><span>Carrito con varios productos.</span></li>
+            <li><span class="check">✓</span><span>Pedido enviado por WhatsApp.</span></li>
+            <li><span class="check">✓</span><span>Pago por transferencia fuera de la web.</span></li>
+          </ul>
+        </article>
+        <article class="card glass">
+          <span class="badge">Producto inicial</span>
+          <h3>50 productos cargados</h3>
+          <p>NeuroTech realiza la carga inicial para que JM no arranque desde cero y pueda ver el catálogo funcionando.</p>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Carga de hasta 50 productos iniciales.</span></li>
+            <li><span class="check">✓</span><span>Mejora visual básica de fotos estilo catálogo premium.</span></li>
+            <li><span class="check">✓</span><span>Nombre, precio y descripción breve.</span></li>
+            <li><span class="check">✓</span><span>Categoría por producto.</span></li>
+            <li><span class="check">✓</span><span>Planilla base para futuras cargas.</span></li>
+            <li><span class="check">✓</span><span>Capacitación breve para que JM continúe cargando.</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title">
+        <h2>Por qué no Tiendanube como opción principal</h2>
+        <p>Tiendanube puede servir para empezar rápido, pero no es la opción que recomendamos si JM quiere una solución más propia y conveniente a largo plazo.</p>
+      </div>
+      <div class="comparison glass">
+        <table class="table" aria-label="Comparación de opciones">
+          <thead><tr><th>Opción</th><th>Ventaja</th><th>Limitación</th><th>Recomendación</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Guru actual</strong></td><td>Ya existe y puede mejorarse visualmente.</td><td>Puede quedar limitada para catálogo amplio, carrito, carga futura y automatizaciones.</td><td>Útil como mejora inicial, no como solución principal.</td></tr>
+            <tr class="row-warn"><td><strong>Tiendanube</strong></td><td>Rápida y simple de administrar.</td><td>Depende de plataforma externa, abonos, reglas y posibles comisiones por operación/pago.</td><td>No recomendada como solución final a largo plazo.</td></tr>
+            <tr class="row-good"><td><strong>WordPress + WooCommerce</strong></td><td>Mayor control, flexibilidad, propiedad del catálogo y escalabilidad.</td><td>Requiere hosting y mantenimiento básico.</td><td>Opción recomendada.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section reveal" id="referencias">
+      <div class="section-title">
+        <h2>Referencias visuales para elegir estilo</h2>
+        <p>Estas referencias no se copian. Sirven para decidir qué dirección visual le gusta más a JM antes de avanzar con el diseño del hero y la estética general.</p>
+      </div>
+      <div class="refs">
+        <div class="ref-stage glass">
+          <div class="style-tabs" role="tablist" aria-label="Estilos de hero">
+            <button class="tab active" data-style="butlers">Butlers</button>
+            <button class="tab" data-style="cibo">Cibowares</button>
+            <button class="tab" data-style="restaurant">Restaurantware</button>
+            <button class="tab" data-style="supply">My Supply Club</button>
+            <button class="tab" data-style="pack">PacknWood</button>
+            <button class="tab" data-style="arbora">Arbora</button>
+          </div>
+          <div id="heroPreview" class="hero-preview style-butlers">
+            <div class="preview-content">
+              <div class="preview-copy">
+                <h3 id="previewTitle">Estilo cálido, hogar y bazar premium</h3>
+                <p id="previewText">Ideal si JM quiere verse cercano, claro y comercial, con una estética luminosa para mostrar variedad sin parecer mayorista desordenado.</p>
+                <a id="previewLink" href="https://www.butlers.com/" target="_blank" rel="noopener">Ver referencia original</a>
+              </div>
+              <div class="preview-art">
+                <div class="product-stack">
+                  <div class="prod-tile" style="--y:18px"><div class="prod-img"></div><div class="prod-line"></div><div class="prod-line" style="width:70%"></div></div>
+                  <div class="prod-tile" style="--y:-6px"><div class="prod-img"></div><div class="prod-line"></div><div class="prod-line" style="width:55%"></div></div>
+                  <div class="prod-tile" style="--y:28px"><div class="prod-img"></div><div class="prod-line"></div><div class="prod-line" style="width:65%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ref-meta">
+            <a id="refOne" href="https://www.butlers.com/" target="_blank" rel="noopener"><strong>Referencia</strong><span>Butlers</span></a>
+            <div><strong>Idea para JM</strong><span id="refIdea">Hero con sensación de tienda ordenada, clara y premium.</span></div>
+            <div><strong>Conviene si buscan</strong><span id="refBest">Cercanía, diseño limpio y producto protagonista.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title">
+        <h2>Hosting recomendado</h2>
+        <p>El hosting y dominio no están incluidos en la implementación. Se contratan a nombre de JM para que el negocio conserve el control.</p>
+      </div>
+      <div class="scope-grid">
+        <div class="glass">
+          <h3>Webempresa</h3>
+          <p style="color:var(--muted);line-height:1.65;margin:0 0 16px">Proveedor especializado en WordPress y WooCommerce, con soporte en español y buen enfoque en rendimiento, seguridad y copias de respaldo.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Recomendado si se prioriza estabilidad.</span></li>
+            <li><span class="dot"></span><span>Mejor opción si la tienda va a crecer con muchas imágenes y productos.</span></li>
+            <li><span class="dot"></span><span>Costo en moneda extranjera según plan y promoción vigente.</span></li>
+          </ul>
+        </div>
+        <div class="glass">
+          <h3>DonWeb Argentina</h3>
+          <p style="color:var(--muted);line-height:1.65;margin:0 0 16px">Proveedor local compatible con WordPress/WooCommerce. Puede ser conveniente si JM prefiere contratación nacional, pago local y facturación en Argentina.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Recomendado si se prioriza proveedor argentino.</span></li>
+            <li><span class="dot"></span><span>Puede ser más simple de contratar localmente.</span></li>
+            <li><span class="dot"></span><span>Se debe elegir un plan adecuado para WooCommerce, no el más básico.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="inversion">
+      <div class="section-title">
+        <h2>Inversión</h2>
+        <p>Valores para completar antes de enviar. Recomiendo mantener el presupuesto simple: implementación inicial, hosting externo y mantenimiento opcional.</p>
+      </div>
+      <div class="proposal-grid">
+        <article class="card glass">
+          <span class="badge">Implementación inicial</span>
+          <h3>Web WooCommerce + WhatsApp</h3>
+          <p>Incluye desarrollo, configuración, carrito, pedido por WhatsApp, carga inicial de 50 productos, fotos mejoradas, categorías, textos principales y capacitación breve.</p>
+          <div class="price-box"><div class="big">$__________</div><small>Pago sugerido: 50% al iniciar y 50% contra entrega funcional.</small></div>
+        </article>
+        <article class="card glass">
+          <span class="badge">Opcional mensual</span>
+          <h3>Mantenimiento básico</h3>
+          <p>Actualizaciones de WordPress, plugins, seguridad, copias de respaldo, control de carrito/WhatsApp y asistencia menor.</p>
+          <div class="price-box"><div class="big">$__________ <small>/ mes</small></div><small>No incluye carga ilimitada de productos, campañas, rediseños ni atención diaria de WhatsApp.</small></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title">
+        <h2>Etapas de crecimiento</h2>
+        <p>La primera entrega resuelve la venta digital inicial. Luego se puede avanzar sin rehacer todo.</p>
+      </div>
+      <div class="timeline">
+        <article class="step glass"><strong>Etapa 1</strong><h3>Catálogo + WhatsApp</h3><p>Web, carrito, 50 productos y pedido por WhatsApp.</p></article>
+        <article class="step glass"><strong>Etapa 2</strong><h3>Carga masiva</h3><p>Planilla, actualización de precios y productos nuevos.</p></article>
+        <article class="step glass"><strong>Etapa 3</strong><h3>Automatización</h3><p>Bot, respuestas frecuentes, Instagram y seguimiento.</p></article>
+        <article class="step glass"><strong>Etapa 4</strong><h3>Ecommerce completo</h3><p>Mercado Pago, stock, reportes y pedidos online.</p></article>
+      </div>
+    </section>
+
+    <section class="section final reveal" id="cierre">
+      <div class="final-card">
+        <span class="badge" style="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.18);color:#fff">Recomendación final</span>
+        <h2>Avanzar con WordPress + WooCommerce + WhatsApp.</h2>
+        <p>Es la opción que mejor equilibra control, escalabilidad y costo a largo plazo. Primero se ordena la venta por catálogo y WhatsApp. Después se integran pagos, stock y automatización.</p>
+        <a class="btn btn-light" href="https://wa.me/5492604087086?text=Hola%20NeuroTech,%20queremos%20avanzar%20con%20la%20propuesta%20de%20JM%20Todo%20en%20Descartables." target="_blank" rel="noopener">Confirmar avance por WhatsApp</a>
+      </div>
+      <div class="quote glass">
+        <blockquote>No proponemos una tienda compleja desde el inicio. Proponemos una solución propia, clara y escalable para vender por WhatsApp hoy y crecer hacia ecommerce completo mañana.</blockquote>
+        <p>Próximos pasos: confirmar inversión, elegir hosting, entregar productos iniciales, definir estilo visual del hero, cargar catálogo, probar carrito y publicar.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><strong>NeuroTech Soluciones</strong> · Estrategia, IA y transformación digital aplicada a negocios.</div>
+      <div>San Rafael, Mendoza · @neurotech.soluciones</div>
+    </div>
+  </footer>
+
+  <script>
+    const hoy = new Date();
+    const vigencia = new Date();
+    vigencia.setDate(hoy.getDate() + 7);
+    const formato = { day:'2-digit', month:'2-digit', year:'numeric' };
+    document.getElementById('fechaHoy').textContent = hoy.toLocaleDateString('es-AR', formato);
+    document.getElementById('fechaVigencia').textContent = vigencia.toLocaleDateString('es-AR', formato);
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    const data = {
+      butlers:{cls:'style-butlers',title:'Estilo cálido, hogar y bazar premium',text:'Ideal si JM quiere verse cercano, claro y comercial, con una estética luminosa para mostrar variedad sin parecer mayorista desordenado.',url:'https://www.butlers.com/',name:'Butlers',idea:'Hero con sensación de tienda ordenada, clara y premium.',best:'Cercanía, diseño limpio y producto protagonista.'},
+      cibo:{cls:'style-cibo',title:'Estilo proveedor gastronómico claro y funcional',text:'Una línea visual más directa para comercios, con foco en búsqueda rápida, categorías visibles y compra práctica.',url:'https://cibowares.com/',name:'Cibowares',idea:'Hero orientado a insumos para gastronomía y compras recurrentes.',best:'Claridad, catálogo amplio y navegación comercial.'},
+      restaurant:{cls:'style-restaurant',title:'Estilo ecommerce fuerte para restaurantes',text:'Más comercial y transaccional. Sirve si JM quiere transmitir variedad, stock y soluciones para negocios gastronómicos.',url:'https://www.restaurantware.com/',name:'Restaurantware',idea:'Hero con productos por categoría y foco en comprar rápido.',best:'Venta directa, promociones y mirada B2B.'},
+      supply:{cls:'style-supply',title:'Estilo club de compra moderno',text:'Visual más fresco, simple y digital. Bueno para transmitir ahorro, compra fácil y sistema ordenado.',url:'https://mysupplyclub.com/',name:'My Supply Club',idea:'Hero limpio con mensaje comercial y categorías accesibles.',best:'Modernidad, simpleza y experiencia mobile.'},
+      pack:{cls:'style-pack',title:'Estilo packaging natural y premium',text:'Una estética más cuidada y aspiracional, útil si quieren elevar la percepción de marca y diferenciarse.',url:'https://www.packnwood.com/',name:'PacknWood',idea:'Hero más premium, con producto cuidado y tono internacional.',best:'Imagen de calidad, packaging y presentación superior.'},
+      arbora:{cls:'style-arbora',title:'Estilo descartables sustentables y ordenados',text:'Ideal si JM quiere destacar productos descartables, líneas eco o soluciones para restaurantes con una imagen limpia.',url:'https://arboraproducts.com/product-category/disposable-restaurant-supplies/',name:'Arbora Products',idea:'Hero con estética limpia, natural y orientada a descartables.',best:'Descartables, categorías claras y tono ecológico.'}
+    };
+    const preview = document.getElementById('heroPreview');
+    const title = document.getElementById('previewTitle');
+    const text = document.getElementById('previewText');
+    const link = document.getElementById('previewLink');
+    const refOne = document.getElementById('refOne');
+    const refIdea = document.getElementById('refIdea');
+    const refBest = document.getElementById('refBest');
+    document.querySelectorAll('.tab').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const item = data[btn.dataset.style];
+        preview.className = 'hero-preview ' + item.cls;
+        title.textContent = item.title;
+        text.textContent = item.text;
+        link.href = item.url;
+        refOne.href = item.url;
+        refOne.querySelector('span').textContent = item.name;
+        refIdea.textContent = item.idea;
+        refBest.textContent = item.best;
+      });
+    });
+  </script>
+</body>
+</html>
