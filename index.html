@@ -91,8 +91,25 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
     @keyframes floatGlow{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(34px,24px,0) scale(1.08)}}@keyframes deviceFloat{from{transform:rotateY(-10deg) rotateX(5deg) translateY(0)}to{transform:rotateY(-6deg) rotateX(3deg) translateY(-18px)}}@keyframes floatCard{from{transform:translateY(0)}to{transform:translateY(-16px)}}@keyframes tileFloat{from{transform:translateY(var(--y))}to{transform:translateY(calc(var(--y) - 15px))}}
 
-    @media (max-width:1040px){.nav-links{display:none}.hero-grid,.intro-card,.proposal-grid,.scope-grid,.final{grid-template-columns:1fr}.hero-shell{min-height:auto}.device-wrap{min-height:480px}.section-title{display:block}.section-title p{margin-top:14px}.timeline{grid-template-columns:1fr 1fr}.preview-content{grid-template-columns:1fr}.hero-preview{min-height:720px}.ref-meta{grid-template-columns:1fr}.preview-art{height:260px}}
-    @media (max-width:680px){.hero{padding:12px 0 0}.hero-shell{border-radius:0}.hero-grid{padding:30px 18px}.hero-actions{display:grid}.main{padding:28px 14px 80px}.intro-card,.card,.scope-grid .glass,.ref-stage,.final-card,.quote{padding:24px}.timeline{grid-template-columns:1fr}.device{transform:none;width:100%}.device-wrap{min-height:420px}.float-card{display:none}.hero-preview{min-height:760px}.product-stack{gap:8px}.prod-tile{border-radius:18px}.footer-inner{display:block}.proposal-grid{grid-template-columns:1fr}}
+
+
+    /* Referencias visibles: no dependen de iframes bloqueados */
+    .live-reference-wrap{margin-top:22px;padding:26px;border-radius:28px;background:rgba(255,255,255,.74);border:1px solid rgba(17,24,39,.07);box-shadow:var(--shadow-soft)}
+    .embed-warning{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,214,0,.20),rgba(255,255,255,.72));border:1px solid rgba(255,214,0,.25);color:#344054;line-height:1.5;margin-bottom:18px}
+    .embed-warning strong{display:block;color:var(--deep);margin-bottom:3px}
+    .site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .site-card{position:relative;overflow:hidden;border-radius:24px;background:#fff;border:1px solid rgba(17,24,39,.08);box-shadow:0 18px 44px rgba(17,24,39,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .site-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(17,24,39,.14)}
+    .site-shot{aspect-ratio:16/10;background:linear-gradient(135deg,#F5F7FB,#FFF7C7);overflow:hidden;position:relative;border-bottom:1px solid rgba(17,24,39,.06)}
+    .site-shot img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);transition:transform .35s ease}
+    .site-card:hover .site-shot img{transform:scale(1.045)}
+    .site-shot:after{content:"";position:absolute;inset:auto 0 0 0;height:48%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.18));pointer-events:none}
+    .site-body{padding:18px}.site-body h3{margin:0 0 8px;font-size:21px;letter-spacing:-.04em;color:var(--deep)}.site-body p{margin:0;color:var(--muted);line-height:1.48;font-size:14px;min-height:62px}
+    .site-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.site-actions a,.site-actions button{appearance:none;border:0;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:10px 12px;font-weight:950;font-size:13px;cursor:pointer}.open-site{background:var(--deep);color:#fff}.try-frame{background:rgba(33,0,229,.08);color:var(--nt-blue)}
+    .frame-modal{position:fixed;inset:0;z-index:200;display:none;background:rgba(7,17,31,.72);backdrop-filter:blur(10px);padding:18px}.frame-modal.open{display:grid;place-items:center}.frame-box{width:min(1180px,96vw);height:min(760px,88vh);background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.36);display:grid;grid-template-rows:auto 1fr}.frame-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(17,24,39,.08)}.frame-head strong{font-size:14px}.frame-head a{font-size:13px;font-weight:900;color:var(--nt-blue)}.close-frame{border:0;background:var(--deep);color:#fff;border-radius:999px;padding:9px 12px;font-weight:950;cursor:pointer}.frame-box iframe{width:100%;height:100%;border:0;background:#fff}.frame-note{font-size:12px;color:var(--muted);padding:8px 14px;border-top:1px solid rgba(17,24,39,.06);background:#F8FAFC}
+
+    @media (max-width:1040px){.site-grid{grid-template-columns:1fr 1fr}.nav-links{display:none}.hero-grid,.intro-card,.proposal-grid,.scope-grid,.final{grid-template-columns:1fr}.hero-shell{min-height:auto}.device-wrap{min-height:480px}.section-title{display:block}.section-title p{margin-top:14px}.timeline{grid-template-columns:1fr 1fr}.preview-content{grid-template-columns:1fr}.hero-preview{min-height:720px}.ref-meta{grid-template-columns:1fr}.preview-art{height:260px}}
+    @media (max-width:680px){.site-grid{grid-template-columns:1fr}.hero{padding:12px 0 0}.hero-shell{border-radius:0}.hero-grid{padding:30px 18px}.hero-actions{display:grid}.main{padding:28px 14px 80px}.intro-card,.card,.scope-grid .glass,.ref-stage,.final-card,.quote{padding:24px}.timeline{grid-template-columns:1fr}.device{transform:none;width:100%}.device-wrap{min-height:420px}.float-card{display:none}.hero-preview{min-height:760px}.product-stack{gap:8px}.prod-tile{border-radius:18px}.footer-inner{display:block}.proposal-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -270,6 +287,39 @@
             <div><strong>Conviene si buscan</strong><span id="refBest">Cercanía, diseño limpio y producto protagonista.</span></div>
           </div>
         </div>
+
+        <div class="live-reference-wrap">
+          <div class="embed-warning">
+            <span>⚠️</span>
+            <div><strong>Por qué ahora sí se ven las referencias</strong> Muchos sitios bloquean la vista embebida por seguridad. Por eso esta versión muestra una previsualización visual con captura externa y deja un botón directo para abrir cada web. También incluye “probar vista embebida”, pero si el sitio la bloquea, se abre el enlace original.</div>
+          </div>
+          <div class="site-grid" aria-label="Páginas web de referencia visibles">
+            <article class="site-card">
+              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://www.butlers.com/" alt="Vista previa de Butlers"></div>
+              <div class="site-body"><h3>Butlers</h3><p>Referencia cálida y premium para ordenar productos de bazar, hogar o insumos con una estética clara.</p><div class="site-actions"><a class="open-site" href="https://www.butlers.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://www.butlers.com/" data-name="Butlers">Probar embebida</button></div></div>
+            </article>
+            <article class="site-card">
+              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://cibowares.com/" alt="Vista previa de Cibowares"></div>
+              <div class="site-body"><h3>Cibowares</h3><p>Referencia funcional para proveedores gastronómicos, con categorías visibles y experiencia de compra directa.</p><div class="site-actions"><a class="open-site" href="https://cibowares.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://cibowares.com/" data-name="Cibowares">Probar embebida</button></div></div>
+            </article>
+            <article class="site-card">
+              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://www.restaurantware.com/" alt="Vista previa de Restaurantware"></div>
+              <div class="site-body"><h3>Restaurantware</h3><p>Referencia comercial fuerte para restaurantes, descartables, packaging y compras por volumen.</p><div class="site-actions"><a class="open-site" href="https://www.restaurantware.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://www.restaurantware.com/" data-name="Restaurantware">Probar embebida</button></div></div>
+            </article>
+            <article class="site-card">
+              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://mysupplyclub.com/" alt="Vista previa de My Supply Club"></div>
+              <div class="site-body"><h3>My Supply Club</h3><p>Referencia moderna y simple para vender insumos de manera rápida desde celular.</p><div class="site-actions"><a class="open-site" href="https://mysupplyclub.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://mysupplyclub.com/" data-name="My Supply Club">Probar embebida</button></div></div>
+            </article>
+            <article class="site-card">
+              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://www.packnwood.com/" alt="Vista previa de PacknWood"></div>
+              <div class="site-body"><h3>PacknWood</h3><p>Referencia premium para packaging, descartables y productos con presentación más cuidada.</p><div class="site-actions"><a class="open-site" href="https://www.packnwood.com/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://www.packnwood.com/" data-name="PacknWood">Probar embebida</button></div></div>
+            </article>
+            <article class="site-card">
+              <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/900/https://arboraproducts.com/product-category/disposable-restaurant-supplies/" alt="Vista previa de Arbora Products"></div>
+              <div class="site-body"><h3>Arbora Products</h3><p>Referencia limpia y orientada a descartables, con estética natural y categorías ordenadas.</p><div class="site-actions"><a class="open-site" href="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" target="_blank" rel="noopener">Abrir sitio</a><button class="try-frame" type="button" data-url="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" data-name="Arbora Products">Probar embebida</button></div></div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -355,6 +405,21 @@
     </div>
   </footer>
 
+
+  <div class="frame-modal" id="frameModal" aria-hidden="true">
+    <div class="frame-box" role="dialog" aria-modal="true" aria-label="Vista embebida de referencia">
+      <div class="frame-head">
+        <strong id="frameTitle">Vista embebida</strong>
+        <div style="display:flex;align-items:center;gap:10px">
+          <a id="frameDirect" href="#" target="_blank" rel="noopener">Abrir sitio original</a>
+          <button class="close-frame" type="button" id="closeFrame">Cerrar</button>
+        </div>
+      </div>
+      <iframe id="siteFrame" title="Vista embebida de referencia" loading="lazy"></iframe>
+      <div class="frame-note">Si la página queda en blanco, no es error del código: ese sitio bloquea iframes. Usá “Abrir sitio original”.</div>
+    </div>
+  </div>
+
   <script>
     const hoy = new Date();
     const vigencia = new Date();
@@ -403,6 +468,32 @@
         refBest.textContent = item.best;
       });
     });
+
+
+    const frameModal = document.getElementById('frameModal');
+    const siteFrame = document.getElementById('siteFrame');
+    const frameTitle = document.getElementById('frameTitle');
+    const frameDirect = document.getElementById('frameDirect');
+    const closeFrame = document.getElementById('closeFrame');
+    document.querySelectorAll('.try-frame').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const url = btn.dataset.url;
+        frameTitle.textContent = 'Vista embebida: ' + btn.dataset.name;
+        frameDirect.href = url;
+        siteFrame.src = url;
+        frameModal.classList.add('open');
+        frameModal.setAttribute('aria-hidden','false');
+      });
+    });
+    function cerrarFrame(){
+      frameModal.classList.remove('open');
+      frameModal.setAttribute('aria-hidden','true');
+      siteFrame.src = 'about:blank';
+    }
+    closeFrame.addEventListener('click', cerrarFrame);
+    frameModal.addEventListener('click',(e)=>{ if(e.target === frameModal) cerrarFrame(); });
+    document.addEventListener('keydown',(e)=>{ if(e.key === 'Escape' && frameModal.classList.contains('open')) cerrarFrame(); });
+
   </script>
 </body>
 </html>
