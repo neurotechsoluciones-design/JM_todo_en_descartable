@@ -214,6 +214,24 @@
     #scrollTop{position:fixed;bottom:22px;right:22px;z-index:80;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);pointer-events:none;transition:.4s ease;box-shadow:0 8px 24px rgba(33,0,229,.35)}
     #scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
 
+      /* Tablas: scroll horizontal sin corte */
+      .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+      /* Precio principal: reducir padding en mobile */
+      .precio-inner{padding:36px}
+      @media(max-width:980px){
+        .precio-inner{padding:24px}
+      }
+      @media(max-width:620px){
+        .precio-inner{padding:18px 16px}
+      }
+
+    /* ─── GRIDS INLINE REUTILIZABLES ─── */
+    /* Usados en secciones con grid en style="" para poder sobreescribir en mobile */
+    .grid-price-main{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start}
+    .grid-cierre{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+    .grid-arbora{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    .site-card-wide{grid-column:span 2}
+
     /* ─── MEDIA ─── */
     @media(max-width:980px){
       .nav-links{display:none}
@@ -225,6 +243,15 @@
       .cuota-grid{grid-template-columns:1fr}
       .fb1,.fb2,.fb3{display:none}
       .mock{transform:none;width:min(360px,94%)}
+      /* Grids inline → colapsar */
+      .grid-price-main{grid-template-columns:1fr;gap:20px}
+      .grid-cierre{grid-template-columns:1fr}
+      .grid-arbora{grid-template-columns:1fr}
+      .site-card-wide{grid-column:span 1}
+      /* Precio principal centrado cuando colapsa */
+      .grid-price-main > div:last-child{text-align:left;min-width:unset}
+      /* Cuota grid en inversión */
+      .cuota-grid{grid-template-columns:repeat(3,1fr)}
     }
     @media(max-width:620px){
       .sec-white,.sec-soft,.sec-navy,.sec-navy2{padding:52px 16px}
@@ -232,6 +259,16 @@
       .kpis{grid-template-columns:1fr}
       .hero-inner{padding:40px 16px 48px}
       h1{font-size:38px}
+      /* Tabla: asegurar scroll horizontal visible */
+      .table-wrap{-webkit-overflow-scrolling:touch;border-radius:16px}
+      .table-wrap::after{content:'← deslizá →';display:block;text-align:center;font-size:11px;color:rgba(255,255,255,.3);padding:8px 0 4px;font-family:'Orbitron',sans-serif;letter-spacing:.05em}
+      /* Precio big más pequeño en mobile */
+      .price-big{font-size:clamp(28px,9vw,40px)}
+      /* Cuotas en columna en pantallas muy chicas */
+      .cuota-grid{grid-template-columns:1fr}
+      /* Arbora: apilar imagen arriba */
+      .grid-arbora{grid-template-columns:1fr}
+      .grid-arbora .site-shot{min-height:160px}
     }
   </style>
 </head>
@@ -459,7 +496,7 @@
       <h2 style="color:#fff">Costos reales del mercado</h2>
       <p class="sub-dark" style="margin-top:10px;max-width:620px">Datos verificados al 03/06/2026. No se inventó ningún precio — si un proveedor no lo publica, se indica como "a cotizar".</p>
     </div>
-    <div class="table-wrap card-dark" style="padding:0;overflow:hidden">
+    <div class="table-wrap card-dark" style="padding:0">
       <table class="table table-dark" style="min-width:860px">
         <thead><tr><th>Plataforma</th><th>Precio mensual</th><th>Comisión por venta</th><th>Productos</th><th>Lectura para JM</th></tr></thead>
         <tbody>
@@ -506,15 +543,15 @@
       <div class="card-dark">
         <span class="badge badge-white">Impacto sobre $100.000 vendidos · Tiendanube Esencial</span>
         <div style="margin-top:14px;display:grid;gap:8px">
-          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
             <span style="color:rgba(255,255,255,.6)">Tarjeta / MODO · 1 día</span>
             <strong style="color:#fff">$7.369 cobrado a vos</strong>
           </div>
-          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
             <span style="color:rgba(255,255,255,.6)">Tarjeta / MODO · 14 días</span>
             <strong style="color:#fff">$4.223 cobrado a vos</strong>
           </div>
-          <div style="display:flex;justify-content:space-between;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
             <span style="color:rgba(255,255,255,.6)">Transferencia</span>
             <strong style="color:#fff">$1.815 cobrado a vos</strong>
           </div>
@@ -592,8 +629,8 @@
         </div>
       </div>
 
-      <div class="site-card" style="grid-column:span 2">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+      <div class="site-card site-card-wide">
+        <div class="grid-arbora">
           <div class="site-shot" style="position:relative;border-radius:0">
             <img loading="lazy" src="https://image.thum.io/get/width/800/https://arboraproducts.com/product-category/disposable-restaurant-supplies/" alt="Arbora Products" style="height:100%;min-height:180px">
             <span class="site-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--ink)">Estilo eco · descartables</span>
@@ -621,9 +658,9 @@
     </div>
 
     <!-- Precio principal -->
-    <div style="position:relative;border-radius:var(--radius);padding:1px;overflow:hidden;margin-bottom:18px;background:linear-gradient(135deg,rgba(99,68,255,.5),rgba(154,255,95,.4))">
-      <div style="background:var(--navy2);border-radius:calc(var(--radius) - 1px);padding:36px">
-        <div style="display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start;flex-wrap:wrap">
+    <div class="precio-wrapper" style="position:relative;border-radius:var(--radius);padding:1px;margin-bottom:18px;background:linear-gradient(135deg,rgba(99,68,255,.5),rgba(154,255,95,.4))">
+      <div class="precio-inner" style="background:var(--navy2);border-radius:calc(var(--radius) - 1px);padding:36px">
+        <div class="grid-price-main">
           <div>
             <span class="badge badge-green-inv" style="margin-bottom:16px">Desarrollo completo · Opción recomendada</span>
             <h3 style="color:#fff;font-size:clamp(20px,2.5vw,28px)">Tu tienda online propia + WhatsApp + 2 Clases de capacitación</h3>
@@ -692,7 +729,7 @@
     <!-- Tabla comparativa -->
     <div style="margin-top:18px">
       <h3 style="color:#fff;margin-bottom:14px;font-size:18px">Resumen comparativo de opciones</h3>
-      <div class="table-wrap card-dark" style="padding:0;overflow:hidden">
+      <div class="table-wrap card-dark" style="padding:0">
         <table class="table table-dark" style="min-width:720px">
           <thead><tr><th>Opción</th><th>Inversión NeuroTech</th><th>Cuotas</th><th>Mensual externo</th><th>Comisión/venta</th><th>Mantenimiento</th></tr></thead>
           <tbody>
@@ -771,12 +808,12 @@
 <!-- PRÓXIMOS PASOS Y CIERRE (OSCURO) -->
 <section id="cierre" class="sec-navy2 reveal">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+    <div class="grid-cierre">
       <div>
         <span class="badge badge-green-inv">Próximos pasos</span>
         <h2 style="color:#fff;margin-top:12px">¿Arrancamos?</h2>
         <p class="lead-dark" style="margin-top:12px;max-width:480px">La propuesta no busca complejidad desde el inicio. Busca que JM empiece a vender online con catálogo claro, pedido por WhatsApp y una estructura que puede crecer sin rehacer nada.</p>
-        <div class="kpis" style="grid-template-columns:1fr 1fr;margin-top:22px">
+        <div class="kpis" style="margin-top:22px">
           <div class="kpi" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
             <strong style="color:var(--green)">1</strong>
             <span style="color:rgba(255,255,255,.55)">Confirmamos la propuesta</span>
