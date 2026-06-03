@@ -4,919 +4,523 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Propuesta Comercial | JM Todo en Descartables × NeuroTech</title>
-  <meta name="description" content="Propuesta comercial para JM Todo en Descartables: tienda online propia, catálogo, WhatsApp y crecimiento por etapas." />
+  <meta name="description" content="Propuesta comercial para JM Todo en Descartables: sistema de ventas digitales con catálogo online, WhatsApp, bot, email, Instagram y crecimiento por etapas." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
     :root{
-      --blue:#2100E5; --blue-l:#6344FF; --green:#9AFF5F; --green-d:#12B76A;
-      --ink:#0D1117; --mid:#344054; --muted:#667085; --line:rgba(13,17,23,.09);
-      --navy:#07111F; --navy2:#0B1929;
-      --soft:#F4F6FA; --paper:#fff;
-      --red:#B42318; --amber:#B54708;
-      --shadow:0 24px 64px rgba(13,17,23,.12);
-      --shadow-s:0 10px 32px rgba(13,17,23,.08);
-      --radius:26px; --sans:'Inter',system-ui,sans-serif;
+      --blue:#2100E5; --blue2:#654BFF; --green:#9AFF5F; --green2:#12B76A;
+      --ink:#0D1117; --mid:#344054; --muted:#667085; --line:rgba(13,17,23,.1);
+      --navy:#07111F; --navy2:#0B1929; --soft:#F4F6FA; --paper:#fff;
+      --red:#B42318; --amber:#B54708; --violet:#8B5CF6;
+      --shadow:0 24px 64px rgba(13,17,23,.12); --shadow2:0 12px 34px rgba(13,17,23,.08);
+      --radius:26px; --font:'Inter',system-ui,sans-serif; --orb:'Orbitron',system-ui,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:var(--sans);color:var(--ink);overflow-x:hidden;background:#fff}
-    a{color:inherit;text-decoration:none}
+    body{font-family:var(--font);color:var(--ink);background:#fff;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
-
-    /* ─── NAV ─── */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-    .nav-in{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;color:var(--ink);letter-spacing:-.02em}
-    .brand img{height:36px;width:auto}
-    .brand-fallback{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--blue),#654BFF,var(--green));flex-shrink:0}
-    .nav-links{display:flex;gap:14px;font-size:13px;font-weight:700;color:var(--muted)}
-    .nav-links a:hover{color:var(--blue)}
-    .nav-pill{padding:7px 14px;border-radius:999px;background:rgba(33,0,229,.08);border:1px solid rgba(33,0,229,.15);font-size:12px;font-weight:800;color:var(--blue);white-space:nowrap}
-
-    /* ─── SECCIÓN CLARO ─── */
-    .sec-white{background:#fff;padding:72px 20px}
-    .sec-soft{background:var(--soft);padding:72px 20px}
-    /* ─── SECCIÓN OSCURA ─── */
-    .sec-navy{background:var(--navy);padding:72px 20px;color:#fff}
-    .sec-navy2{background:var(--navy2);padding:72px 20px;color:#fff}
-    .sec-hero{background:var(--navy);padding:0}
-
-    .wrap{max-width:1160px;margin:auto}
-
-    /* ─── TIPOGRAFÍA ─── */
-    .orb{font-family:'Orbitron',sans-serif}
-    h1{font-size:clamp(38px,6.5vw,80px);line-height:.92;letter-spacing:-.07em;font-weight:900}
-    h2{font-size:clamp(30px,4.5vw,56px);line-height:.96;letter-spacing:-.065em;font-weight:800;margin-bottom:8px}
-    h3{font-size:clamp(20px,2.2vw,28px);letter-spacing:-.04em;font-weight:800;margin-bottom:8px}
-    .lead{font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:var(--mid)}
-    .lead-dark{font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:rgba(255,255,255,.72)}
-    .sub{font-size:15px;line-height:1.65;color:var(--muted)}
-    .sub-dark{font-size:15px;line-height:1.65;color:rgba(255,255,255,.58)}
-    .grad{background:linear-gradient(135deg,var(--blue),#6E5CFF 45%,#64C842);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .grad-light{background:linear-gradient(135deg,#fff 0%,#C8D8FF 40%,var(--green) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-
-    /* ─── SECTION HEADER ─── */
-    .sh{margin-bottom:36px}
-    .sh-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .sh p{max-width:560px;margin-top:12px}
-
-    /* ─── BADGE ─── */
-    .badge{display:inline-flex;padding:6px 13px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-family:'Orbitron',sans-serif;margin-bottom:12px}
-    .badge-blue{background:rgba(33,0,229,.09);border:1px solid rgba(33,0,229,.18);color:var(--blue)}
-    .badge-green{background:rgba(18,183,106,.1);border:1px solid rgba(18,183,106,.25);color:#0A6E3A}
-    .badge-green-inv{background:rgba(154,255,95,.12);border:1px solid rgba(154,255,95,.3);color:var(--green)}
-    .badge-muted{background:rgba(13,17,23,.06);border:1px solid rgba(13,17,23,.12);color:var(--muted)}
-    .badge-white{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85)}
-    .badge-amber{background:rgba(181,71,8,.09);border:1px solid rgba(181,71,8,.2);color:var(--amber)}
-
-    /* ─── GRID ─── */
-    .g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-
-    /* ─── CARDS CLARO ─── */
-    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-s)}
-    .card-soft{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
-    .card-rec{background:#fff;border:2px solid var(--blue);border-radius:var(--radius);padding:28px;box-shadow:0 0 0 4px rgba(33,0,229,.06),var(--shadow-s)}
-    /* ─── CARDS OSCURO ─── */
-    .card-dark{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px}
-    .card-dark-rec{background:rgba(154,255,95,.05);border:1px solid rgba(154,255,95,.25);border-radius:var(--radius);padding:28px}
-
-    /* ─── BOTONES ─── */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:13px 22px;border-radius:999px;font-weight:800;font-size:14px;transition:.22s ease;cursor:pointer;border:none}
-    .btn-dark{background:var(--navy);color:#fff;box-shadow:0 14px 36px rgba(7,17,31,.18)}
-    .btn-dark:hover{background:var(--blue);transform:translateY(-2px)}
-    .btn-blue{background:var(--blue);color:#fff;box-shadow:0 14px 36px rgba(33,0,229,.22)}
-    .btn-blue:hover{background:#1800c8;transform:translateY(-2px)}
-    .btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
-    .btn-outline:hover{background:var(--blue);color:#fff}
-    .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}
-    .btn-ghost:hover{background:rgba(255,255,255,.16)}
-    .btn-green{background:var(--green);color:var(--navy);font-weight:900;box-shadow:0 14px 36px rgba(154,255,95,.25)}
-    .btn-green:hover{transform:translateY(-2px);box-shadow:0 20px 48px rgba(154,255,95,.35)}
-
-    /* ─── LISTAS ─── */
-    .list{list-style:none;display:grid;gap:9px;margin-top:14px}
-    .list li{display:flex;gap:9px;line-height:1.45;font-size:14px;color:var(--mid)}
-    .list-dark li{color:rgba(255,255,255,.7)}
-    .ic-check{color:var(--green-d);font-size:18px;flex-shrink:0;margin-top:1px}
-    .ic-check-inv{color:var(--green);font-size:18px;flex-shrink:0;margin-top:1px}
-    .ic-warn{color:var(--amber);font-size:18px;flex-shrink:0;margin-top:1px}
-    .ic-bad{color:var(--red);font-size:18px;flex-shrink:0;margin-top:1px}
-
-    /* ─── TABLA ─── */
-    .table-wrap{overflow-x:auto;border-radius:var(--radius)}
-    .table{width:100%;min-width:800px;border-collapse:collapse;background:#fff}
-    .table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:14px 16px;text-align:left;border-bottom:2px solid var(--soft);background:var(--soft);font-family:'Orbitron',sans-serif}
-    .table td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:13.5px;line-height:1.5;color:var(--mid)}
-    .table tr:last-child td{border-bottom:0}
-    .table tr:hover td{background:rgba(33,0,229,.02)}
-    .row-good{background:rgba(18,183,106,.05)}
-    .row-warn{background:rgba(255,196,0,.07)}
-    .row-rec{background:rgba(33,0,229,.04)!important}
-    
-    
-
-    /* ─── TABLE DARK ─── */
-    .table-dark{background:transparent}
-    .table-dark th{background:rgba(255,255,255,.04);color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.08)}
-    .table-dark td{color:rgba(255,255,255,.72);border-bottom:1px solid rgba(255,255,255,.06)}
-    .table-dark tr:hover td{background:rgba(255,255,255,.03)}
-
-    /* ─── TOTALBOX ─── */
-    .totalbox{background:var(--navy);color:#fff;border-radius:var(--radius);padding:30px}
-    .price-big{font-size:clamp(34px,5vw,52px);font-weight:900;letter-spacing:-.06em;font-family:'Orbitron',sans-serif;line-height:1}
-
-    /* ─── CALLOUT ─── */
-    .callout{padding:26px;border-radius:20px;background:linear-gradient(135deg,rgba(33,0,229,.07),rgba(33,0,229,.03));border:1px solid rgba(33,0,229,.15)}
-    .callout-green{padding:26px;border-radius:20px;background:linear-gradient(135deg,rgba(18,183,106,.08),rgba(18,183,106,.03));border:1px solid rgba(18,183,106,.2)}
-    .callout-dark{padding:26px;border-radius:20px;background:rgba(154,255,95,.05);border:1px solid rgba(154,255,95,.18)}
-    .callout strong{display:block;font-size:18px;letter-spacing:-.025em;margin-bottom:8px;color:var(--ink)}
-    .callout-dark strong{color:#fff}
-    .callout p{font-size:14px;line-height:1.65;color:var(--mid)}
-    .callout-dark p{color:rgba(255,255,255,.65)}
-
-    /* ─── KPIS ─── */
-    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .kpi{padding:20px;border-radius:20px;background:#fff;border:1px solid var(--line)}
-    .kpi strong{display:block;font-size:clamp(22px,3vw,32px);letter-spacing:-.05em;font-family:'Orbitron',sans-serif;color:var(--blue)}
-    .kpi span{font-size:13px;color:var(--muted);font-weight:600;margin-top:4px;display:block}
-
-    /* ─── SITE CARDS ─── */
-    .site-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 24px rgba(13,17,23,.07);transition:.3s ease}
-    .site-card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(33,0,229,.12);border-color:rgba(33,0,229,.18)}
-    .site-shot{aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
-    .site-shot img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-    .site-card:hover .site-shot img{transform:scale(1.04)}
-    .site-body{padding:16px}
-    .site-body h4{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px}
-    .site-body p{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:12px;min-height:38px}
-    .site-tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-
-    /* ─── HERO ─── */
-    .hero-inner{max-width:1200px;margin:auto;padding:80px 20px 90px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;min-height:640px}
-    .mock-device{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}
-    .mock{width:min(420px,94%);border-radius:30px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 90px rgba(0,0,0,.35);padding:16px;backdrop-filter:blur(6px)}
-    .mock-screen{border-radius:20px;overflow:hidden;background:#fff}
-    .mock-banner{height:130px;background:linear-gradient(135deg,#EEF1FF,#F8FAFF,#E8F8FF);display:flex;align-items:end;padding:18px}
-    .mock-banner strong{font-size:22px;line-height:1;letter-spacing:-.05em;color:var(--ink)}
-    .mock-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
-    .mock-prod{height:80px;border-radius:14px;background:linear-gradient(180deg,#fff,#F4F6FA);border:1px solid var(--line);padding:8px;display:flex;flex-direction:column;justify-content:end}
-    .mock-prod span{height:30px;border-radius:8px;background:linear-gradient(135deg,#EEF0F4,#DDE8FF)}
-    .mock-prod small{font-size:10px;font-weight:800;color:var(--muted);margin-top:6px}
-    .mock-cart{margin:0 12px 14px;padding:12px;border-radius:14px;background:var(--navy);color:#fff;display:flex;justify-content:space-between;font-weight:800;font-size:13px}
-    .float-badge{position:absolute;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:11px 14px;font-weight:800;font-size:13px;color:var(--ink);box-shadow:var(--shadow-s)}
-    .fb1{top:24px;left:-6px}
-    .fb2{bottom:60px;right:-10px}
-    .fb3{top:200px;right:-14px}
-
-    /* ─── GURU CARD ─── */
-    .guru-card{background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(244,246,250,.97));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-    .guru-browser{background:var(--soft);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
-    .dot{width:10px;height:10px;border-radius:50%}
-    .dot-r{background:#FF5F57}.dot-y{background:#FFBD2E}.dot-g{background:#28C840}
-    .browser-bar{flex:1;background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:11px;color:var(--muted);font-weight:600}
-
-    /* ─── CUOTAS ─── */
-    .cuota-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-    .cuota{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);text-align:center}
-    .cuota strong{display:block;font-family:'Orbitron',sans-serif;font-size:16px;color:#fff;letter-spacing:-.03em}
-    .cuota span{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;display:block}
-
-    /* ─── STEP TIMELINE ─── */
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .step{padding:22px;border-radius:22px;position:relative}
-    /* border-left removed */
-    
-    
-    
-    
-    .step-num{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:8px;display:block}
-
-    /* ─── REVEAL ─── */
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-
-    /* ─── FOOTER ─── */
-    footer{background:#020202;padding:48px 20px 32px;color:rgba(255,255,255,.5);font-size:13px}
-    .footer-in{max-width:1000px;margin:auto;text-align:center}
-    .footer-icons{display:flex;justify-content:center;gap:36px;margin-bottom:32px;flex-wrap:wrap}
-    .footer-icon{display:flex;flex-direction:column;align-items:center;gap:8px;transition:.25s;text-decoration:none}
-    .footer-icon:hover{transform:translateY(-3px)}
-    .footer-icon span{font-size:10px;font-family:'Orbitron',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);transition:.25s}
-    .footer-icon:hover span{color:var(--green)}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:22px;space-y:8px}
-
-    /* ─── SCROLL TOP ─── */
-    #scrollTop{position:fixed;bottom:22px;right:22px;z-index:80;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);pointer-events:none;transition:.4s ease;box-shadow:0 8px 24px rgba(33,0,229,.35)}
-    #scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
-
-      /* Tablas: scroll horizontal sin corte */
-      .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-      /* Precio principal: reducir padding en mobile */
-      .precio-inner{padding:36px}
-      @media(max-width:980px){
-        .precio-inner{padding:24px}
-      }
-      @media(max-width:620px){
-        .precio-inner{padding:18px 16px}
-      }
-
-    /* ─── GRIDS INLINE REUTILIZABLES ─── */
-    /* Usados en secciones con grid en style="" para poder sobreescribir en mobile */
-    .grid-price-main{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start}
-    .grid-cierre{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-    .grid-arbora{display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .site-card-wide{grid-column:span 2}
-
-    /* ─── MEDIA ─── */
-    @media(max-width:980px){
-      .nav-links{display:none}
-      .hero-inner{grid-template-columns:1fr;min-height:auto;padding:52px 20px 60px}
-      .mock-device{min-height:360px}
-      .g2,.g3,.g4,.steps{grid-template-columns:1fr}
-      .sh-row{display:block}
-      .kpis{grid-template-columns:1fr 1fr}
-      .cuota-grid{grid-template-columns:1fr}
-      .fb1,.fb2,.fb3{display:none}
-      .mock{transform:none;width:min(360px,94%)}
-      /* Grids inline → colapsar */
-      .grid-price-main{grid-template-columns:1fr;gap:20px}
-      .grid-cierre{grid-template-columns:1fr}
-      .grid-arbora{grid-template-columns:1fr}
-      .site-card-wide{grid-column:span 1}
-      /* Precio principal centrado cuando colapsa */
-      .grid-price-main > div:last-child{text-align:left;min-width:unset}
-      /* Cuota grid en inversión */
-      .cuota-grid{grid-template-columns:repeat(3,1fr)}
-    }
-    @media(max-width:620px){
-      .sec-white,.sec-soft,.sec-navy,.sec-navy2{padding:52px 16px}
-      .card,.card-soft,.card-rec,.card-dark,.card-dark-rec,.totalbox{padding:20px}
-      .kpis{grid-template-columns:1fr}
-      .hero-inner{padding:40px 16px 48px}
-      h1{font-size:38px}
-      /* Tabla: asegurar scroll horizontal visible */
-      .table-wrap{-webkit-overflow-scrolling:touch;border-radius:16px}
-      .table-wrap::after{content:'← deslizá →';display:block;text-align:center;font-size:11px;color:rgba(255,255,255,.3);padding:8px 0 4px;font-family:'Orbitron',sans-serif;letter-spacing:.05em}
-      /* Precio big más pequeño en mobile */
-      .price-big{font-size:clamp(28px,9vw,40px)}
-      /* Cuotas en columna en pantallas muy chicas */
-      .cuota-grid{grid-template-columns:1fr}
-      /* Arbora: apilar imagen arriba */
-      .grid-arbora{grid-template-columns:1fr}
-      .grid-arbora .site-shot{min-height:160px}
-    }
+    .orb{font-family:var(--orb)}
+    .nav{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-in{max-width:1180px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:15px;letter-spacing:-.02em}
+    .brand img{height:36px;width:auto}.brand-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--green));box-shadow:0 12px 28px rgba(33,0,229,.2)}
+    .nav-links{display:flex;gap:16px;font-size:13px;font-weight:800;color:var(--muted)}.nav-links a:hover{color:var(--blue)}
+    .nav-pill{padding:7px 14px;border-radius:999px;background:rgba(33,0,229,.08);border:1px solid rgba(33,0,229,.16);color:var(--blue);font-size:12px;font-weight:900;white-space:nowrap}
+    section{position:relative}.sec-hero{background:radial-gradient(circle at 80% 10%,rgba(154,255,95,.16),transparent 28%),radial-gradient(circle at 10% 20%,rgba(33,0,229,.34),transparent 32%),var(--navy);color:#fff}.sec-white{background:#fff;padding:74px 20px}.sec-soft{background:var(--soft);padding:74px 20px}.sec-navy{background:var(--navy);color:#fff;padding:74px 20px}.sec-navy2{background:var(--navy2);color:#fff;padding:74px 20px}
+    .wrap{max-width:1160px;margin:auto}.hero{max-width:1180px;margin:auto;min-height:660px;padding:84px 20px 90px;display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+    h1{font-size:clamp(38px,6.2vw,78px);line-height:.92;letter-spacing:-.075em;font-weight:900;font-family:var(--orb)}
+    h2{font-size:clamp(30px,4.3vw,56px);line-height:.98;letter-spacing:-.065em;font-weight:900;margin-bottom:10px}
+    h3{font-size:clamp(20px,2.2vw,28px);letter-spacing:-.045em;font-weight:900;margin-bottom:8px}
+    .lead{font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:var(--mid)}.lead-dark{font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:rgba(255,255,255,.74)}
+    .sub{font-size:15px;line-height:1.65;color:var(--muted)}.sub-dark{font-size:15px;line-height:1.65;color:rgba(255,255,255,.62)}
+    .grad{background:linear-gradient(135deg,var(--blue),#6E5CFF 45%,#58C936);-webkit-background-clip:text;background-clip:text;color:transparent}.grad-light{background:linear-gradient(135deg,#fff 0%,#D9E4FF 40%,var(--green) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-family:var(--orb);margin-bottom:14px}.badge-blue{background:rgba(33,0,229,.09);border:1px solid rgba(33,0,229,.18);color:var(--blue)}.badge-green{background:rgba(18,183,106,.1);border:1px solid rgba(18,183,106,.25);color:#087443}.badge-amber{background:rgba(181,71,8,.09);border:1px solid rgba(181,71,8,.22);color:var(--amber)}.badge-white{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.82)}.badge-green-inv{background:rgba(154,255,95,.12);border:1px solid rgba(154,255,95,.32);color:var(--green)}.badge-muted{background:rgba(13,17,23,.06);border:1px solid rgba(13,17,23,.12);color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:13px 22px;border-radius:999px;font-weight:900;font-size:14px;transition:.22s ease;border:0;cursor:pointer}.btn-green{background:var(--green);color:var(--navy);box-shadow:0 16px 42px rgba(154,255,95,.25)}.btn-green:hover,.btn-blue:hover,.btn-dark:hover{transform:translateY(-2px)}.btn-blue{background:var(--blue);color:#fff;box-shadow:0 16px 42px rgba(33,0,229,.22)}.btn-dark{background:var(--navy);color:#fff}.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}.btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue);min-height:42px;padding:9px 16px;font-size:13px}
+    .sh{margin-bottom:36px}.sh p{margin-top:10px;max-width:660px}.sh-row{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow2)}.card-soft{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:28px}.card-rec{background:#fff;border:2px solid var(--blue);border-radius:var(--radius);padding:28px;box-shadow:0 0 0 4px rgba(33,0,229,.06),var(--shadow2)}.card-dark{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.085);border-radius:var(--radius);padding:28px}.card-dark-rec{background:rgba(154,255,95,.055);border:1px solid rgba(154,255,95,.24);border-radius:var(--radius);padding:28px}
+    .list{list-style:none;display:grid;gap:9px;margin-top:14px}.list li{display:flex;gap:9px;line-height:1.45;font-size:14px;color:var(--mid)}.list-dark li{color:rgba(255,255,255,.7)}.ic-check{color:var(--green2);font-size:18px;flex-shrink:0;margin-top:1px}.ic-check-inv{color:var(--green);font-size:18px;flex-shrink:0;margin-top:1px}.ic-warn{color:#FDB022;font-size:18px;flex-shrink:0;margin-top:1px}.ic-bad{color:#F97066;font-size:18px;flex-shrink:0;margin-top:1px}
+    .mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.mini-kpi{padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mini-kpi strong{display:block;font-family:var(--orb);font-size:24px;color:var(--green)}.mini-kpi span{font-size:12px;color:rgba(255,255,255,.58);line-height:1.45;font-weight:700}
+    .mock-device{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}.mock{width:min(430px,94%);border-radius:32px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);box-shadow:0 44px 100px rgba(0,0,0,.38);padding:16px;backdrop-filter:blur(8px)}.mock-screen{border-radius:22px;overflow:hidden;background:#fff}.mock-banner{height:130px;background:linear-gradient(135deg,#EEF1FF,#F8FAFF,#E8F8FF);display:flex;align-items:end;padding:18px}.mock-banner strong{font-size:22px;line-height:1;letter-spacing:-.05em;color:var(--ink)}.mock-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}.mock-prod{height:82px;border-radius:14px;background:linear-gradient(180deg,#fff,#F4F6FA);border:1px solid var(--line);padding:8px;display:flex;flex-direction:column;justify-content:end}.mock-prod span{height:30px;border-radius:8px;background:linear-gradient(135deg,#EEF0F4,#DDE8FF)}.mock-prod small{font-size:10px;font-weight:900;color:var(--muted);margin-top:6px}.mock-cart{margin:0 12px 12px;padding:12px;border-radius:14px;background:var(--navy);color:#fff;display:flex;justify-content:space-between;font-weight:900;font-size:13px}.mock-bot{margin:0 12px 14px;padding:12px;border-radius:14px;background:rgba(33,0,229,.08);border:1px solid rgba(33,0,229,.15);font-size:12px;color:var(--mid);line-height:1.45}.float-badge{position:absolute;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:11px 14px;font-weight:900;font-size:13px;color:var(--ink);box-shadow:var(--shadow2)}.fb1{top:24px;left:-4px}.fb2{bottom:60px;right:-10px}.fb3{top:196px;right:-14px}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.flow-card{position:relative;padding:22px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow2)}.flow-card span{font-family:var(--orb);font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);font-weight:900}.flow-card h3{font-size:17px;margin-top:8px}.flow-card p{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:6px}
+    .table-wrap{overflow-x:auto;border-radius:var(--radius);-webkit-overflow-scrolling:touch}.table{width:100%;min-width:820px;border-collapse:collapse;background:#fff}.table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:14px 16px;text-align:left;border-bottom:2px solid var(--soft);background:var(--soft);font-family:var(--orb)}.table td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:13.5px;line-height:1.5;color:var(--mid)}.table tr:last-child td{border-bottom:0}.table-dark{background:transparent}.table-dark th{background:rgba(255,255,255,.04);color:rgba(255,255,255,.46);border-bottom:1px solid rgba(255,255,255,.08)}.table-dark td{color:rgba(255,255,255,.72);border-bottom:1px solid rgba(255,255,255,.06)}.row-rec{background:rgba(154,255,95,.05)!important}.row-warn{background:rgba(255,196,0,.06)!important}.row-bad{background:rgba(240,68,56,.05)!important}
+    .price-card{position:relative;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg,rgba(99,68,255,.55),rgba(154,255,95,.42));box-shadow:0 30px 80px rgba(0,0,0,.18)}.price-inner{background:var(--navy2);border-radius:calc(var(--radius) - 1px);padding:36px}.price-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start}.price-big{font-size:clamp(36px,5vw,54px);font-family:var(--orb);font-weight:900;letter-spacing:-.06em;line-height:1;background:linear-gradient(135deg,#fff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}.cuota-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.cuota{padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);text-align:center}.cuota strong{display:block;font-family:var(--orb);font-size:16px;color:#fff}.cuota span{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;display:block}
+    .site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.site-card{background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow2);transition:.25s ease}.site-card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(33,0,229,.12)}.site-shot{aspect-ratio:16/10;overflow:hidden;background:var(--soft);position:relative}.site-shot img{width:100%;height:100%;object-fit:cover}.site-body{padding:16px}.site-body h4{font-size:15px;font-weight:900;margin-bottom:5px}.site-body p{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:10px}.site-tag{position:absolute;top:12px;left:12px;display:inline-block;padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.9);font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step-num{font-family:var(--orb);font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;margin-bottom:8px;display:block}.callout{padding:24px;border-radius:20px;background:linear-gradient(135deg,rgba(33,0,229,.07),rgba(33,0,229,.03));border:1px solid rgba(33,0,229,.15)}.callout-green{padding:24px;border-radius:20px;background:linear-gradient(135deg,rgba(18,183,106,.08),rgba(18,183,106,.03));border:1px solid rgba(18,183,106,.2)}.callout-dark{padding:24px;border-radius:20px;background:rgba(154,255,95,.055);border:1px solid rgba(154,255,95,.18)}.callout strong,.callout-green strong,.callout-dark strong{display:block;font-size:18px;letter-spacing:-.025em;margin-bottom:8px}.callout p,.callout-green p{font-size:14px;line-height:1.65;color:var(--mid)}.callout-dark p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.65)}
+    .accordion{display:grid;gap:10px}.faq{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.085);border-radius:18px;padding:18px}.faq strong{display:block;color:#fff;margin-bottom:6px}.faq p{font-size:14px;color:rgba(255,255,255,.62);line-height:1.6}
+    footer{background:#020202;padding:48px 20px 32px;color:rgba(255,255,255,.5);font-size:13px}.footer-in{max-width:1000px;margin:auto;text-align:center}.footer-icons{display:flex;justify-content:center;gap:36px;margin-bottom:28px;flex-wrap:wrap}.footer-icon{display:flex;flex-direction:column;align-items:center;gap:8px;transition:.25s}.footer-icon:hover{transform:translateY(-3px)}.footer-icon span{font-size:10px;font-family:var(--orb);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:22px}
+    #scrollTop{position:fixed;bottom:22px;right:22px;z-index:80;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);pointer-events:none;transition:.35s ease;box-shadow:0 8px 24px rgba(33,0,229,.35)}#scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:980px){.nav-links{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:54px 20px 62px}.mock-device{min-height:360px}.g2,.g3,.g4,.flow,.timeline,.site-grid{grid-template-columns:1fr}.price-grid{grid-template-columns:1fr}.price-grid>div:last-child{text-align:left;min-width:unset}.mini-kpis{grid-template-columns:1fr 1fr}.fb1,.fb2,.fb3{display:none}.mock{width:min(370px,94%)}}
+    @media(max-width:620px){.sec-white,.sec-soft,.sec-navy,.sec-navy2{padding:54px 16px}.hero{padding:42px 16px 52px}h1{font-size:38px}.card,.card-soft,.card-rec,.card-dark,.card-dark-rec,.price-inner{padding:20px}.mini-kpis{grid-template-columns:1fr}.cuota-grid{grid-template-columns:1fr}.table-wrap::after{content:'deslizá la tabla';display:block;text-align:center;font-size:11px;color:rgba(255,255,255,.35);padding:8px 0 4px;font-family:var(--orb);letter-spacing:.05em}.price-big{font-size:36px}}
   </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-in">
     <div class="brand">
-      <img src="https://github.com/neurotechsoluciones-design/neurotech-assets/blob/main/logo_neurotech.gif?raw=true"
-           alt="NeuroTech" onerror="this.style.display='none';document.getElementById('brand-fb').style.display='block'">
-      <span id="brand-fb" style="display:none" class="brand-fallback"></span>
+      <img src="https://github.com/neurotechsoluciones-design/neurotech-assets/blob/main/logo_neurotech.gif?raw=true" alt="NeuroTech" onerror="this.style.display='none';document.getElementById('brandMark').style.display='block'">
+      <span id="brandMark" class="brand-mark" style="display:none"></span>
       <span>NeuroTech</span>
     </div>
     <div class="nav-links">
-      <a href="#actual">Sitio actual</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#funciona">Funcionamiento</a>
       <a href="#propuesta">Propuesta</a>
-      <a href="#referencias">Referencias</a>
       <a href="#inversion">Inversión</a>
-      <a href="#cierre">Contacto</a>
+      <a href="#cierre">Avanzar</a>
     </div>
     <span class="nav-pill">JM Descartables</span>
   </div>
 </nav>
 
-<!-- HERO (OSCURO) -->
 <section class="sec-hero">
-  <div class="hero-inner">
+  <div class="hero">
     <div>
-      <span class="badge badge-green-inv orb" style="margin-bottom:18px">Propuesta comercial · <span id="fechaHoy"></span></span>
-      <h1 class="grad-light" style="font-family:'Orbitron',sans-serif">Tu tienda<br>sin pagar<br>comisiones.</h1>
-      <p class="lead-dark" style="max-width:540px;margin-top:22px">Una tienda online que es 100% tuya: catálogo propio, carrito de compras y pedido directo por WhatsApp. Sin pagar comisiones a terceros por cada venta que cerrás.</p>
+      <span class="badge badge-green-inv">Propuesta comercial · <span id="fechaHoy"></span></span>
+      <h1 class="grad-light">Que cada consulta tenga un camino de venta.</h1>
+      <p class="lead-dark" style="max-width:600px;margin-top:22px">JM no necesita solamente una web más atractiva. Necesita un sistema simple para mostrar productos, recibir pedidos ordenados, responder más rápido y preparar el crecimiento hacia WhatsApp, Instagram, IA, pagos y stock.</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
         <a class="btn btn-green" href="#inversion"><i class="ph-duotone ph-currency-circle-dollar"></i>Ver inversión</a>
-        <a class="btn btn-ghost" href="#propuesta"><i class="ph-duotone ph-arrow-right"></i>Ver propuesta</a>
+        <a class="btn btn-ghost" href="#funciona"><i class="ph-duotone ph-flow-arrow"></i>Ver cómo funciona</a>
+      </div>
+      <div class="mini-kpis">
+        <div class="mini-kpi"><strong>1</strong><span>Catálogo con productos organizados</span></div>
+        <div class="mini-kpi"><strong>2</strong><span>Pedido armado por WhatsApp</span></div>
+        <div class="mini-kpi"><strong>3</strong><span>Bot y presupuesto por email</span></div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
-        <span style="padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.55)">Cliente: <strong style="color:rgba(255,255,255,.85)">JM Todo en Descartables</strong></span>
-        <span style="padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.55)">Válida hasta: <strong style="color:rgba(255,255,255,.85)" id="fechaVig"></strong></span>
+        <span style="padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.55)">Cliente: <strong style="color:rgba(255,255,255,.86)">JM Todo en Descartables</strong></span>
+        <span style="padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.55)">Vigencia: <strong style="color:rgba(255,255,255,.86)" id="fechaVig"></strong></span>
       </div>
     </div>
     <div class="mock-device" aria-hidden="true">
-      <div class="float-badge fb1"><i class="ph-duotone ph-package" style="color:var(--blue)"></i> Catálogo ordenado</div>
-      <div class="float-badge fb2"><i class="ph-duotone ph-whatsapp-logo" style="color:#25D366"></i> Pedido por WhatsApp</div>
-      <div class="float-badge fb3"><i class="ph-duotone ph-chart-line-up" style="color:var(--green-d)"></i> Escala cuando quieras</div>
+      <div class="float-badge fb1"><i class="ph-duotone ph-package" style="color:var(--blue)"></i> Producto encontrado</div>
+      <div class="float-badge fb2"><i class="ph-duotone ph-whatsapp-logo" style="color:#25D366"></i> Pedido enviado</div>
+      <div class="float-badge fb3"><i class="ph-duotone ph-robot" style="color:var(--green2)"></i> Bot responde</div>
       <div class="mock">
         <div class="mock-screen">
-          <div class="mock-banner"><strong>JM Descartables<br>Catálogo 2026</strong></div>
+          <div class="mock-banner"><strong>JM Descartables<br>Catálogo online</strong></div>
           <div class="mock-prods">
             <div class="mock-prod"><span></span><small>Vasos</small></div>
             <div class="mock-prod"><span></span><small>Bandejas</small></div>
             <div class="mock-prod"><span></span><small>Bolsas</small></div>
           </div>
-          <div class="mock-cart"><span>🛒 Tu pedido</span><span>Enviar por WhatsApp →</span></div>
+          <div class="mock-cart"><span>Pedido armado</span><span>WhatsApp</span></div>
+          <div class="mock-bot"><strong>Bot de catálogo:</strong> responde consultas frecuentes y envía la solicitud de presupuesto al email de JM.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SITIO ACTUAL (CLARO) -->
-<section id="actual" class="sec-soft reveal">
+<section id="diagnostico" class="sec-soft reveal">
   <div class="wrap">
-    <div class="sh">
-      <span class="badge badge-amber">Tu sitio actual — ya actualizado</span>
-      <h2>El sitio de JM ya está en línea</h2>
-      <p class="sub" style="margin-top:10px;max-width:640px">Tu sitio <strong>jm-todoendescartables.com</strong> está implementado y funcionando. Si la dirección actual te sirve, no hay que hacer nada más. Si en algún momento querés volver a la versión anterior, también podemos hacerlo.</p>
+    <div class="sh-row sh">
+      <div>
+        <span class="badge badge-amber">Diagnóstico comercial</span>
+        <h2>El problema no es la estética. Es la pérdida de control sobre la venta.</h2>
+      </div>
+      <p class="sub">Cuando hay muchos productos y las consultas llegan por WhatsApp o Instagram, la venta depende demasiado de respuestas manuales. Eso hace más lento el proceso y deja oportunidades sin seguimiento.</p>
     </div>
-
-    <div class="guru-card">
-      <div class="guru-browser">
-        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-        <div class="browser-bar">jm-todoendescartables.com</div>
-        <a href="https://www.jm-todoendescartables.com/" target="_blank" rel="noopener"
-           style="font-size:12px;font-weight:800;color:var(--blue);display:flex;align-items:center;gap:4px;white-space:nowrap">
-          <i class="ph-duotone ph-arrow-square-out"></i>Abrir
-        </a>
+    <div class="g3">
+      <div class="card">
+        <span class="badge badge-muted">Hoy</span>
+        <h3>Consulta dispersa</h3>
+        <p class="sub">El cliente pregunta por un producto, espera respuesta y el equipo tiene que ordenar manualmente precio, foto, cantidad y disponibilidad.</p>
       </div>
-      <div style="position:relative;background:var(--soft);min-height:200px">
-        <img src="https://image.thum.io/get/width/1200/https://www.jm-todoendescartables.com/"
-             alt="Vista previa del sitio de JM Todo en Descartables"
-             style="width:100%;display:block"
-             loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:48px 24px;text-align:center">
-          <i class="ph-duotone ph-globe" style="font-size:52px;color:var(--muted)"></i>
-          <p style="color:var(--muted);font-size:14px;line-height:1.6">La vista previa se está generando.<br>Hacé clic en <strong>Abrir</strong> para ver el sitio completo.</p>
-          <a href="https://www.jm-todoendescartables.com/" target="_blank" rel="noopener"
-             style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:999px;border:1.5px solid var(--blue);color:var(--blue);font-weight:800;font-size:13px">
-            <i class="ph-duotone ph-arrow-square-out"></i>Abrir jm-todoendescartables.com
-          </a>
-        </div>
+      <div class="card">
+        <span class="badge badge-muted">Riesgo</span>
+        <h3>Venta que se enfría</h3>
+        <p class="sub">Si la respuesta tarda, el cliente compara o compra en otro lugar. El costo no se ve en la web, se ve en consultas que no terminan en pedido.</p>
       </div>
-    </div>
-
-    <div class="g2" style="margin-top:18px">
-      <div class="card-soft" style="border-radius:var(--radius)">
-        <span class="badge badge-green">Lo que ya tiene</span>
-        <ul class="list" style="margin-top:8px">
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Presencia digital activa</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Página implementada sin costo adicional</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Podemos volver a la versión anterior cuando lo necesites</li>
-        </ul>
-      </div>
-      <div class="card-soft" style="border-radius:var(--radius)">
-        <span class="badge badge-amber">Sus limitaciones actuales</span>
-        <ul class="list" style="margin-top:8px">
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Sin carrito de compras ni pedido por WhatsApp</li>
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Difícil de escalar a cientos o miles de productos</li>
-          <li><i class="ph-duotone ph-warning ic-warn"></i>No prepara el terreno para ecommerce real</li>
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Dependés de la plataforma para cada cambio</li>
-        </ul>
+      <div class="card-rec">
+        <span class="badge badge-blue">Decisión recomendada</span>
+        <h3>Ordenar primero</h3>
+        <p class="sub">Antes de pensar en un ecommerce completo, conviene crear un catálogo con pedido por WhatsApp, bot y registro por email.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DIAGNÓSTICO (OSCURO) -->
 <section class="sec-navy reveal">
   <div class="wrap">
     <div class="sh">
-      <span class="badge badge-white">Diagnóstico</span>
-      <h2 style="color:#fff">El problema real de JM</h2>
-      <p class="sub-dark" style="margin-top:10px;max-width:600px">JM no necesita solo "una web más linda". Necesita una herramienta comercial que le permita mostrar productos, recibir pedidos organizados y crecer sin rehacer todo.</p>
+      <span class="badge badge-white">Costo de seguir igual</span>
+      <h2 style="color:#fff">Lo caro no es invertir. Lo caro es seguir perdiendo consultas.</h2>
+      <p class="sub-dark">La inversión debe compararse contra el tiempo manual, las respuestas repetidas, los pedidos incompletos, la falta de seguimiento y la dificultad para escalar cuando el catálogo crece.</p>
     </div>
     <div class="g2">
       <div class="card-dark">
-        <span class="badge badge-amber">El problema sin resolver</span>
-        <h3 style="color:#fff;margin-top:10px">Muchos productos, sin sistema de ventas</h3>
-        <p class="sub-dark" style="margin-top:8px">Hoy los pedidos llegan por WhatsApp desordenado, sin carrito, sin lista clara y sin confirmación de stock. Eso genera pérdida de tiempo, errores y clientes que se van a otra parte.</p>
+        <h3 style="color:#fff">Si no se actúa</h3>
         <ul class="list list-dark">
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Pedidos por mensaje suelto, sin resumen de productos</li>
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Sin precio visible actualizado para el cliente</li>
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Sin categorías ni búsqueda fácil</li>
-          <li><i class="ph-duotone ph-warning ic-warn"></i>Difícil de escalar cuando aumenta la demanda</li>
+          <li><i class="ph-duotone ph-warning ic-warn"></i>Las consultas seguirán dependiendo de quien esté disponible para responder.</li>
+          <li><i class="ph-duotone ph-warning ic-warn"></i>El cliente seguirá pidiendo fotos, precios y opciones por separado.</li>
+          <li><i class="ph-duotone ph-warning ic-warn"></i>Será difícil saber qué consultas se convierten en ventas.</li>
+          <li><i class="ph-duotone ph-warning ic-warn"></i>Agregar pagos o stock después será más desordenado.</li>
         </ul>
       </div>
       <div class="card-dark-rec">
-        <span class="badge badge-green-inv">La solución propuesta</span>
-        <h3 style="color:#fff;margin-top:10px">Vender por WhatsApp, pero con sistema</h3>
-        <p class="sub-dark" style="margin-top:8px">El cliente entra a la web, elige productos, arma su carrito y envía el pedido completo por WhatsApp. JM confirma disponibilidad y coordina el pago — sin mensajes repetidos ni errores.</p>
+        <h3 style="color:#fff">Si se avanza con la primera etapa</h3>
         <ul class="list list-dark">
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Catálogo ordenado por categorías</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Carrito real con múltiples productos</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Pedido estructurado que llega a WhatsApp</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Base preparada para activar pagos después</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>El cliente encuentra productos y arma su pedido sin esperar.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>JM recibe pedidos más claros por WhatsApp.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>El bot responde dudas frecuentes según el catálogo.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>El presupuesto queda registrado por email para seguimiento.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROPUESTA (CLARO) -->
-<section id="propuesta" class="sec-white reveal">
+<section id="funciona" class="sec-white reveal">
   <div class="wrap">
     <div class="sh">
-      <span class="badge badge-blue">Opción recomendada</span>
-      <h2>Tu tienda online:<br><span class="grad">tuya para siempre, sin pagar por vender</span></h2>
-      <p class="sub" style="margin-top:12px;max-width:620px">La única opción que no te cobra comisión por cada venta, no te ata a ninguna plataforma y escala sin límites con vos.</p>
+      <span class="badge badge-blue">Cómo funcionará</span>
+      <h2>Un circuito simple para vender mejor.</h2>
+      <p class="sub">La propuesta reduce fricción. No obliga al cliente a entender tecnología. Lo guía desde la consulta hasta el pedido.</p>
     </div>
+    <div class="flow">
+      <div class="flow-card"><span>Paso 1</span><h3>Entra al catálogo</h3><p>Desde la web, Instagram, Google o un link enviado por WhatsApp.</p></div>
+      <div class="flow-card"><span>Paso 2</span><h3>Elige productos</h3><p>Navega categorías, ve fotos, descripciones y productos cargados.</p></div>
+      <div class="flow-card"><span>Paso 3</span><h3>Arma pedido</h3><p>Agrega varios productos y cantidades en una solicitud ordenada.</p></div>
+      <div class="flow-card"><span>Paso 4</span><h3>Envía por WhatsApp</h3><p>JM recibe el pedido armado y puede confirmar stock, precio final y entrega.</p></div>
+      <div class="flow-card"><span>Paso 5</span><h3>Bot + email</h3><p>El bot responde según el catálogo y envía la solicitud de presupuesto al email.</p></div>
+    </div>
+    <div class="callout-green" style="margin-top:22px">
+      <strong>La IA no se presenta como adorno. Se usa para resolver un problema comercial.</strong>
+      <p>El bot trabaja sobre información cargada: productos, categorías, preguntas frecuentes, condiciones de compra y datos de contacto. No reemplaza la confirmación humana de stock o precio final, pero reduce consultas repetidas y mejora el primer contacto.</p>
+    </div>
+  </div>
+</section>
 
-    <div class="g3">
-      <div class="card">
-        <div style="width:44px;height:44px;border-radius:14px;background:rgba(180,35,24,.08);border:1px solid rgba(180,35,24,.15);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
-          <i class="ph-duotone ph-x-circle" style="font-size:24px;color:var(--red)"></i>
-        </div>
-        <h3 style="font-size:17px">Tiendanube</h3>
-        <p class="sub" style="margin-top:6px">$24.999/mes de abono solo por usar la plataforma, más comisiones por cada venta. Nunca es completamente tuya.</p>
-      </div>
-      <div class="card">
-        <div style="width:44px;height:44px;border-radius:14px;background:rgba(181,71,8,.08);border:1px solid rgba(181,71,8,.15);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
-          <i class="ph-duotone ph-question" style="font-size:24px;color:var(--amber)"></i>
-        </div>
-        <h3 style="font-size:17px">Guru tienda online</h3>
-        <p class="sub" style="margin-top:6px">Sin precio publicado, sin límites claros de productos y sin posibilidad de escalar a miles de artículos con catálogo real.</p>
-      </div>
+<section id="propuesta" class="sec-soft reveal">
+  <div class="wrap">
+    <div class="sh">
+      <span class="badge badge-blue">Sistema propuesto</span>
+      <h2>Tienda propia + WhatsApp + bot + email.</h2>
+      <p class="sub">No se propone una herramienta aislada. Se propone un sistema de trabajo comercial para ordenar la atención y dejar preparada la automatización futura.</p>
+    </div>
+    <div class="g2">
       <div class="card-rec">
-        <div style="width:44px;height:44px;border-radius:14px;background:rgba(33,0,229,.1);border:1px solid rgba(33,0,229,.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
-          <i class="ph-duotone ph-check-circle" style="font-size:24px;color:var(--blue)"></i>
-        </div>
-        <span style="font-size:11px;font-weight:800;color:var(--blue);letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:6px;font-family:'Orbitron',sans-serif">★ Recomendada</span>
-        <h3 style="font-size:17px">Tu tienda propia</h3>
-        <p class="sub" style="margin-top:6px"><strong style="color:var(--ink)">Sin comisión por venta. Sin abono mensual a ninguna plataforma.</strong> Cantidad de productos ilimitada. El dominio y la web son 100% de JM.</p>
-      </div>
-    </div>
-
-    <div class="g2" style="margin-top:18px">
-      <div class="card callout-green" style="border:1px solid rgba(18,183,106,.2)">
-        <span class="badge badge-green">Incluido en el desarrollo</span>
-        <ul class="list" style="margin-top:10px">
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Diseño y desarrollo completo de tu tienda online</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Sistema de catálogo, carrito de compras y checkout</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>50 productos cargados con fotos y descripción</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Pedido directo desde el carrito a WhatsApp</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Botón de pago por transferencia</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>2 clases de capacitación incluidas</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Planilla base para carga masiva futura</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>SEO básico y seguridad inicial configurados</li>
+        <span class="badge badge-blue">Incluido en la Etapa 1</span>
+        <ul class="list">
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Diseño y desarrollo de tienda online propia.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Catálogo organizado por categorías.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Carga inicial de 50 productos con fotos y descripción.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Carrito para armar pedidos con varios productos.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Envío del pedido completo a WhatsApp.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Bot basado en el catálogo para consultas frecuentes.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Envío de solicitud de presupuesto al email de JM.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Planilla base para carga masiva futura.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>2 clases de capacitación para uso y actualización.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>SEO básico, seguridad inicial y configuración general.</li>
         </ul>
       </div>
-      <div>
-        <div class="card" style="margin-bottom:14px">
-          <span class="badge badge-muted">No incluido en esta etapa</span>
-          <ul class="list" style="margin-top:8px">
-            <li><i class="ph-duotone ph-x-circle ic-bad"></i>Stock automático completo</li>
-            <li><i class="ph-duotone ph-x-circle ic-bad"></i>Carga ilimitada de productos</li>
-            <li><i class="ph-duotone ph-x-circle ic-bad"></i>Campañas publicitarias</li>
-            <li><i class="ph-duotone ph-x-circle ic-bad"></i>Facturación automática</li>
-          </ul>
-        </div>
-        <div class="callout">
-          <strong><i class="ph-duotone ph-cloud" style="color:var(--blue)"></i> Hosting y dominio</strong>
-          <p>Lo contratás vos directamente — queda a tu nombre y lo controlás vos. Te ayudamos a elegirlo. Referencia: Webempresa (~$6.000/mes) o DonWeb (~$2.800/mes).</p>
+      <div class="card">
+        <span class="badge badge-muted">Límites claros</span>
+        <ul class="list">
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye stock automático en tiempo real en esta primera etapa.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye pagos online integrados desde el inicio.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye carga ilimitada de productos.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye campañas publicitarias ni gestión mensual de redes.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>El bot responde según la información cargada. Stock, precios finales y condiciones se confirman por JM.</li>
+        </ul>
+        <div class="callout" style="margin-top:18px">
+          <strong>Por qué esta etapa conviene</strong>
+          <p>Permite empezar a vender mejor sin esperar una implementación compleja de ecommerce completo. Primero se ordena el proceso. Después se agregan pagos, stock e integraciones.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COSTOS INVESTIGADOS (OSCURO) -->
-<section id="costos" class="sec-navy2 reveal">
+<section class="sec-navy2 reveal">
   <div class="wrap">
     <div class="sh">
-      <span class="badge badge-white">Investigación de costos</span>
-      <h2 style="color:#fff">Costos reales del mercado</h2>
-      <p class="sub-dark" style="margin-top:10px;max-width:620px">Datos verificados al 03/06/2026. No se inventó ningún precio — si un proveedor no lo publica, se indica como "a cotizar".</p>
+      <span class="badge badge-white">Alternativas evaluadas</span>
+      <h2 style="color:#fff">La recomendación no es la opción más compleja. Es la más conveniente para este momento.</h2>
+      <p class="sub-dark">JM necesita avanzar rápido, ordenar productos y vender por WhatsApp sin depender de un ecommerce completo desde el primer día.</p>
     </div>
     <div class="table-wrap card-dark" style="padding:0">
-      <table class="table table-dark" style="min-width:860px">
-        <thead><tr><th>Plataforma</th><th>Precio mensual</th><th>Comisión por venta</th><th>Productos</th><th>Lectura para JM</th></tr></thead>
+      <table class="table table-dark">
+        <thead><tr><th>Opción</th><th>Qué resuelve</th><th>Qué limita</th><th>Lectura comercial</th></tr></thead>
         <tbody>
-          <tr class="row-warn">
-            <td><strong style="color:rgba(255,255,255,.9)">Guru · web actual</strong></td>
-            <td>Sin precio público</td>
-            <td>Sin información confirmada</td>
-            <td>~10 productos en plan básico</td>
-            <td>Insuficiente para un catálogo amplio</td>
-          </tr>
-          <tr>
-            <td><strong style="color:rgba(255,255,255,.9)">Tiendanube Inicial</strong></td>
-            <td><strong style="color:rgba(255,255,255,.8)">$0/mes</strong></td>
-            <td>Comisiones de Pago Nube según plazo</td>
-            <td>Ilimitados</td>
-            <td>Para probar, no para profesionalizarse</td>
+          <tr class="row-bad">
+            <td><strong style="color:rgba(255,255,255,.9)">Seguir como está</strong></td>
+            <td>Presencia digital básica.</td>
+            <td>No ordena pedidos, catálogo, WhatsApp ni seguimiento.</td>
+            <td>Es la opción más barata, pero mantiene el problema comercial.</td>
           </tr>
           <tr class="row-warn">
-            <td><strong style="color:rgba(255,255,255,.9)">Tiendanube Esencial</strong></td>
-            <td><strong style="color:rgba(255,255,255,.8)">$24.999/mes</strong><br><span style="font-size:11px;color:rgba(255,255,255,.4)">Anual: $18.749/mes</span></td>
-            <td>Tarjeta 6,09%+IVA / Transferencia 1,50%+IVA</td>
-            <td>Ilimitados</td>
-            <td>Fácil de usar pero con costo mensual y comisiones acumuladas</td>
-          </tr>
-          <tr class="row-rec" style="background:rgba(154,255,95,.05)!important">
-            <td ><strong style="color:#9AFF5F">★ Tu tienda propia</strong></td>
-            <td><strong style="color:#9AFF5F">$0</strong><br><span style="font-size:11px;color:rgba(255,255,255,.4)">Solo hosting (~$2.800–6.000/mes)</span></td>
-            <td><strong style="color:#9AFF5F">$0</strong> — Tu plataforma no cobra comisión</td>
-            <td><strong style="color:rgba(255,255,255,.8)">Ilimitados</strong></td>
-            <td><strong style="color:#9AFF5F">Control total. Sin pagar por vender.</strong></td>
+            <td><strong style="color:rgba(255,255,255,.9)">Adaptar solo la web actual</strong></td>
+            <td>Mejora visual e institucional.</td>
+            <td>No garantiza un circuito flexible de catálogo, bot, email, pagos y stock por etapas.</td>
+            <td>Sirve si solo se busca presencia. No alcanza si se busca vender mejor.</td>
           </tr>
           <tr>
-            <td><strong style="color:rgba(255,255,255,.9)">Mercado Pago Link</strong></td>
-            <td>Sin abono mensual</td>
-            <td>6,29%+IVA inmediato / 1,49%+IVA a 35 días</td>
-            <td>No aplica</td>
-            <td>Útil para cobrar por link mientras se organiza el stock</td>
+            <td><strong style="color:rgba(255,255,255,.9)">Tiendanube</strong></td>
+            <td>Ecommerce listo y productos ilimitados.</td>
+            <td>Implica abono mensual y comisiones de cobro. Puede ser más de lo necesario para empezar.</td>
+            <td>Buena alternativa si el objetivo inmediato es tienda con pagos desde plataforma.</td>
+          </tr>
+          <tr class="row-rec">
+            <td><strong style="color:var(--green)">Recomendada: tienda propia con WhatsApp, bot y email</strong></td>
+            <td>Ordena catálogo, pedido, respuesta inicial y registro comercial.</td>
+            <td>Stock y pagos quedan para etapas posteriores.</td>
+            <td>Mejor equilibrio entre velocidad, control, costo y escalabilidad.</td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <div class="g2" style="margin-top:18px">
-      <div class="card-dark">
-        <span class="badge badge-white">Impacto sobre $100.000 vendidos · Tiendanube Esencial</span>
-        <div style="margin-top:14px;display:grid;gap:8px">
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
-            <span style="color:rgba(255,255,255,.6)">Tarjeta / MODO · 1 día</span>
-            <strong style="color:#fff">$7.369 cobrado a vos</strong>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
-            <span style="color:rgba(255,255,255,.6)">Tarjeta / MODO · 14 días</span>
-            <strong style="color:#fff">$4.223 cobrado a vos</strong>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px">
-            <span style="color:rgba(255,255,255,.6)">Transferencia</span>
-            <strong style="color:#fff">$1.815 cobrado a vos</strong>
-          </div>
-        </div>
-      </div>
-      <div class="callout-dark" style="display:flex;flex-direction:column;justify-content:center">
-        <strong>Con tu propia tienda la comisión es $0</strong>
-        <p>Si vendés $1.000.000 por mes, Tiendanube Esencial te retiene hasta $73.690 en comisiones de tarjeta. Con tu tienda propia ese dinero es tuyo. En un año, la diferencia paga varias veces el desarrollo.</p>
-      </div>
-    </div>
-    <p style="font-size:11.5px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.6">Fuentes: <a href="https://www.tiendanube.com/planes-y-precios" target="_blank" style="color:rgba(154,255,95,.6)">Tiendanube Precios</a> · <a href="https://ayuda.tiendanube.com/es_AR/pago-nube-2/cuales-son-las-comisiones-de-pago-nube" target="_blank" style="color:rgba(154,255,95,.6)">Comisiones Pago Nube</a> · <a href="https://woocommerce.com/pricing/" target="_blank" style="color:rgba(154,255,95,.6)">WooCommerce Pricing</a> · <a href="https://www.mercadopago.com.ar/herramientas-para-vender/link-de-pago" target="_blank" style="color:rgba(154,255,95,.6)">Mercado Pago</a></p>
   </div>
 </section>
 
-<!-- REFERENCIAS VISUALES (CLARO) -->
-<section id="referencias" class="sec-soft reveal">
+<section class="sec-white reveal">
   <div class="wrap">
     <div class="sh">
-      <span class="badge badge-blue">Referencias de estilo</span>
-      <h2>¿Cómo querés que se vea tu tienda?</h2>
-      <p class="sub" style="margin-top:10px;max-width:600px">Estas páginas tienen miles de productos — similar a lo que JM necesita. Sirven para elegir la dirección visual antes de arrancar el diseño. Tu web va a tener identidad propia.</p>
+      <span class="badge badge-blue">Costos de referencia</span>
+      <h2>Datos de mercado para tomar una decisión con contexto.</h2>
+      <p class="sub">Los valores externos pueden cambiar. Por eso se dejan enlazadas las fuentes oficiales para validar antes de contratar.</p>
     </div>
-
-    <div class="g2" style="gap:20px">
-
-      <div class="site-card">
-        <div class="site-shot">
-          <img loading="lazy" src="https://image.thum.io/get/width/800/https://www.butlers.com/" alt="Butlers">
-          <span class="site-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--ink)">Estilo cálido · bazar premium</span>
-        </div>
-        <div class="site-body">
-          <h4>Butlers</h4>
-          <p>Estética luminosa, cercana y ordenada. Ideal para mostrar variedad sin parecer mayorista desordenado. Transmite confianza y calidad sin ser frío.</p>
-          <p style="font-size:12px;color:var(--blue);font-weight:700;margin-bottom:10px">Conviene si: buscás calidez, diseño limpio y producto como protagonista.</p>
-          <a href="https://www.butlers.com/" target="_blank" class="btn btn-outline" style="min-height:36px;padding:8px 16px;font-size:12px"><i class="ph-duotone ph-arrow-square-out"></i>Abrir sitio original</a>
-        </div>
-      </div>
-
-      <div class="site-card">
-        <div class="site-shot" style="position:relative">
-          <img loading="lazy" src="https://image.thum.io/get/width/800/https://cibowares.com/" alt="Cibowares">
-          <span class="site-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--ink)">Estilo proveedor · funcional</span>
-        </div>
-        <div class="site-body">
-          <h4>Cibowares</h4>
-          <p>Línea visual directa para comercios y proveedores gastronómicos. Categorías visibles, búsqueda rápida y compra práctica para clientes que saben lo que buscan.</p>
-          <p style="font-size:12px;color:var(--blue);font-weight:700;margin-bottom:10px">Conviene si: tus clientes son negocios que compran seguido y en cantidad.</p>
-          <a href="https://cibowares.com/" target="_blank" class="btn btn-outline" style="min-height:36px;padding:8px 16px;font-size:12px"><i class="ph-duotone ph-arrow-square-out"></i>Abrir sitio original</a>
-        </div>
-      </div>
-
-      <div class="site-card">
-        <div class="site-shot" style="position:relative">
-          <img loading="lazy" src="https://image.thum.io/get/width/800/https://www.restaurantware.com/" alt="Restaurantware">
-          <span class="site-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--ink)">Estilo ecommerce · fuerte B2B</span>
-        </div>
-        <div class="site-body">
-          <h4>Restaurantware</h4>
-          <p>Comercial y transaccional. Pensado para volumen y variedad. Transmite stock disponible, profesionalismo y facilidad para comprar en cantidad.</p>
-          <p style="font-size:12px;color:var(--blue);font-weight:700;margin-bottom:10px">Conviene si: querés verse como referente de insumos para gastronomía.</p>
-          <a href="https://www.restaurantware.com/" target="_blank" class="btn btn-outline" style="min-height:36px;padding:8px 16px;font-size:12px"><i class="ph-duotone ph-arrow-square-out"></i>Abrir sitio original</a>
-        </div>
-      </div>
-
-      <div class="site-card">
-        <div class="site-shot" style="position:relative">
-          <img loading="lazy" src="https://image.thum.io/get/width/800/https://www.packnwood.com/" alt="PacknWood">
-          <span class="site-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--ink)">Estilo premium · aspiracional</span>
-        </div>
-        <div class="site-body">
-          <h4>PacknWood</h4>
-          <p>Estética cuidada y aspiracional, con foco en imagen de marca. Eleva la percepción del producto sin perder claridad en el catálogo.</p>
-          <p style="font-size:12px;color:var(--blue);font-weight:700;margin-bottom:10px">Conviene si: querés diferenciarte por calidad y presentación superior.</p>
-          <a href="https://www.packnwood.com/" target="_blank" class="btn btn-outline" style="min-height:36px;padding:8px 16px;font-size:12px"><i class="ph-duotone ph-arrow-square-out"></i>Abrir sitio original</a>
-        </div>
-      </div>
-
-      <div class="site-card site-card-wide">
-        <div class="grid-arbora">
-          <div class="site-shot" style="position:relative;border-radius:0">
-            <img loading="lazy" src="https://image.thum.io/get/width/800/https://arboraproducts.com/product-category/disposable-restaurant-supplies/" alt="Arbora Products" style="height:100%;min-height:180px">
-            <span class="site-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--ink)">Estilo eco · descartables</span>
-          </div>
-          <div class="site-body" style="display:flex;flex-direction:column;justify-content:center">
-            <h4>Arbora Products</h4>
-            <p>Limpio y orientado específicamente a descartables. Estética natural con categorías bien ordenadas. Muy cercano al rubro de JM.</p>
-            <p style="font-size:12px;color:var(--blue);font-weight:700;margin-bottom:12px">Conviene si: querés enfatizar descartables, productos eco o imagen ordenada del rubro.</p>
-            <a href="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" target="_blank" class="btn btn-outline" style="min-height:36px;padding:8px 16px;font-size:12px;width:fit-content"><i class="ph-duotone ph-arrow-square-out"></i>Abrir sitio original</a>
-          </div>
-        </div>
-      </div>
-
+    <div class="table-wrap card" style="padding:0">
+      <table class="table">
+        <thead><tr><th>Proveedor</th><th>Dato público relevante</th><th>Lectura para JM</th><th>Fuente</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Tiendanube</strong></td>
+            <td>Plan Inicial gratis, Esencial $24.999/mes, Impulso $73.999/mes y Escala $219.999/mes.</td>
+            <td>Sirve como referencia de plataforma con abono mensual.</td>
+            <td><a style="color:var(--blue);font-weight:800" href="https://www.tiendanube.com/planes-y-precios" target="_blank" rel="noopener">Ver planes</a></td>
+          </tr>
+          <tr>
+            <td><strong>Pago Nube</strong></td>
+            <td>Comisiones variables según plan, medio de pago y plazo de acreditación.</td>
+            <td>El costo por cobro debe analizarse junto al volumen mensual.</td>
+            <td><a style="color:var(--blue);font-weight:800" href="https://ayuda.tiendanube.com/es_AR/pago-nube-2/cuales-son-las-comisiones-de-pago-nube" target="_blank" rel="noopener">Ver comisiones</a></td>
+          </tr>
+          <tr>
+            <td><strong>Mercado Pago</strong></td>
+            <td>Checkout y links de pago cobran comisión por venta aprobada. Los porcentajes dependen del plazo de acreditación.</td>
+            <td>Útil para una etapa posterior con pago online.</td>
+            <td><a style="color:var(--blue);font-weight:800" href="https://www.mercadopago.com.ar/herramientas-para-vender/check-out" target="_blank" rel="noopener">Ver checkout</a></td>
+          </tr>
+          <tr>
+            <td><strong>Guru Soluciones</strong></td>
+            <td>Publica servicios de creación de página web, tienda online y campañas. No se encontró tabla pública de planes y precios.</td>
+            <td>Conviene pedir cotización específica si se busca comparar con la plataforma actual.</td>
+            <td><a style="color:var(--blue);font-weight:800" href="https://www.gurusoluciones.com/" target="_blank" rel="noopener">Ver sitio</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- INVERSIÓN (OSCURO) -->
 <section id="inversion" class="sec-navy reveal">
   <div class="wrap">
     <div class="sh">
       <span class="badge badge-green-inv">Propuesta económica</span>
-      <h2 style="color:#fff">Inversión clara,<br>sin sorpresas</h2>
-      <p class="sub-dark" style="margin-top:10px;max-width:600px">Todo lo que vas a pagar, cuándo lo pagás y qué recibís. Sin costos ocultos ni letra chica.</p>
+      <h2 style="color:#fff">Inversión clara y orientada al resultado.</h2>
+      <p class="sub-dark">No se cobra por una web aislada. Se implementa una primera versión del sistema comercial de JM.</p>
     </div>
-
-    <!-- Precio principal -->
-    <div class="precio-wrapper" style="position:relative;border-radius:var(--radius);padding:1px;margin-bottom:18px;background:linear-gradient(135deg,rgba(99,68,255,.5),rgba(154,255,95,.4))">
-      <div class="precio-inner" style="background:var(--navy2);border-radius:calc(var(--radius) - 1px);padding:36px">
-        <div class="grid-price-main">
+    <div class="price-card">
+      <div class="price-inner">
+        <div class="price-grid">
           <div>
-            <span class="badge badge-green-inv" style="margin-bottom:16px">Desarrollo completo · Opción recomendada</span>
-            <h3 style="color:#fff;font-size:clamp(20px,2.5vw,28px)">Tu tienda online propia + WhatsApp + 2 Clases de capacitación</h3>
-            <ul class="list list-dark" style="margin-top:14px">
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Diseño, desarrollo y configuración completa</li>
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>50 productos cargados con fotos y descripción</li>
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Carrito + pedido directo a WhatsApp</li>
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>2 clases de capacitación incluidas (carga de productos + funcionamiento)</li>
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Planilla para carga masiva futura</li>
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>SEO básico configurado desde el inicio</li>
+            <span class="badge badge-green-inv">Etapa 1 recomendada</span>
+            <h3 style="color:#fff">Sistema de ventas online: tienda propia + WhatsApp + bot + email + capacitación</h3>
+            <ul class="list list-dark">
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Desarrollo completo de tienda online propia.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>50 productos cargados inicialmente.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Carrito y pedido directo por WhatsApp.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Bot de catálogo para consultas frecuentes.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Solicitud de presupuesto enviada al email.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Planilla base para carga masiva futura.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>2 clases de capacitación para gestión básica.</li>
             </ul>
-            <div style="margin-top:16px;padding:14px 18px;border-radius:16px;background:rgba(255,196,0,.08);border:1px solid rgba(255,196,0,.18);font-size:13px;color:rgba(255,255,255,.65)">
-              <strong style="color:rgba(255,196,0,.9)">⚡ Hosting y dominio:</strong> lo contratás vos directamente a tu nombre. Referencia: ~$2.800–6.000 ARS/mes. Te acompañamos en la contratación.
+            <div style="margin-top:16px;padding:14px 18px;border-radius:16px;background:rgba(255,196,0,.08);border:1px solid rgba(255,196,0,.18);font-size:13px;color:rgba(255,255,255,.66);line-height:1.55">
+              <strong style="color:rgba(255,196,0,.9)">Hosting y dominio:</strong> los contrata JM directamente a su nombre. NeuroTech acompaña la elección y configuración inicial.
             </div>
           </div>
-          <div style="text-align:center;min-width:200px">
+          <div style="text-align:center;min-width:220px">
             <div style="display:inline-flex;flex-direction:column;align-items:center;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);padding:28px 32px;border-radius:24px">
-              <span class="price-big" style="color:transparent;background:linear-gradient(135deg,#fff,var(--green));-webkit-background-clip:text;background-clip:text">$675.000</span>
-              <span style="font-size:11px;color:rgba(255,255,255,.4);font-family:'Orbitron',sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-top:6px">ARS · Total</span>
+              <span class="price-big">$675.000</span>
+              <span style="font-size:11px;color:rgba(255,255,255,.42);font-family:var(--orb);letter-spacing:.1em;text-transform:uppercase;margin-top:6px">ARS · Total</span>
             </div>
-            <p style="color:var(--green);font-size:13px;font-weight:800;margin-top:14px">Pagás en 3 cuotas iguales:</p>
+            <p style="color:var(--green);font-size:13px;font-weight:900;margin-top:14px">3 cuotas iguales</p>
             <div class="cuota-grid">
               <div class="cuota"><strong>$225.000</strong><span>Al iniciar</span></div>
-              <div class="cuota"><strong>$225.000</strong><span>A la mitad</span></div>
-              <div class="cuota"><strong>$225.000</strong><span>Al entregar</span></div>
+              <div class="cuota"><strong>$225.000</strong><span>Avance medio</span></div>
+              <div class="cuota"><strong>$225.000</strong><span>Entrega</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Opciones adicionales -->
-    <div class="g2">
+    <div class="g2" style="margin-top:18px">
       <div class="card-dark">
-        <span class="badge badge-white">Mantenimiento mensual · Opcional</span>
+        <span class="badge badge-white">Mantenimiento mensual · opcional</span>
         <h3 style="color:#fff;margin-top:12px">Mantenimiento web</h3>
-        <p class="sub-dark" style="margin-top:8px">Para que la tienda esté siempre actualizada, segura y funcionando bien, sin que vos tengas que preocuparte por la parte técnica.</p>
-        <ul class="list list-dark" style="margin-top:12px">
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Copias de seguridad periódicas</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Actualizaciones del sistema y complementos de la tienda</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Modificaciones menores en la página</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Monitoreo básico de seguridad</li>
-          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye carga masiva de productos ni campañas</li>
+        <p class="sub-dark">Para que la tienda siga segura, actualizada y acompañada después de la entrega.</p>
+        <ul class="list list-dark">
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Copias de seguridad periódicas.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Actualizaciones técnicas del sistema y complementos.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Monitoreo básico de seguridad.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Ajustes menores de web, WhatsApp, bot o email.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye carga masiva de productos, campañas ni rediseños.</li>
         </ul>
-        <div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-align:center">
-          <span style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:#fff">$60.000</span>
-          <span style="display:block;font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">Incluye backups, actualizaciones y cambios menores</span>
+        <div style="margin-top:16px;padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);text-align:center">
+          <span style="font-family:var(--orb);font-size:24px;font-weight:900;color:#fff">$40.000</span>
+          <span style="display:block;font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">ARS por mes · actualización de valor cada 6 meses</span>
         </div>
       </div>
-      <div class="card-dark" style="border-color:rgba(99,68,255,.3)">
-        <span class="badge badge-white" style="background:rgba(99,68,255,.2);border-color:rgba(99,68,255,.4);color:#9AB4FF">Add-on disponible</span>
+      <div class="card-dark" style="border-color:rgba(139,92,246,.32)">
+        <span class="badge badge-white" style="background:rgba(139,92,246,.2);border-color:rgba(139,92,246,.42);color:#C4B5FD">Add-on disponible</span>
         <h3 style="color:#fff;margin-top:12px">Automatización de Instagram</h3>
-        <p class="sub-dark" style="margin-top:8px">Respuestas automáticas a mensajes directos y comentarios de Instagram. Atendés consultas las 24 horas sin esfuerzo manual. Compatible con cualquier opción elegida.</p>
-        <ul class="list list-dark" style="margin-top:12px">
-          <li><i class="ph-duotone ph-check-circle" style="color:#9AB4FF;font-size:18px;flex-shrink:0;margin-top:1px"></i>Respuestas automáticas a DMs</li>
-          <li><i class="ph-duotone ph-check-circle" style="color:#9AB4FF;font-size:18px;flex-shrink:0;margin-top:1px"></i>Respuestas a comentarios</li>
-          <li><i class="ph-duotone ph-check-circle" style="color:#9AB4FF;font-size:18px;flex-shrink:0;margin-top:1px"></i>Se puede activar aunque no contrates el desarrollo web</li>
+        <p class="sub-dark">Para captar consultas que llegan por mensajes directos o comentarios y derivarlas al catálogo o WhatsApp.</p>
+        <ul class="list list-dark">
+          <li><i class="ph-duotone ph-check-circle" style="color:#C4B5FD;font-size:18px;flex-shrink:0;margin-top:1px"></i>Respuestas automáticas a mensajes directos.</li>
+          <li><i class="ph-duotone ph-check-circle" style="color:#C4B5FD;font-size:18px;flex-shrink:0;margin-top:1px"></i>Derivación al catálogo o WhatsApp.</li>
+          <li><i class="ph-duotone ph-check-circle" style="color:#C4B5FD;font-size:18px;flex-shrink:0;margin-top:1px"></i>Puede activarse después de la Etapa 1.</li>
         </ul>
-        <div style="margin-top:16px;padding:14px;border-radius:14px;background:rgba(99,68,255,.1);border:1px solid rgba(99,68,255,.25);text-align:center">
-          <span style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:#9AB4FF">$20.000</span>
-          <span style="display:block;font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">por mes · opcional</span>
+        <div style="margin-top:16px;padding:16px;border-radius:16px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.28);text-align:center">
+          <span style="font-family:var(--orb);font-size:24px;font-weight:900;color:#C4B5FD">$20.000</span>
+          <span style="display:block;font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">ARS por mes · opcional</span>
         </div>
-      </div>
-    </div>
-
-    <!-- Tabla comparativa -->
-    <div style="margin-top:18px">
-      <h3 style="color:#fff;margin-bottom:14px;font-size:18px">Resumen comparativo de opciones</h3>
-      <div class="table-wrap card-dark" style="padding:0">
-        <table class="table table-dark" style="min-width:720px">
-          <thead><tr><th>Opción</th><th>Inversión NeuroTech</th><th>Cuotas</th><th>Mensual externo</th><th>Comisión/venta</th><th>Mantenimiento</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><strong style="color:rgba(255,255,255,.85)">Guru actual publicado</strong><br><span style="font-size:11px;color:rgba(255,255,255,.35)">Ya implementado, sin costo</span></td>
-              <td><strong style="color:var(--green)">$0</strong></td>
-              <td>—</td>
-              <td style="font-size:12px">Según plan Guru</td>
-              <td style="font-size:12px;color:rgba(255,196,0,.8)">Sin información pública</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td><strong style="color:rgba(255,255,255,.85)">Guru + Automatización Instagram</strong><br><span style="font-size:11px;color:rgba(255,255,255,.35)">Sitio Guru actual + respuestas automáticas en Instagram</span></td>
-              <td><strong style="color:var(--green)">+ $20.000/mes</strong><br><span style="font-size:11px;color:rgba(255,255,255,.35)">(automatización Instagram)</span></td>
-              <td>—</td>
-              <td style="font-size:12px">Según plan Guru<br><span style="color:#9AB4FF;font-weight:700"></span><br><span style="font-size:11px;color:rgba(255,255,255,.35)"></span></td>
-              <td style="font-size:12px;color:rgba(255,196,0,.8)">Sin información pública</td>
-              <td>—<br><span style="font-size:11px;color:rgba(255,255,255,.35)">El $20.000 está en "mensual externo"</span></td>
-            </tr>
-            <tr class="row-rec" style="background:rgba(154,255,95,.04)!important">
-              <td >
-                <strong style="color:#9AFF5F">★ Tu tienda online propia</strong><br>
-                <span style="font-size:11px;color:rgba(255,255,255,.35)">50 productos + 2 clases + carrito + WhatsApp</span>
-              </td>
-              <td><strong style="color:#9AFF5F;font-family:'Orbitron',sans-serif;font-size:18px">$675.000</strong></td>
-              <td style="font-size:12px;color:rgba(255,255,255,.6)">3 cuotas de<br>$225.000</td>
-              <td style="font-size:12px">Hosting $2.800–6.000/mes<br><span style="color:rgba(255,255,255,.4)">(a tu nombre)</span></td>
-              <td><strong style="color:var(--green)">$0</strong><br><span style="font-size:11px;color:rgba(255,255,255,.35)">Tu plataforma: $0</span></td>
-              <td style="font-size:12px">$60.000/mes · opcional<br><span style="font-size:11px;color:rgba(255,255,255,.35)">Backups, actualizaciones, cambios menores</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ETAPAS (CLARO) -->
 <section class="sec-white reveal">
   <div class="wrap">
     <div class="sh">
-      <span class="badge badge-blue">Crecimiento sin fricciones</span>
-      <h2>Tu tienda crece con vos</h2>
-      <p class="sub" style="margin-top:10px;max-width:560px">Empezamos ordenado con lo esencial. Todo lo que se agregue después se construye sobre la misma base — sin tirar lo que ya está.</p>
+      <span class="badge badge-blue">Crecimiento por etapas</span>
+      <h2>Primero ordenar. Después automatizar. Luego escalar.</h2>
+      <p class="sub">Esta secuencia reduce riesgo, evita pagar por funcionalidades que todavía no se usan y deja la base preparada para crecer.</p>
     </div>
-    <div class="steps">
-      <div class="card step step-1">
-        <span class="step-num" style="color:var(--blue)">Etapa 1 · Ahora</span>
-        <h3 style="font-size:18px">Catálogo + WhatsApp</h3>
-        <p class="sub" style="margin-top:8px">Web activa, 50 productos, carrito y pedido directo a WhatsApp. El negocio empieza a recibir pedidos organizados desde el primer día.</p>
+    <div class="timeline">
+      <div class="card">
+        <span class="step-num" style="color:var(--blue)">Etapa 1 · ahora</span>
+        <h3 style="font-size:18px">Catálogo + WhatsApp + bot</h3>
+        <p class="sub">Web propia, 50 productos, carrito, pedido por WhatsApp, bot de consulta y solicitud por email.</p>
       </div>
-      <div class="card step step-2">
-        <span class="step-num" style="color:#8B5CF6">Etapa 2 · Cuando quieras</span>
-        <h3 style="font-size:18px">Carga masiva</h3>
-        <p class="sub" style="margin-top:8px">Planilla de importación, actualización de precios en lote y suma de nuevos productos sin necesidad de cargar uno por uno.</p>
+      <div class="card">
+        <span class="step-num" style="color:var(--violet)">Etapa 2</span>
+        <h3 style="font-size:18px">Más productos y carga masiva</h3>
+        <p class="sub">Planilla de importación, categorías ampliadas y actualización más ágil de precios o productos.</p>
       </div>
-      <div class="card step step-3">
-        <span class="step-num" style="color:var(--green-d)">Etapa 3 · Con demanda</span>
-        <h3 style="font-size:18px">Automatización</h3>
-        <p class="sub" style="margin-top:8px">Respuestas automáticas en Instagram y WhatsApp, seguimiento de pedidos y notificaciones: todo automatizado desde que el cliente consulta hasta que recibe confirmación.</p>
+      <div class="card">
+        <span class="step-num" style="color:var(--green2)">Etapa 3</span>
+        <h3 style="font-size:18px">Instagram y WhatsApp</h3>
+        <p class="sub">Automatizaciones para responder consultas, derivar al catálogo y mejorar el seguimiento comercial.</p>
       </div>
-      <div class="card step step-4">
-        <span class="step-num" style="color:#0A6E3A">Etapa 4 · Ecommerce real</span>
-        <h3 style="font-size:18px">Pago online + stock</h3>
-        <p class="sub" style="margin-top:8px">Mercado Pago integrado, stock en tiempo real y pedidos totalmente automatizados — desde la carga hasta la respuesta al cliente, sin intervención manual.</p>
-        <div style="margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(10,110,58,.07);border:1px solid rgba(10,110,58,.15)">
-          <span style="font-size:11px;color:var(--muted);display:block;margin-bottom:2px;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Inversión estimada</span>
-          <span style="font-size:18px;font-weight:900;color:var(--ink);font-family:'Orbitron',sans-serif">A cotizar</span>
-          <span style="font-size:11px;color:var(--muted);display:block;margin-top:2px">según integraciones requeridas</span>
-        </div>
+      <div class="card">
+        <span class="step-num" style="color:#087443">Etapa 4</span>
+        <h3 style="font-size:18px">Pagos + stock + IA avanzada</h3>
+        <p class="sub">Mercado Pago, control de stock, tableros simples y agentes de IA para atención y presupuestos más avanzados.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRÓXIMOS PASOS Y CIERRE (OSCURO) -->
-<section id="cierre" class="sec-navy2 reveal">
+<section id="referencias" class="sec-soft reveal">
   <div class="wrap">
-    <div class="grid-cierre">
-      <div>
-        <span class="badge badge-green-inv">Próximos pasos</span>
-        <h2 style="color:#fff;margin-top:12px">¿Arrancamos?</h2>
-        <p class="lead-dark" style="margin-top:12px;max-width:480px">La propuesta no busca complejidad desde el inicio. Busca que JM empiece a vender online con catálogo claro, pedido por WhatsApp y una estructura que puede crecer sin rehacer nada.</p>
-        <div class="kpis" style="margin-top:22px">
-          <div class="kpi" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-            <strong style="color:var(--green)">1</strong>
-            <span style="color:rgba(255,255,255,.55)">Confirmamos la propuesta</span>
-          </div>
-          <div class="kpi" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-            <strong style="color:var(--green)">2</strong>
-            <span style="color:rgba(255,255,255,.55)">Elegís hosting y dominio</span>
-          </div>
-          <div class="kpi" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-            <strong style="color:var(--green)">3</strong>
-            <span style="color:rgba(255,255,255,.55)">Entregás los 50 productos</span>
-          </div>
-          <div class="kpi" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-            <strong style="color:var(--green)">4</strong>
-            <span style="color:rgba(255,255,255,.55)">Probamos y publicamos</span>
-          </div>
-        </div>
-        <a href="https://wa.me/5492604087086?text=Hola%20NeuroTech%2C%20quiero%20avanzar%20con%20la%20propuesta%20para%20JM%20Todo%20en%20Descartables." target="_blank" rel="noopener" class="btn btn-green" style="margin-top:24px;width:100%;justify-content:center">
-          <i class="ph-duotone ph-whatsapp-logo" style="font-size:20px"></i>Confirmar avance por WhatsApp
-        </a>
+    <div class="sh">
+      <span class="badge badge-blue">Referencias visuales</span>
+      <h2>La identidad visual debe ordenar, no decorar.</h2>
+      <p class="sub">Estas referencias ayudan a definir estilo, navegación y catálogo. La web final debe tener identidad propia de JM.</p>
+    </div>
+    <div class="site-grid">
+      <div class="site-card">
+        <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://cibowares.com/" alt="Cibowares"><span class="site-tag">Proveedor funcional</span></div>
+        <div class="site-body"><h4>Cibowares</h4><p>Útil como referencia para categorías visibles y compra práctica.</p><a class="btn btn-outline" href="https://cibowares.com/" target="_blank" rel="noopener">Abrir referencia</a></div>
       </div>
-      <div class="card-dark" style="display:flex;flex-direction:column;justify-content:center;gap:16px">
-        <blockquote style="font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.04em;line-height:1.2;color:#fff">
-          "Primero ordenamos la venta. Después activamos pagos, stock y automatización."
-        </blockquote>
-        <p class="sub-dark">Tu tienda online propia es la base que no te cobra comisión por cada venta, no te ata a ninguna empresa y crece cuando el negocio lo necesita.</p>
+      <div class="site-card">
+        <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://www.restaurantware.com/" alt="Restaurantware"><span class="site-tag">Ecommerce B2B</span></div>
+        <div class="site-body"><h4>Restaurantware</h4><p>Referencia para volumen de productos y experiencia de compra comercial.</p><a class="btn btn-outline" href="https://www.restaurantware.com/" target="_blank" rel="noopener">Abrir referencia</a></div>
+      </div>
+      <div class="site-card">
+        <div class="site-shot"><img loading="lazy" src="https://image.thum.io/get/width/800/https://arboraproducts.com/product-category/disposable-restaurant-supplies/" alt="Arbora Products"><span class="site-tag">Descartables</span></div>
+        <div class="site-body"><h4>Arbora Products</h4><p>Referencia cercana al rubro de descartables y categorías ordenadas.</p><a class="btn btn-outline" href="https://arboraproducts.com/product-category/disposable-restaurant-supplies/" target="_blank" rel="noopener">Abrir referencia</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-navy2 reveal">
+  <div class="wrap">
+    <div class="sh">
+      <span class="badge badge-white">Objeciones respondidas</span>
+      <h2 style="color:#fff">Preguntas que conviene resolver antes de aprobar.</h2>
+    </div>
+    <div class="accordion">
+      <div class="faq"><strong>¿Por qué no hacer directamente un ecommerce completo?</strong><p>Porque el problema urgente es ordenar la venta. Pagos online y stock tienen sentido cuando el catálogo, las categorías y el flujo de pedidos ya están claros.</p></div>
+      <div class="faq"><strong>¿El bot reemplaza al vendedor?</strong><p>No. El bot responde consultas frecuentes y ordena la solicitud. La confirmación de stock, precios finales, entrega y condiciones comerciales siguen bajo control de JM.</p></div>
+      <div class="faq"><strong>¿Qué pasa si después queremos Mercado Pago o stock?</strong><p>La solución se plantea por etapas para que pagos, stock y automatizaciones se sumen sobre la misma base sin empezar de cero.</p></div>
+      <div class="faq"><strong>¿El mantenimiento es obligatorio?</strong><p>No. Es opcional. Se recomienda si JM quiere delegar actualizaciones, seguridad, backups y ajustes menores después de la entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cierre" class="sec-navy reveal">
+  <div class="wrap">
+    <div class="g2">
+      <div>
+        <span class="badge badge-green-inv">Próximo paso</span>
+        <h2 style="color:#fff">La decisión recomendada es aprobar la Etapa 1.</h2>
+        <p class="lead-dark" style="margin-top:12px;max-width:520px">Con esta etapa, JM empieza a vender online con más orden, sin depender de un ecommerce completo desde el primer día y con una base preparada para crecer.</p>
+        <div class="g2" style="margin-top:22px">
+          <div class="card-dark"><strong style="font-family:var(--orb);font-size:28px;color:var(--green)">1</strong><p class="sub-dark">Confirmar aprobación de la propuesta.</p></div>
+          <div class="card-dark"><strong style="font-family:var(--orb);font-size:28px;color:var(--green)">2</strong><p class="sub-dark">Enviar productos iniciales y datos comerciales.</p></div>
+          <div class="card-dark"><strong style="font-family:var(--orb);font-size:28px;color:var(--green)">3</strong><p class="sub-dark">Contratar hosting y dominio a nombre de JM.</p></div>
+          <div class="card-dark"><strong style="font-family:var(--orb);font-size:28px;color:var(--green)">4</strong><p class="sub-dark">Desarrollar, probar, capacitar y publicar.</p></div>
+        </div>
+        <a href="https://wa.me/5492604087086?text=Hola%20NeuroTech%2C%20quiero%20avanzar%20con%20la%20propuesta%20para%20JM%20Todo%20en%20Descartables." target="_blank" rel="noopener" class="btn btn-green" style="margin-top:24px;width:100%;justify-content:center"><i class="ph-duotone ph-whatsapp-logo" style="font-size:20px"></i>Aprobar propuesta por WhatsApp</a>
+      </div>
+      <div class="card-dark-rec" style="display:flex;flex-direction:column;justify-content:center;gap:16px">
+        <blockquote style="font-size:clamp(22px,2.6vw,32px);font-weight:900;letter-spacing:-.045em;line-height:1.18;color:#fff">Primero convertimos la web en un sistema de venta. Después sumamos pagos, stock e IA avanzada.</blockquote>
+        <p class="sub-dark">NeuroTech no entrega solo una página. Acompaña el criterio comercial, la implementación y el crecimiento por etapas.</p>
         <div style="padding:16px;border-radius:16px;background:rgba(154,255,95,.06);border:1px solid rgba(154,255,95,.15)">
-          <p style="font-size:13px;color:rgba(255,255,255,.6)">📞 <strong style="color:rgba(255,255,255,.85)">+54 9 2604 08-7086</strong></p>
-          <p style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px">📧 <strong style="color:rgba(255,255,255,.85)">info@neurotechsoluciones.com</strong></p>
-          <p style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px">📍 San Rafael, Mendoza</p>
+          <p style="font-size:13px;color:rgba(255,255,255,.62)">WhatsApp: <strong style="color:rgba(255,255,255,.88)">+54 9 2604 08-7086</strong></p>
+          <p style="font-size:13px;color:rgba(255,255,255,.62);margin-top:4px">Email: <strong style="color:rgba(255,255,255,.88)">info@neurotechsoluciones.com</strong></p>
+          <p style="font-size:13px;color:rgba(255,255,255,.62);margin-top:4px">San Rafael, Mendoza</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-in">
     <div class="footer-icons">
-      <a href="https://wa.me/5492604087086" target="_blank" class="footer-icon">
-        <img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="40" alt="WhatsApp">
-        <span>WhatsApp</span>
-      </a>
-      <a href="https://www.instagram.com/neurotech.soluciones/" target="_blank" class="footer-icon">
-        <img src="https://img.icons8.com/color/96/instagram-new--v1.png" width="40" alt="Instagram">
-        <span>Instagram</span>
-      </a>
-      <a href="https://www.youtube.com/@neurotech-soluciones" target="_blank" class="footer-icon">
-        <img src="https://img.icons8.com/color/96/youtube-play.png" width="40" alt="YouTube">
-        <span>YouTube</span>
-      </a>
+      <a href="https://wa.me/5492604087086" target="_blank" class="footer-icon"><img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="40" alt="WhatsApp"><span>WhatsApp</span></a>
+      <a href="https://www.instagram.com/neurotech.soluciones/" target="_blank" class="footer-icon"><img src="https://img.icons8.com/color/96/instagram-new--v1.png" width="40" alt="Instagram"><span>Instagram</span></a>
+      <a href="https://www.youtube.com/@neurotech-soluciones" target="_blank" class="footer-icon"><img src="https://img.icons8.com/color/96/youtube-play.png" width="40" alt="YouTube"><span>YouTube</span></a>
     </div>
     <div class="footer-bottom">
-      <p style="margin-bottom:6px">📧 info@neurotechsoluciones.com</p>
-      <p style="color:rgba(255,255,255,.5);font-weight:700">NeuroTech Soluciones · San Rafael, Mendoza</p>
-      <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.2)">© 2026 NeuroTech Soluciones · Todos los derechos reservados.</p>
+      <p style="margin-bottom:6px">info@neurotechsoluciones.com</p>
+      <p style="font-weight:800;color:rgba(255,255,255,.58)">NeuroTech Soluciones · San Rafael, Mendoza</p>
+      <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.24)">© 2026 NeuroTech Soluciones · Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
 
-<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <i class="ph-bold ph-arrow-up"></i>
-</button>
-
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="ph-bold ph-arrow-up"></i></button>
 <script>
-  // Fechas
-  const hoy = new Date(), vig = new Date();
-  vig.setFullYear(2026); vig.setMonth(5); vig.setDate(30); // 30 de junio 2026
-  const f={day:'2-digit',month:'2-digit',year:'numeric'};
+  const hoy = new Date();
+  const vig = new Date(2026,5,30);
+  const f = {day:'2-digit',month:'2-digit',year:'numeric'};
   document.getElementById('fechaHoy').textContent = hoy.toLocaleDateString('es-AR',f);
   document.getElementById('fechaVig').textContent = vig.toLocaleDateString('es-AR',f);
-
-  // Scroll top
-  window.addEventListener('scroll',()=>{
-    document.getElementById('scrollTop').classList.toggle('show', window.scrollY>400);
-  });
-
-  // Reveal
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} });
-  },{threshold:.07});
+  window.addEventListener('scroll',()=>{document.getElementById('scrollTop').classList.toggle('show', window.scrollY>400);});
+  const obs = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-  // iframe fallback
-  document.querySelectorAll('iframe').forEach(iframe=>{
-    iframe.addEventListener('error', ()=>{
-      const fb = iframe.parentElement.querySelector('#iframe-fb,div[style*="display:none"]');
-      if(fb){ fb.style.display='flex'; iframe.style.display='none'; }
-    });
-    setTimeout(()=>{
-      try{
-        const d=iframe.contentDocument||iframe.contentWindow.document;
-        if(!d||!d.body||d.body.innerHTML===''){
-          const fb=iframe.parentElement.querySelector('#iframe-fb');
-          if(fb){fb.style.display='flex';iframe.style.display='none';}
-        }
-      }catch(e){
-        const fb=iframe.parentElement.querySelector('#iframe-fb');
-        if(fb){fb.style.display='flex';iframe.style.display='none';}
-      }
-    },3500);
-  });
 </script>
 </body>
 </html>
