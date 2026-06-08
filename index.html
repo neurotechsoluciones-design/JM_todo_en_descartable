@@ -44,8 +44,6 @@
     .g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow2)}.card-soft{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:28px}.card-rec{background:#fff;border:2px solid var(--blue);border-radius:var(--radius);padding:28px;box-shadow:0 0 0 4px rgba(33,0,229,.06),var(--shadow2)}.card-dark{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.085);border-radius:var(--radius);padding:28px}.card-dark-rec{background:rgba(154,255,95,.055);border:1px solid rgba(154,255,95,.24);border-radius:var(--radius);padding:28px}
     .list{list-style:none;display:grid;gap:9px;margin-top:14px}.list li{display:flex;gap:9px;line-height:1.45;font-size:14px;color:var(--mid)}.list-dark li{color:rgba(255,255,255,.7)}.ic-check{color:var(--green2);font-size:18px;flex-shrink:0;margin-top:1px}.ic-check-inv{color:var(--green);font-size:18px;flex-shrink:0;margin-top:1px}.ic-warn{color:#FDB022;font-size:18px;flex-shrink:0;margin-top:1px}.ic-bad{color:#F97066;font-size:18px;flex-shrink:0;margin-top:1px}
-
-    .highlight-products{display:inline-block;padding:3px 10px;margin:0 3px;border-radius:999px;font-weight:900;color:var(--green);background:rgba(154,255,95,.12);border:1px solid rgba(154,255,95,.45);box-shadow:0 0 14px rgba(154,255,95,.35);letter-spacing:.3px;white-space:nowrap}
     .mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.mini-kpi{padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}.mini-kpi strong{display:block;font-family:var(--orb);font-size:24px;color:var(--green)}.mini-kpi span{font-size:12px;color:rgba(255,255,255,.58);line-height:1.45;font-weight:700}
     .mock-device{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}.mock{width:min(430px,94%);border-radius:32px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);box-shadow:0 44px 100px rgba(0,0,0,.38);padding:16px;backdrop-filter:blur(8px)}.mock-screen{border-radius:22px;overflow:hidden;background:#fff}.mock-banner{height:130px;background:linear-gradient(135deg,#EEF1FF,#F8FAFF,#E8F8FF);display:flex;align-items:end;padding:18px}.mock-banner strong{font-size:22px;line-height:1;letter-spacing:-.05em;color:var(--ink)}.mock-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}.mock-prod{height:82px;border-radius:14px;background:linear-gradient(180deg,#fff,#F4F6FA);border:1px solid var(--line);padding:8px;display:flex;flex-direction:column;justify-content:end}.mock-prod span{height:30px;border-radius:8px;background:linear-gradient(135deg,#EEF0F4,#DDE8FF)}.mock-prod small{font-size:10px;font-weight:900;color:var(--muted);margin-top:6px}.mock-cart{margin:0 12px 12px;padding:12px;border-radius:14px;background:var(--navy);color:#fff;display:flex;justify-content:space-between;font-weight:900;font-size:13px}.mock-bot{margin:0 12px 14px;padding:12px;border-radius:14px;background:rgba(33,0,229,.08);border:1px solid rgba(33,0,229,.15);font-size:12px;color:var(--mid);line-height:1.45}.float-badge{position:absolute;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:11px 14px;font-weight:900;font-size:13px;color:var(--ink);box-shadow:var(--shadow2)}.fb1{top:24px;left:-4px}.fb2{bottom:60px;right:-10px}.fb3{top:196px;right:-14px}
     .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.flow-card{position:relative;padding:22px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow2)}.flow-card span{font-family:var(--orb);font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);font-weight:900}.flow-card h3{font-size:17px;margin-top:8px}.flow-card p{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:6px}
@@ -593,7 +591,7 @@
         <ul class="list">
           <li><i class="ph-duotone ph-check-circle ic-check"></i>Diseño y desarrollo de tienda online propia.</li>
           <li><i class="ph-duotone ph-check-circle ic-check"></i>Catálogo organizado por categorías.</li>
-          <li><i class="ph-duotone ph-check-circle ic-check"></i>Implementación inicial de catálogo con <span class="highlight-products">4000 productos</span> cargados, incluyendo fotos y descripción.</li>
+          <li><i class="ph-duotone ph-check-circle ic-check"></i>Carga inicial de 4000 productos con fotos y descripción.</li>
           <li><i class="ph-duotone ph-check-circle ic-check"></i>Carrito para armar pedidos con varios productos.</li>
           <li><i class="ph-duotone ph-check-circle ic-check"></i>Envío del pedido completo a WhatsApp.</li>
           <li><i class="ph-duotone ph-check-circle ic-check"></i>Bot basado en el catálogo para consultas frecuentes.</li>
@@ -608,7 +606,7 @@
         <ul class="list">
           <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye stock automático en tiempo real en esta primera etapa.</li>
           <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye pagos online integrados desde el inicio.</li>
-          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye actualización ilimitada o permanente de productos fuera del sistema de carga entregado.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye carga ilimitada de productos.</li>
           <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye campañas publicitarias ni gestión mensual de redes.</li>
           <li><i class="ph-duotone ph-x-circle ic-bad"></i>El bot responde según la información cargada. Stock, precios finales y condiciones se confirman por JM.</li>
         </ul>
@@ -718,7 +716,7 @@
             <h3 style="color:#fff">Sistema de ventas online: tienda propia + WhatsApp + bot + email + capacitación</h3>
             <ul class="list list-dark">
               <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Desarrollo completo de tienda online propia.</li>
-              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i><span class="highlight-products">4000 productos</span> cargados inicialmente.</li>
+              <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>50 productos cargados inicialmente.</li>
               <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Carrito y pedido directo por WhatsApp.</li>
               <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Bot de catálogo para consultas frecuentes.</li>
               <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Solicitud de presupuesto enviada al email.</li>
@@ -731,14 +729,14 @@
           </div>
           <div style="text-align:center;min-width:220px">
             <div style="display:inline-flex;flex-direction:column;align-items:center;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);padding:28px 32px;border-radius:24px">
-              <span class="price-big">$900.000</span>
+              <span class="price-big">$675.000</span>
               <span style="font-size:11px;color:rgba(255,255,255,.42);font-family:var(--orb);letter-spacing:.1em;text-transform:uppercase;margin-top:6px">ARS · Total</span>
             </div>
             <p style="color:var(--green);font-size:13px;font-weight:900;margin-top:14px">3 cuotas iguales</p>
             <div class="cuota-grid">
-              <div class="cuota"><strong>$300.000</strong><span>Al iniciar</span></div>
-              <div class="cuota"><strong>$300.000</strong><span>Avance medio</span></div>
-              <div class="cuota"><strong>$300.000</strong><span>Entrega</span></div>
+              <div class="cuota"><strong>$225.000</strong><span>Al iniciar</span></div>
+              <div class="cuota"><strong>$225.000</strong><span>Avance medio</span></div>
+              <div class="cuota"><strong>$225.000</strong><span>Entrega</span></div>
             </div>
           </div>
         </div>
@@ -754,11 +752,13 @@
           <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Actualizaciones técnicas del sistema y complementos.</li>
           <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Monitoreo básico de seguridad.</li>
           <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Ajustes menores de web, WhatsApp, bot o email.</li>
-          <li><i class="ph-duotone ph-check-circle ic-check-inv"></i>Incluye sistema de carga masiva o individual para que JM pueda cargar y actualizar productos de forma simple.</li>
+          <li><i class="ph-duotone ph-x-circle ic-bad"></i>No incluye carga masiva de productos, campañas ni rediseños.</li>
         </ul>
         <div style="margin-top:16px;padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);text-align:center">
           <span style="font-family:var(--orb);font-size:24px;font-weight:900;color:#fff">$40.000</span>
-          <span style="display:block;font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">ARS por mes · actualización del 20% cada 6 meses</span>
+          <span style="display:block;font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">
+  ARS por mes · actualización semestral del 20%, equivalente a un ajuste aproximado del 3% mensual, para acompañar costos operativos y mantenimiento técnico.
+</span>
         </div>
       </div>
       <div class="card-dark" style="border-color:rgba(139,92,246,.32)">
@@ -790,7 +790,7 @@
       <div class="card">
         <span class="step-num" style="color:var(--blue)">Etapa 1 · ahora</span>
         <h3 style="font-size:18px">Catálogo + WhatsApp + bot</h3>
-        <p class="sub">Web propia, catálogo inicial de <span class="highlight-products">4000 productos</span>, carrito, pedido por WhatsApp, bot de consulta y solicitud por email.</p>
+        <p class="sub">Web propia, 50 productos, carrito, pedido por WhatsApp, bot de consulta y solicitud por email.</p>
       </div>
       <div class="card">
         <span class="step-num" style="color:var(--violet)">Etapa 2</span>
